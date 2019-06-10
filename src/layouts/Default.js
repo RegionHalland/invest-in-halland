@@ -1,28 +1,16 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
 
 import '../css/index.css'
 
-import Header from '../components/Header.js'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const Layout = ({ children }) => (
-	<StaticQuery
-		query={graphql`
-			query SiteTitleQuery {
-				site {
-					siteMetadata {
-						title
-					}
-				}
-			}
-		`}
-		render={data => (
-			<div class="font-sans">
-				<Header siteTitle={data.site.siteMetadata.title} />
-				<main>{children}</main>
-			</div>
-		)}
-	/>
+	<div className="font-sans">
+		<Header />
+		<main>{children}</main>
+		<Footer />
+	</div>
 )
 
 export default Layout
