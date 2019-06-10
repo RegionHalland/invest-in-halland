@@ -24,6 +24,8 @@
     "styled-components": "^4.2.1"
   },
   "devDependencies": {
+    "husky": "^2.4.0",
+    "lint-staged": "^8.2.0",
     "prettier": "^1.17.1",
     "tailwindcss": "^1.0.3"
   },
@@ -35,6 +37,9 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
+    "format-test": "npm run format-test:prettier && npm run format-test:html",
+    "format-test:prettier": "node_modules/.bin/prettier --config .prettierrc \"src/**/*.{ts,css,less,js}\" -l",
+    "format-test:html": "node bin/glob-ls.js 'src/**/*.html' 'build/**/*.html.ejs' | xargs node bin/html-beautify-check.js",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
@@ -45,5 +50,21 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "node_modules/.bin/lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.html": [
+      "bin/html-beautify-check"
+    ],
+    "build/templates/**/*.html.ejs": [
+      "bin/html-beautify-check"
+    ],
+    "src/**/*.{ts,css,less,js}": [
+      "prettier --config .prettierrc -l"
+    ]
   }
 }
