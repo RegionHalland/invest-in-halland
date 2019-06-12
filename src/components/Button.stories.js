@@ -15,6 +15,6 @@ export const props = {
 
 storiesOf('Button', module)
 	.addDecorator(withKnobs)
-	.add('default', () => (
-		<Button {...object('props', { ...props })} {...actions} />
-	))
+	.add('default', () => {
+		return <Button {...object('props', { ...props })} {...actions} />
+	})
