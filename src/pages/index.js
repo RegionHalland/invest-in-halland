@@ -7,11 +7,13 @@ import SEO from '../components/seo'
 
 const IndexPage = () => (
 	<Layout>
-		<SearchInput
-			classes={'mb-4'}
-			placeholder={'Sök efter person'}
-			disabled={false}
-		/>
+		<div className="w-1/2">
+			<SearchInput
+				classes={'mb-4'}
+				placeholder={'Sök efter person'}
+				disabled={false}
+			/>
+		</div>
 		<SEO title="Home" />
 		<h1 className="text-5xl">Hi people</h1>
 		<p>Welcome to your new Gatsby site.</p>

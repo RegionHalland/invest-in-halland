@@ -3,14 +3,18 @@ import styled from 'styled-components'
 import { Search } from 'react-feather'
 
 export default ({ placeholder, disabled, classes, onClick = null }) => (
-	<div className={`${classes ? classes : null} inline-flex items-center`}>
+	<div
+		className={`${
+			classes ? classes : null
+		} inline-flex items-center relative w-full`}
+	>
 		<Search
 			className={`${
 				disabled ? 'opacity-25' : null
 			} absolute z-10 w-4 h-4 ml-3 mr-2`}
 		/>
 		<SearchInput
-			className="appearance-none bg-gray-200 focus:bg-gray-300 absolute bg-transparent text-black border-0 py-3 pr-3 pl-10 rounded-lg outline-none font-medium"
+			className="appearance-none bg-gray-200 focus:bg-gray-300 absolute bg-transparent text-black border-0 py-3 pr-3 pl-10 rounded-lg outline-none font-medium w-full"
 			placeholder={placeholder ? placeholder : 'Skriv här'}
 			isDisabled={disabled}
 			disabled={disabled ? 'disabled' : null}
