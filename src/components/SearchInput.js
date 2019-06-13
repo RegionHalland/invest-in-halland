@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Search } from 'react-feather'
 
-export default ({ placeholder, disabled, classes, onClick = null }) => (
+export default ({ placeholder, disabled, classes }) => (
 	<div
 		className={`${
 			classes ? classes : null
