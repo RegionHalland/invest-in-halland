@@ -49,6 +49,8 @@ module.exports = {
 				},
 			},
 		},
+		'gatsby-plugin-sharp',
+		'gatsby-transformer-sharp',
 		{
 			resolve: 'gatsby-source-wordpress',
 			options: {

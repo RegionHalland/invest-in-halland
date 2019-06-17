@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 export default ({ title, onClick }) => (
-	<Button onClick={onClick}>{title}</Button>
+	<Link className="px-6" to="/pants">
+		{title}
+	</Link>
 )
-
-const Button = styled.button`
-	background-color: ${props => (props.role === 'primary' ? 'red' : 'blue')};
-`
