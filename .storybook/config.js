@@ -8,4 +8,16 @@ function loadStories() {
 	req.keys().forEach(filename => req(filename))
 }
 
+// https://www.gatsbyjs.org/docs/visual-testing-with-storybook/
+global.___loader = {
+	enqueue: () => {},
+	hovering: () => {},
+}
+
+global.__PATH_PREFIX__ = ''
+
+window.___navigate = pathname => {
+	action('NavigateTo:')(pathname)
+}
+
 configure(loadStories, module)
