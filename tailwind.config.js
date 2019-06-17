@@ -5,7 +5,7 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			sans: [
-				'proxima-nova',
+				'axiforma',
 				'-apple-system',
 				'BlinkMacSystemFont',
 				'"Segoe UI"',
