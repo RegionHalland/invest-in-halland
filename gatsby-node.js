@@ -4,12 +4,12 @@ const slash = require('slash')
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions
 
-	const questionSingle = path.resolve('./src/templates/question-single.js')
+	const statisticSingle = path.resolve('./src/templates/statistic-single.js')
 
-	// Create Single Question Pages
-	const questionSingleResult = await graphql(`
+	// Create Single Statistic Pages
+	const statisticSingleResult = await graphql(`
 		{
-			allWordpressWpQuestion {
+			allWordpressWpStatistic {
 				edges {
 					node {
 						id
@@ -20,10 +20,10 @@ exports.createPages = async ({ graphql, actions }) => {
 		}
 	`)
 
-	questionSingleResult.data.allWordpressWpQuestion.edges.forEach(edge => {
+	statisticSingleResult.data.allWordpressWpStatistic.edges.forEach(edge => {
 		createPage({
-			path: `question/${edge.node.slug}`,
-			component: slash(questionSingle),
+			path: `statistic/${edge.node.slug}`,
+			component: slash(statisticSingle),
 			context: {
 				id: edge.node.id,
 				slug: edge.node.slug,
