@@ -9,6 +9,12 @@ const alignmentObject = {
 	bottom: 'justify-end',
 }
 
+const fontSizeObject = {
+	small: 'text-xl',
+	medium: 'text-2xl',
+	large: 'text-3xl',
+}
+
 export default ({ title, img, category, url, fontSize, sizes, alignment }) => (
 	<Link
 		to={url}
@@ -18,7 +24,7 @@ export default ({ title, img, category, url, fontSize, sizes, alignment }) => (
 		<div className="absolute h-full w-full top-0 left-0 bg-black opacity-25" />
 		<Inner
 			className={`${
-				alignment ? alignmentObject[alignment] : 'justify-bottom'
+				alignment ? alignmentObject[alignment] : 'justify-end'
 			} absolute flex flex-col left-0 top-0 h-full w-full p-4 z-10`}
 		>
 			<span className="uppercase text-xs font-sans font-medium text-gray-300 mb-2 block">
@@ -26,8 +32,8 @@ export default ({ title, img, category, url, fontSize, sizes, alignment }) => (
 			</span>
 			<h2
 				className={`${
-					fontSize ? fontSize : 'text-3xl'
-				} font-bold font-sans text-white leading-snug`}
+					fontSize ? fontSizeObject[fontSize] : 'text-3xl'
+				} font-semibold font-sans text-white leading-snug`}
 			>
 				{title}
 			</h2>

@@ -36,6 +36,7 @@
         "@babel/core": "^7.4.5",
         "@storybook/addon-actions": "^5.1.1",
         "@storybook/addon-links": "^5.1.1",
+        "@storybook/addon-viewport": "^5.1.8",
         "@storybook/addons": "^5.1.1",
         "@storybook/react": "^5.1.1",
         "babel-loader": "^8.0.6",

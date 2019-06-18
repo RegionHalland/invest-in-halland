@@ -11,9 +11,9 @@ export const actions = {
 }
 
 export const fontSizes = {
-	'text-xl': 'text-xl',
-	'text-2xl': 'text-2xl',
-	'text-3xl': 'text-3xl',
+	small: 'small',
+	medium: 'medium',
+	large: 'large',
 }
 
 export const alignment = {
@@ -47,7 +47,7 @@ storiesOf('ArticleCard', module)
 		return (
 			<ArticleCard
 				title={text('title', title)}
-				fontSize={radios('fontSize', fontSizes, 'text-2xl')}
+				fontSize={radios('fontSize', fontSizes)}
 				alignment={radios('alignment', alignment)}
 				category={text('category', category)}
 				url={text('url', url)}
