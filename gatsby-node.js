@@ -22,7 +22,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
 	questionSingleResult.data.allWordpressWpQuestion.edges.forEach(edge => {
 		createPage({
-			path: edge.node.slug,
+			path: `question/${edge.node.slug}`,
 			component: slash(questionSingle),
 			context: {
 				id: edge.node.id,
