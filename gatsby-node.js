@@ -1,7 +1,33 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require('path')
+const slash = require('slash')
 
-// You can delete this file if you're not using it
+exports.createPages = async ({ graphql, actions }) => {
+	const { createPage } = actions
+
+	const statisticSingle = path.resolve('./src/templates/statistic-single.js')
+
+	// Create Single Statistic Pages
+	const statisticSingleResult = await graphql(`
+		{
+			allWordpressWpStatistic {
+				edges {
+					node {
+						id
+						slug
+					}
+				}
+			}
+		}
+	`)
+
+	statisticSingleResult.data.allWordpressWpStatistic.edges.forEach(edge => {
+		createPage({
+			path: `statistic/${edge.node.slug}`,
+			component: slash(statisticSingle),
+			context: {
+				id: edge.node.id,
+				slug: edge.node.slug,
+			},
+		})
+	})
+}
