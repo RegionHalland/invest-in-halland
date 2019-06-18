@@ -4,9 +4,12 @@ import { useNavigationItems } from '../hooks/useNavigationItems'
 
 export default ({ siteTitle }) => {
 	const { items: navigation } = useNavigationItems()
+
 	return (
 		<header class="mb-6 p-3 border-b flex justify-between">
-			<h1>Invest in Halland</h1>
+			<Link to="/">
+				<h1>Invest in Halland</h1>
+			</Link>
 			<nav>
 				{navigation.map(item => (
 					<Link key={item.wordpress_id} to="/" className="ml-3">
