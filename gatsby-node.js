@@ -22,7 +22,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
 	statisticSingleResult.data.allWordpressWpStatistic.edges.forEach(edge => {
 		createPage({
-			path: `statistic/${edge.node.slug}`,
+			path: `statistik/${edge.node.slug}`,
 			component: slash(statisticSingle),
 			context: {
 				id: edge.node.id,
