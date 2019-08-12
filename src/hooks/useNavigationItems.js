@@ -8,6 +8,7 @@ export const useNavigationItems = () => {
 					wordpress_id
 					order
 					title
+					url
 				}
 			}
 		}

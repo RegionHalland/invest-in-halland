@@ -4,9 +4,9 @@ require('dotenv').config({
 
 module.exports = {
 	siteMetadata: {
-		title: 'Gatsby Default Starter',
+		title: 'Invest in Halland',
 		description:
-			'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
+			'',
 		author: '@gatsbyjs',
 	},
 	plugins: [
@@ -54,10 +54,10 @@ module.exports = {
 		{
 			resolve: 'gatsby-source-wordpress',
 			options: {
-				baseUrl: process.env.GATSBY_API_URL,
-				protocol: process.env.GATSBY_API_PROTOCOL,
+				baseUrl: 'api.investinhalland.test',
+				protocol: 'http',
 				hostingWPCOM: false,
-				useACF: false,
+				useACF: false
 			},
 		},
 		// this (optional) plugin enables Progressive Web App + Offline functionality

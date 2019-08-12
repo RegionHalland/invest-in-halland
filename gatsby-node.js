@@ -5,43 +5,66 @@ const slugify = require('slugify')
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions
 
-	const statistics = path.resolve('./src/templates/statistics.js')
-	const statisticsSingle = path.resolve(
-		'./src/templates/statistics-single.js'
+	const opportunities = path.resolve('./src/templates/opportunities.js')
+	const companyStory = path.resolve('./src/templates/company-stories.js')
+	const companyStorySingle = path.resolve(
+		'./src/templates/company-stories-single.js'
 	)
-	const articles = path.resolve('./src/templates/articles.js')
-	const articlesSingle = path.resolve('./src/templates/articles-single.js')
+	const opportunitySingle = path.resolve(
+		'./src/templates/opportunities-single.js'
+	)
 
 	const templates = {
-		statistic: statistics,
-		statisticsSingle: statisticsSingle,
-		article: articles,
-		articlesSingle: articlesSingle,
+		opportunity: opportunities,
+		company_story: companyStory,
+		companyStorySingle: companyStorySingle,
+		opportunitySingle: opportunitySingle,
 	}
 
 	/**
-	 * Create Single Statistic Pages
+	 * Create company_story single page
 	 */
-	const statisticsSingleResult = await graphql(`
+	const companyStoryResult = await graphql(`
 		{
-			allWordpressWpStatistic {
-				edges {
-					node {
-						id
-						slug
-					}
+			allWordpressWpCompanyStory {
+				nodes {
+					path
+					slug
 				}
 			}
 		}
 	`)
 
-	statisticsSingleResult.data.allWordpressWpStatistic.edges.forEach(edge => {
+	companyStoryResult.data.allWordpressWpCompanyStory.nodes.forEach(node => {
 		createPage({
-			path: `statistik/${edge.node.slug}`,
-			component: slash(statisticsSingle),
+			path: node.path,
+			component: companyStorySingle,
 			context: {
-				id: edge.node.id,
-				slug: edge.node.slug,
+				slug: node.slug,
+			},
+		})
+	})
+
+	/**
+	 * Create opportunities single page
+	 */
+	const opportunityResult = await graphql(`
+		{
+			allWordpressWpOpportunity {
+				nodes {
+					path
+					slug
+				}
+			}
+		}
+	`)
+
+	opportunityResult.data.allWordpressWpOpportunity.nodes.forEach(node => {
+		createPage({
+			path: node.path,
+			component: opportunitySingle,
+			context: {
+				slug: node.slug,
 			},
 		})
 	})
@@ -59,6 +82,7 @@ exports.createPages = async ({ graphql, actions }) => {
 							title
 							description
 							object
+							url
 						}
 					}
 				}
@@ -72,9 +96,13 @@ exports.createPages = async ({ graphql, actions }) => {
 		.filter(item => item.object !== 'custom')
 		.forEach(item => {
 			createPage({
-				path: slugify(item.title, { lower: true }),
+				path: item.url
+					.split('/')
+					.filter(Boolean)
+					.pop(),
 				component: slash(templates[item.object]),
 				context: {
+					title: item.title,
 					wordpress_id: item.object_id,
 					slug: item.object,
 				},

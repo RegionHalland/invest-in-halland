@@ -16,7 +16,10 @@ export default ({ siteTitle }) => {
 				{navigation.map(item => (
 					<Link
 						key={item.wordpress_id}
-						to={`/${slugify(item.title, { lower: true })}`}
+						to={`/${item.url
+							.split('/')
+							.filter(Boolean)
+							.pop()}`}
 						className="ml-3"
 					>
 						{item.title}
