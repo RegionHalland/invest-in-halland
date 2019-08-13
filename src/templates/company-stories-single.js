@@ -5,13 +5,21 @@ import BlockParser from '../components/BlocksParser'
 
 export default ({
 	data: {
-		wordpressWpCompanyStory: { title, blocks },
+		wordpressWpCompanyStory: { title, blocks, acf },
 	},
 }) => (
 	<Layout>
 		<SEO title={title} />
 		<div className="mx-auto container">
 			<BlockParser blocks={blocks} />
+
+			<h2>{acf.title}</h2>
+			{acf.fact.map(fact => (
+				<>
+					<h2>{fact.title}</h2>
+					<p>{fact.fact}</p>
+				</>
+			))}
 		</div>
 	</Layout>
 )
@@ -22,20 +30,18 @@ export const query = graphql`
 			title
 			blocks {
 				blockName
+				innerHTML
 				attrs {
 					data {
 						fact
-						body
-						image
-						title
-						button {
-							title
-							url
-							target
-						}
 					}
 				}
-				innerHTML
+			}
+			acf {
+				fact {
+					fact
+					title
+				}
 			}
 		}
 	}
