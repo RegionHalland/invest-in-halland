@@ -6,13 +6,6 @@ import SEO from '../components/Seo'
 
 const IndexPage = ({ data }) => (
 	<Layout>
-		<div className="w-1/2">
-			{/* <SearchInput
-				classes={'mb-4'}
-				placeholder={'Sök efter person'}
-				disabled={false}
-			/> */}
-		</div>
 		<SEO title="Home" />
 		<h1 className="text-5xl">Nothing but opportunities</h1>
 		<p>

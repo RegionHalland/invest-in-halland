@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { graphql } from 'gatsby'
 import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
 import BlockParser from '../components/BlocksParser'
