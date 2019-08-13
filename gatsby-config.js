@@ -5,8 +5,7 @@ require('dotenv').config({
 module.exports = {
 	siteMetadata: {
 		title: 'Invest in Halland',
-		description:
-			'',
+		description: '',
 		author: '@gatsbyjs',
 	},
 	plugins: [
@@ -54,10 +53,10 @@ module.exports = {
 		{
 			resolve: 'gatsby-source-wordpress',
 			options: {
-				baseUrl: 'api.investinhalland.test',
-				protocol: 'http',
+				baseUrl: process.env.GATSBY_API_URL,
+				protocol: process.env.GATSBY_API_PROTOCOL,
 				hostingWPCOM: false,
-				useACF: false
+				useACF: true,
 			},
 		},
 		// this (optional) plugin enables Progressive Web App + Offline functionality
