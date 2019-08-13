@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import SearchInput from '../components/SearchInput'
 import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
 

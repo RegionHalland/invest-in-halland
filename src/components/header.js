@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import slugify from 'slugify'
 
 import { useNavigationItems } from '../hooks/useNavigationItems'
 
