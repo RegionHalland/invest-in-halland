@@ -8,7 +8,7 @@ import Footer from '../components/Footer'
 const Layout = ({ children }) => (
 	<div className="font-sans">
 		<Header />
-		<main>{children}</main>
+		<main className="mb-12">{children}</main>
 		<Footer />
 	</div>
 )
