@@ -1,33 +1,24 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import { useNavigationItems } from '../hooks/useNavigationItems'
+import Logo from './Logo'
+
+//import { useNavigationItems } from '../hooks/useNavigationItems'
+import useTailwindBreakpoint from '../hooks/useTailwindBreakpoint'
 
 export default ({ siteTitle }) => {
-	const { items: navigation } = useNavigationItems()
+	const breakpoint = useTailwindBreakpoint()
+	console.log('breakpoint', breakpoint)
 
 	return (
-		<header className="mb-6 p-3 border-b flex justify-between">
-			<Link to="/">
-				<h1>Invest in Halland</h1>
-			</Link>
-			<nav>
-				{navigation.map(item => (
-					<Link
-						key={item.wordpress_id}
-						to={`/${item.url
-							.split('/')
-							.filter(Boolean)
-							.pop()}`}
-						className="ml-3"
-					>
-						{item.title}
+		<header>
+			<div className="container mx-auto flex flex-wrap">
+				<div className="w-full px-3">
+					<Link className="block w-48" to="/">
+						<Logo />
 					</Link>
-				))}
-				<Link to="/kontakt" className="ml-3">
-					Kontakta oss
-				</Link>
-			</nav>
+				</div>
+			</div>
 		</header>
 	)
 }
