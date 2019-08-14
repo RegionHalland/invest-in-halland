@@ -20,7 +20,7 @@ export default () => {
 		<footer>
 			<div className="container mx-auto flex flex-wrap">
 				<div className="w-full lg:w-6/12 px-3 mb-8">
-					<div className="w-56 mb-6">
+					<div className="w-48 mb-6">
 						<Logo />
 					</div>
 					<div className="max-w-xl pr-6">
