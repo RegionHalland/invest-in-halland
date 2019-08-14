@@ -4,20 +4,22 @@ import { Link } from 'gatsby'
 import classNames from 'classnames'
 
 export default ({ ...props }) => {
-	const mergedClassnames = classNames(props.className, 'font-bold')
+	const mergedClassnames = classNames(props.className, 'hover:text-green-500')
+	const Component = props.to ? StyledLink : StyledATag
 
 	return (
-		<StyledLink {...props} className={mergedClassnames}>
+		<Component {...props} className={mergedClassnames}>
 			{props.children}
-		</StyledLink>
+		</Component>
 	)
 }
 
-const StyledLink = styled(Link)`
-	transition: color 0.125s ease-in-out;
+const transition = 'color 0.125s ease-in-out'
 
-	&:hover {
-		// TODO: Use a real value from tailwind
-		color: red;
-	}
+const StyledLink = styled(Link)`
+	transition: ${transition};
+`
+
+const StyledATag = styled.a`
+	transition: ${transition};
 `

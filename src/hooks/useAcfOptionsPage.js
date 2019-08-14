@@ -5,6 +5,13 @@ export const useAcfOptionsPage = () => {
 		{
 			wordpressAcfOptions {
 				options {
+					right_column {
+						title
+						content {
+							label
+							url
+						}
+					}
 					description
 					first_part
 					words {

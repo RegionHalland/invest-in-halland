@@ -8,9 +8,12 @@ import { useNavigationItems } from '../hooks/useNavigationItems'
 import { useAcfOptionsPage } from '../hooks/useAcfOptionsPage'
 
 export default () => {
-	const { items: navigation } = useNavigationItems()
+	const { items: pages } = useNavigationItems()
 	const {
-		options: { description },
+		options: {
+			description,
+			right_column: { content: links, title: rightColumnTitle },
+		},
 	} = useAcfOptionsPage()
 
 	return (
@@ -28,10 +31,10 @@ export default () => {
 				<div className="w-full sm:w-6/12 lg:w-3/12 px-3 mb-8 md:mb-0">
 					<ColHeader>Sidor</ColHeader>
 					<ul>
-						{navigation.map(item => (
+						{pages.map(item => (
 							<li className="mb-3" key={item.wordpress_id}>
 								<PrimaryLink
-									className="text-lg"
+									className="font-bold text-lg"
 									to={`/${item.url
 										.split('/')
 										.filter(Boolean)
@@ -45,18 +48,18 @@ export default () => {
 				</div>
 
 				<div className="w-full sm:w-6/12 lg:w-3/12 px-3 mb-8 md:mb-0">
-					<ColHeader>Direktkontakt</ColHeader>
+					<ColHeader>{rightColumnTitle}</ColHeader>
 					<ul>
-						<li className="mb-3">
-							<PrimaryLink className="text-lg" to="#">
-								+46 730 936 515
-							</PrimaryLink>
-						</li>
-						<li className="mb-3">
-							<PrimaryLink className="text-lg" to="#">
-								info@investinhalland.com
-							</PrimaryLink>
-						</li>
+						{links.map((item, index) => (
+							<li className="mb-3" key={index}>
+								<PrimaryLink
+									className="font-bold text-lg"
+									href={item.url}
+								>
+									{item.label}
+								</PrimaryLink>
+							</li>
+						))}
 					</ul>
 				</div>
 			</div>
