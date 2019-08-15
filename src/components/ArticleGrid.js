@@ -5,6 +5,7 @@ export default ({ articles }) => {
 	const [areas, setAreas] = useState([])
 	const [allArticles, setAllArticles] = useState([])
 	const [filteredArticles, setFilteredArticles] = useState([])
+	const [currentFilter, setCurrentFilter] = useState([])
 
 	useEffect(() => {
 		// Add areas as an array with strings for easier filtering in the ”filter” function
@@ -16,6 +17,8 @@ export default ({ articles }) => {
 					: [],
 		}))
 
+		//Set inital filter to all
+		setCurrentFilter('all')
 		// Add all Articles to the state
 		setFilteredArticles(articlesWithAreasArray)
 		// Add all Articles to the state for use later with the 'all' filter
@@ -26,7 +29,8 @@ export default ({ articles }) => {
 			...new Set(
 				[].concat
 					.apply([], articles.map(story => story.area))
-					.map(area => (area !== null ? area.name : ''))
+					.filter(area => area !== null)
+					.map(area => area.name)
 			),
 		][0]
 		// Set areas in state
@@ -34,6 +38,9 @@ export default ({ articles }) => {
 	}, [])
 
 	const filter = area => {
+		// Set current filter to make it possible to underline the current filter
+		setCurrentFilter(area)
+
 		// Show all Company Stories
 		if (area === 'all') return setFilteredArticles(allArticles)
 
@@ -45,52 +52,65 @@ export default ({ articles }) => {
 		setFilteredArticles(filteredArticles)
 	}
 	return (
-		<React.Fragment>
-			<div className="pb-20">
-				<strong>Områden</strong>
+		<div className="container mx-auto flex-wrap">
+			<div className="pb-12">
+				<strong className="text-sm">Områden</strong>
 				{areas.length && (
 					<ul>
 						<li
 							onClick={() => filter('all')}
-							className="float-left pr-6"
+							className="float-left text-lg text-gray-600"
 						>
-							<button>Alla områden</button>
+							<button
+								className={
+									currentFilter === 'all'
+										? 'underline font-bold text-black'
+										: 'font-bold'
+								}
+							>
+								Alla områden
+							</button>
 						</li>
 						{areas.map(area => (
 							<li
 								onClick={() => filter(area)}
-								className="float-left pr-6"
+								className="float-left pl-4 text-lg text-gray-600"
 								key={area}
 							>
-								<button>{area}</button>
+								<button
+									className={
+										currentFilter === area
+											? 'underline font-bold text-black'
+											: 'font-bold'
+									}
+								>
+									{area}
+								</button>
 							</li>
 						))}
 					</ul>
 				)}
 			</div>
-
-			<div className="container mx-auto flex-wrap">
-				{filteredArticles.map(article => {
-					return (
-						<ArticleCard
-							key={article.id}
-							url={article.path}
-							title={article.title}
-							category={
-								article.area && article.area.length
-									? article.area[0].name
-									: ''
-							}
-							img={
-								article.featured_media
-									? article.featured_media.localFile
-											.childImageSharp.fixed
-									: ''
-							}
-						/>
-					)
-				})}
-			</div>
-		</React.Fragment>
+			{filteredArticles.map(article => {
+				return (
+					<ArticleCard
+						key={article.id}
+						url={article.path}
+						title={article.title}
+						category={
+							article.area && article.area.length
+								? article.area[0].name
+								: ''
+						}
+						img={
+							article.featured_media
+								? article.featured_media.localFile
+										.childImageSharp.fixed
+								: ''
+						}
+					/>
+				)
+			})}
+		</div>
 	)
 }
