@@ -9,13 +9,12 @@ const Components = {
 const BlocksParser = ({ blocks }) => {
 	return blocks
 		.filter(block => block.blockName !== null)
-		.map(block => {
-			console.log('block', block)
+		.map((block, key) => {
 			const Component = Components[block.blockName]
 			return block.blockName.includes('core/') ? (
 				ReactHtmlParser(block.innerHTML)
 			) : (
-				<Component key={block.attrs.id} block={block} />
+				<Component key={key} block={block} />
 			)
 		})
 }
