@@ -33,7 +33,7 @@ export default ({ articles }) => {
 					.map(area => area.name)
 			),
 		][0]
-		// Set areas in state
+		// Set unique areas in state
 		setAreas(Array.from(uniqueAreas))
 	}, [])
 
