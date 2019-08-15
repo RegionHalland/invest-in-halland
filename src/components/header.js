@@ -9,7 +9,6 @@ import useTailwindBreakpoint from '../hooks/useTailwindBreakpoint'
 export default ({ siteTitle }) => {
 	const breakpoint = useTailwindBreakpoint()
 	console.log('breakpoint', breakpoint)
-
 	return (
 		<header>
 			<div className="container mx-auto flex flex-wrap">

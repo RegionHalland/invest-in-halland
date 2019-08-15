@@ -36,6 +36,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.4.5",
+		"@digitaliseringsbyran/tailwindcss-screens-in-dom": "^0.1.1",
 		"@storybook/addon-actions": "^5.1.1",
 		"@storybook/addon-links": "^5.1.1",
 		"@storybook/addon-viewport": "^5.1.8",
