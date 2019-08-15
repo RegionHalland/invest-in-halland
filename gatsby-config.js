@@ -2,6 +2,12 @@ require('dotenv').config({
 	path: `.env.${process.env.NODE_ENV}`,
 })
 
+/**
+ * Normalizer is used to add area taxonmy to custom post type responses in GraphQL
+ * Read more here: https://www.gatsbyjs.org/packages/gatsby-source-wordpress/#using-a-custom-normalizer
+ */
+const areaNormalizer = require('./area-normalizer')
+
 module.exports = {
 	siteMetadata: {
 		title: 'Invest in Halland',
@@ -57,6 +63,16 @@ module.exports = {
 				protocol: process.env.GATSBY_API_PROTOCOL,
 				hostingWPCOM: false,
 				useACF: true,
+				normalizer: areaNormalizer,
+				includedRoutes: [
+					'**/fact',
+					'**/company_story',
+					'**/opportunity',
+					'**/menus',
+					'**/area',
+					'**/municipality',
+					'**/actor',
+				],
 			},
 		},
 		// this (optional) plugin enables Progressive Web App + Offline functionality
