@@ -72,6 +72,7 @@ module.exports = {
 					'**/area',
 					'**/municipality',
 					'**/actor',
+					'**/media',
 				],
 			},
 		},
