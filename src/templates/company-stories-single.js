@@ -13,14 +13,17 @@ export default ({
 		<SEO title={title} />
 		<div className="mx-auto container">
 			<BlockParser blocks={blocks} />
-
-			<h2>{acf.title}</h2>
-			{acf.fact.map(fact => (
-				<>
-					<h2>{fact.title}</h2>
-					<p>{fact.fact}</p>
-				</>
-			))}
+			{acf.fact && acf.fact.length > 0 && (
+				<React.Fragment>
+					<h2>{acf.title}</h2>
+					{acf.fact.map(fact => (
+						<React.Fragment key={fact.fact}>
+							<h2>{fact.title}</h2>
+							<p>{fact.fact}</p>
+						</React.Fragment>
+					))}
+				</React.Fragment>
+			)}
 		</div>
 	</Layout>
 )
@@ -33,12 +36,14 @@ export const query = graphql`
 				blockName
 				innerHTML
 				attrs {
+					wordpress_id
 					data {
 						fact
 					}
 				}
 			}
 			acf {
+				title
 				fact {
 					fact
 					title

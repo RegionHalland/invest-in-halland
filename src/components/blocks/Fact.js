@@ -9,7 +9,6 @@ export default ({
 	},
 }) => {
 	const [fact, setFact] = useState({})
-	console.log('block', id)
 	useEffect(() => {
 		const getFact = async () => {
 			const res = await axios.get(
@@ -24,7 +23,6 @@ export default ({
 		getFact()
 	}, [])
 
-	console.log('fact', fact)
 	return !fact.id ? (
 		<div>Loading...</div>
 	) : (
