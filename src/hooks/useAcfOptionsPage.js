@@ -5,15 +5,24 @@ export const useAcfOptionsPage = () => {
 		{
 			wordpressAcfOptions {
 				options {
-					right_column {
+					first_part
+					sub_title
+					title
+					company_stories {
 						title
+						sub_title
+					}
+					description
+					right_column {
 						content {
 							label
 							url
 						}
+						title
 					}
-					description
-					first_part
+					opportunities {
+						sub_title
+					}
 					words {
 						word
 					}
