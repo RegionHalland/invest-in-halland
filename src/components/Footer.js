@@ -38,7 +38,7 @@ export default () => {
 									to={`/${item.url
 										.split('/')
 										.filter(Boolean)
-										.pop()}`}
+										.pop()}/`}
 								>
 									{item.title}
 								</PrimaryLink>

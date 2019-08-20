@@ -133,7 +133,7 @@ const DesktopMenu = ({ pages }) => (
 				key={item.wordpress_id}
 			>
 				<MenuLink
-					className="block font-bold py-6 leading-none"
+					className="block font-bold py-6 leading-none hover:text-green-500"
 					activeClassName="active"
 					to={`/${item.url
 						.split('/')
@@ -163,6 +163,7 @@ const ColHeader = ({ children }) => (
 const MenuLink = styled(Link)`
 	position: relative;
 	transform: translateY(2px);
+	transition: color 0.125s ease-in-out;
 
 	&.active:after {
 		content: '';
