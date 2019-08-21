@@ -22,6 +22,7 @@ export const alignment = {
 	bottom: 'bottom',
 }
 
+export const aspectRatio = '1:1'
 export const title = 'Hälsoinnovatörer i Halmstad förnyar läkemedelsindustrin'
 export const category = 'Företagare berättar'
 export const url = '/link'
@@ -45,13 +46,16 @@ storiesOf('ArticleCard', module)
 	.addDecorator(withKnobs)
 	.add('default', () => {
 		return (
-			<ArticleCard
-				title={text('title', title)}
-				fontSize={radios('fontSize', fontSizes)}
-				alignment={radios('alignment', alignment)}
-				category={text('category', category)}
-				url={text('url', url)}
-				img={object('img', img)}
-			/>
+			<div style={{ width: '600px' }}>
+				<ArticleCard
+					aspectRatio={text('aspectRatio', aspectRatio)}
+					title={text('title', title)}
+					fontSize={radios('fontSize', fontSizes)}
+					alignment={radios('alignment', alignment)}
+					category={text('category', category)}
+					url={text('url', url)}
+					img={object('img', img)}
+				/>
+			</div>
 		)
 	})

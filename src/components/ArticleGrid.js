@@ -92,6 +92,9 @@ export default ({ articles }) => {
 					return (
 						<div className={`${classNames} mb-6 px-3`}>
 							<ArticleCard
+								aspectRatio={
+									index === 0 || index === 1 ? '1:1' : '2:1'
+								}
 								key={article.id}
 								url={article.path}
 								title={article.title}
@@ -103,7 +106,7 @@ export default ({ articles }) => {
 								img={
 									article.featured_media
 										? article.featured_media.localFile
-												.childImageSharp.fixed
+												.childImageSharp.fluid
 										: ''
 								}
 							/>

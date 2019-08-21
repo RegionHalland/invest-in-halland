@@ -44,8 +44,8 @@ export const query = graphql`
 					alt_text
 					localFile {
 						childImageSharp {
-							fixed(width: 500, height: 300) {
-								...GatsbyImageSharpFixed_withWebp
+							fluid(maxWidth: 1920) {
+								...GatsbyImageSharpFluid_withWebp
 							}
 						}
 					}

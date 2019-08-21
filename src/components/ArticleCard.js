@@ -15,12 +15,30 @@ const fontSizeObject = {
 	large: 'text-3xl',
 }
 
-export default ({ title, img, category, url, fontSize, sizes, alignment }) => (
-	<Link
+export default ({
+	aspectRatio,
+	title,
+	img,
+	category,
+	url,
+	fontSize,
+	sizes,
+	alignment,
+}) => (
+	<StyledLink
 		to={url}
-		className="inline-block overflow-hidden relative outline-none"
+		aspectRatio={aspectRatio}
+		className="block overflow-hidden relative outline-none"
 	>
-		{img && <Img className="align-bottom" fixed={img} />}
+		{img && (
+			<Img
+				style={{ position: 'absolute' }}
+				className="h-full w-full bottom-0 top-0 z-0"
+				objectFit="cover"
+				objectPosition="50% 50%"
+				fluid={img}
+			/>
+		)}
 		<div className="absolute h-full w-full top-0 left-0 bg-black opacity-25" />
 		<Inner
 			className={`${
@@ -38,7 +56,7 @@ export default ({ title, img, category, url, fontSize, sizes, alignment }) => (
 				{title}
 			</h2>
 		</Inner>
-	</Link>
+	</StyledLink>
 )
 
 const Inner = styled.div`
@@ -46,4 +64,9 @@ const Inner = styled.div`
 	&:hover {
 		transform: translateY(-0.5rem);
 	}
+`
+
+const StyledLink = styled(Link)`
+	height: 0;
+	padding-bottom: ${props => (props.aspectRatio === '1:1' ? '100%' : '150%')};
 `
