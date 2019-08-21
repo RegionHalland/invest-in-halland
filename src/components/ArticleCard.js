@@ -15,12 +15,12 @@ const fontSizeObject = {
 	large: 'text-3xl',
 }
 
-export default ({ title, img, category, url, fontSize, sizes, alignment }) => (
+export default ({ title, img, imgAlt, category, url, fontSize, alignment }) => (
 	<Link
 		to={url}
 		className="inline-block overflow-hidden relative outline-none"
 	>
-		{img && <Img className="align-bottom" fixed={img} />}
+		{img && <Img className="align-bottom" fixed={img} alt={imgAlt} />}
 		<div className="absolute h-full w-full top-0 left-0 bg-black opacity-25" />
 		<Inner
 			className={`${

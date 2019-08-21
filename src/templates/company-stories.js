@@ -40,6 +40,9 @@ export const query = graphql`
 					id
 				}
 				featured_media {
+					title
+					caption
+					alt_text
 					localFile {
 						childImageSharp {
 							fixed(width: 500, height: 300) {

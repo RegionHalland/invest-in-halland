@@ -108,6 +108,7 @@ export default ({ articles }) => {
 										.childImageSharp.fixed
 								: ''
 						}
+						imgAlt={article.featured_media.alt_text}
 					/>
 				)
 			})}
