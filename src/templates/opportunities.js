@@ -14,7 +14,6 @@ export default ({
 		},
 	},
 }) => {
-	console.log(opportunities_hero_content)
 	return (
 		<Layout>
 			<SEO title="opportunities" />
