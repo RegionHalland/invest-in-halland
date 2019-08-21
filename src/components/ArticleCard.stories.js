@@ -24,6 +24,7 @@ export const alignment = {
 
 export const title = 'Hälsoinnovatörer i Halmstad förnyar läkemedelsindustrin'
 export const category = 'Företagare berättar'
+export const imgAlt = 'Bild på hälsoinnovatör i Halmstad'
 export const url = '/link'
 export const img = {
 	aspectRatio: 1,
@@ -52,6 +53,7 @@ storiesOf('ArticleCard', module)
 				category={text('category', category)}
 				url={text('url', url)}
 				img={object('img', img)}
+				imgAlt={text('imgAlt', imgAlt)}
 			/>
 		)
 	})
