@@ -9,12 +9,12 @@ import resolveConfig from 'tailwindcss/resolveConfig'
 // https://tailwindcss.com/docs/configuration#referencing-in-javascript
 const screens = resolveConfig().theme.screens
 
-export default ({ subtitle, title, image }) => (
+export default ({ subTitle, title, image }) => (
 	<HeroContainer className="relative flex flex-wrap items-center py-8 bg-black">
 		<div className="container mx-auto z-10">
 			<div className="w-full px-3">
 				<span className="block text-white font-bold text-sm md:text-base lg:text-lg mb-3 leading-none">
-					{subtitle}
+					{subTitle}
 				</span>
 				<h1 className="block text-white font-bold text-3xl md:text-5xl xl:text-6xl leading-tight">
 					{title}
@@ -22,7 +22,7 @@ export default ({ subtitle, title, image }) => (
 			</div>
 			<div className="absolute bottom-0 px-3 py-6">
 				<span className="block text-sm xl:text-base text-white font-bold">
-					{image.alt_text}
+					{image.title}
 				</span>
 				<span className="block text-white text-xs xl:text-sm font-medium opacity-75">
 					{ReactHtmlParser(image.caption)}
@@ -34,6 +34,7 @@ export default ({ subtitle, title, image }) => (
 			className="h-full w-full bottom-0 top-0 z-0"
 			objectFit="cover"
 			objectPosition="50% 50%"
+			alt={image.alt_text}
 			fluid={image.localFile.childImageSharp.fluid}
 		/>
 	</HeroContainer>
