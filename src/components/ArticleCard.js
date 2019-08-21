@@ -20,7 +20,7 @@ export default ({ title, img, category, url, fontSize, sizes, alignment }) => (
 		to={url}
 		className="inline-block overflow-hidden relative outline-none"
 	>
-		<Img className="align-bottom" fixed={img} />
+		{img && <Img className="align-bottom" fixed={img} />}
 		<div className="absolute h-full w-full top-0 left-0 bg-black opacity-25" />
 		<Inner
 			className={`${

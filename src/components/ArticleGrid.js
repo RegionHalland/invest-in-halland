@@ -71,11 +71,11 @@ export default ({ articles }) => {
 								Alla områden
 							</button>
 						</li>
-						{areas.map(area => (
+						{areas.map((area, key) => (
 							<li
 								onClick={() => filter(area)}
 								className="float-left pl-4 text-lg text-gray-600"
-								key={area}
+								key={key}
 							>
 								<button
 									className={
