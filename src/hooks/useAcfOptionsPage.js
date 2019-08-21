@@ -6,8 +6,6 @@ export const useAcfOptionsPage = () => {
 			wordpressAcfOptions {
 				options {
 					first_part
-					sub_title
-					title
 					company_stories {
 						title
 						sub_title

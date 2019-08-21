@@ -40,6 +40,9 @@ export const query = graphql`
 					id
 				}
 				featured_media {
+					title
+					caption
+					alt_text
 					localFile {
 						childImageSharp {
 							fluid(maxWidth: 1920) {
@@ -57,6 +60,7 @@ export const query = graphql`
 					title
 					featured_image {
 						caption
+						title
 						alt_text
 						localFile {
 							childImageSharp {
