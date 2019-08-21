@@ -57,6 +57,7 @@ export const query = graphql`
 					title
 					featured_image {
 						caption
+						title
 						alt_text
 						localFile {
 							childImageSharp {
