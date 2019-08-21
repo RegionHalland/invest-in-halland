@@ -9,11 +9,10 @@ const Components = {
 
 const RelatedArticles = ({ articles }) => (
 	<React.Fragment>
-		<h3 className="font-semibold text-xl">Relaterat innehåll</h3>
+		<h3 className="font-semibold text-2xl">Relaterat innehåll</h3>
 		{articles.map(related_article => {
 			let article = related_article.related_article
 			let Component = Components[article.post_type]
-			console.log('article', article)
 			return (
 				<Component
 					key={article.wordpress_id}
