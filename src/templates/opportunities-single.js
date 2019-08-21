@@ -10,9 +10,11 @@ export default ({
 	},
 }) => (
 	<Layout>
-		<SEO title={title} />
-		<div>Opportunity {title}</div>
-		<BlockParser blocks={blocks} />
+		<div className="container mx-auto z-10">
+			<SEO title={title} />
+			<div>Opportunity {title}</div>
+			<BlockParser blocks={blocks} />
+		</div>
 	</Layout>
 )
 
