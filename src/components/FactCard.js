@@ -16,7 +16,7 @@ const fontSizeObject = {
 	large: 'text-3xl',
 }
 
-export default ({ title, label, url, fontSize, alignment }) => (
+export default ({ title, img, label, url, fontSize, alignment }) => (
 	<Link
 		to={url}
 		className="inline-block overflow-hidden relative outline-none px-3 sm:px-4 md:px-4 bg-black"
@@ -29,13 +29,24 @@ export default ({ title, label, url, fontSize, alignment }) => (
 			<StyledText
 				className={`${
 					fontSize ? fontSizeObject[fontSize] : 'text-2xl'
-				} font-semibold font-sans text-white leading-snug mb-2 max-w-sm`}
+				} text-gray-300 font-semibold text-white leading-snug mb-2 max-w-sm`}
 			>
 				{ReactHtmlParser(title)}
 			</StyledText>
-			<span className="text-gray-300 font-sans underline">
-				{label ? label : 'Läs mer'}
+			<span className="text-gray-300 underline">
+				{label ? label : 'Se svaret'}
 			</span>
+		</div>
+		<div className="inline-flex items-center">
+			{img && <Img fixed={img} className="rounded" />}
+			<div className="ml-2">
+				<span className="block leading-none text-white mb-1">
+					Kristina Höglund
+				</span>
+				<span className="block leading-none text-gray-300 text-sm">
+					Halmstad Näringsliv
+				</span>
+			</div>
 		</div>
 	</Link>
 )
