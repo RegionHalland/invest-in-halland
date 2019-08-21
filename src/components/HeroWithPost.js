@@ -50,4 +50,15 @@ const HeroContainer = styled.div`
 	@media screen and (min-width: ${screens.xl}) {
 		height: 40rem;
 	}
+
+	&:after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		display: block;
+		height: 100%;
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+		opacity: 0.65;
+		width: 100%;
+	}
 `

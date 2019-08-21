@@ -56,7 +56,7 @@ export default ({ articles }) => {
 
 	return (
 		<div className="container mx-auto">
-			<div className="w-full py-6 md:py-10 px-3">
+			<div className="w-full py-6 md:py-12 px-3">
 				<span className="block font-bold text-sm text-gray-500 mb-2">
 					Områden
 				</span>
