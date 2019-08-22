@@ -16,7 +16,7 @@ const fontSizeObject = {
 }
 
 export default ({
-	aspectRatio,
+	ratio,
 	title,
 	img,
 	category,
@@ -27,7 +27,7 @@ export default ({
 }) => (
 	<StyledLink
 		to={url}
-		aspectRatio={aspectRatio}
+		ratio={ratio}
 		className="block overflow-hidden relative outline-none"
 	>
 		{img && (
@@ -68,5 +68,5 @@ const Inner = styled.div`
 
 const StyledLink = styled(Link)`
 	height: 0;
-	padding-bottom: ${props => (props.aspectRatio === '1:1' ? '100%' : '150%')};
+	padding-bottom: ${props => (props.ratio === '1:1' ? '100%' : '150%')};
 `

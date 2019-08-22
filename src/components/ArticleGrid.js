@@ -92,7 +92,7 @@ export default ({ articles }) => {
 					return (
 						<div className={`${classNames} mb-6 px-3`}>
 							<ArticleCard
-								aspectRatio={
+								ratio={
 									index === 0 || index === 1 ? '1:1' : '2:1'
 								}
 								key={article.id}
