@@ -17,10 +17,12 @@ const RelatedArticles = ({ articles }) => (
 				let article = related_article.related_article
 				let Component = Components[article.post_type]
 				return (
-					<div className="w-full md:w-6/12 px-3">
+					<div
+						className="w-full md:w-6/12 px-3"
+						key={article.wordpress_id}
+					>
 						<Component
 							ratio="1:1"
-							key={article.wordpress_id}
 							title={article.post_title}
 							img={
 								article.featured_media
