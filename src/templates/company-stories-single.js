@@ -51,6 +51,21 @@ export const query = graphql`
 						wordpress_id
 						url
 						area_name
+						contact {
+							post_title
+							acf {
+								company
+								featured_media {
+									localFile {
+										childImageSharp {
+											fixed(width: 100, height: 100) {
+												...GatsbyImageSharpFixed_withWebp
+											}
+										}
+									}
+								}
+							}
+						}
 						featured_media {
 							localFile {
 								childImageSharp {
