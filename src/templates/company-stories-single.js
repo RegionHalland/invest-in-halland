@@ -3,37 +3,50 @@ import { graphql } from 'gatsby'
 import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
 
+import HeroWithPost from '../components/HeroWithPost'
 import Article from '../components/Article'
 import RelatedArticles from '../components/RelatedArticles'
 
 export default ({
 	data: {
-		wordpressWpCompanyStory: { title, blocks, acf },
+		wordpressWpCompanyStory: { title, area, blocks, acf },
 	},
-}) => (
-	<Layout>
-		<SEO title={title} />
-		<div className="mx-auto container">
-			<div className="mx-auto w-full md:w-10/12 lg:w-7/12 px-3">
-				<Article blocks={blocks} acf={acf} />
+}) => {
+	const subtitle = area && area.length ? area[0].name : null
+
+	return (
+		<Layout>
+			<SEO title={title} />
+			<HeroWithPost title={title} subtitle={subtitle} />
+			<div className="mx-auto container py-12 md:py-16 lg:py-24">
+				<div className="mx-auto w-full md:w-10/12 lg:w-7/12 px-3">
+					<Article blocks={blocks} acf={acf} />
+				</div>
 			</div>
-			{acf.related_articles && acf.related_articles.length && (
-				<RelatedArticles articles={acf.related_articles} />
-			)}
-		</div>
-	</Layout>
-)
+			<div className="mx-auto container pb-16">
+				{acf.related_articles && acf.related_articles.length && (
+					<RelatedArticles articles={acf.related_articles} />
+				)}
+			</div>
+		</Layout>
+	)
+}
 
 export const query = graphql`
 	query($slug: String!) {
 		wordpressWpCompanyStory(slug: { eq: $slug }) {
 			title
+			area {
+				name
+				id
+			}
 			blocks {
 				blockName
 				innerHTML
 				attrs {
 					data {
 						fact
+						introduction
 					}
 				}
 			}

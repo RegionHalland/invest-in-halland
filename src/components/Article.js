@@ -21,6 +21,10 @@ const Article = styled.article`
 		${tw`text-lg leading-normal mb-3`};
 	}
 
+	.introduction {
+		${tw`text-xl text-black`};
+	}
+
 	blockquote {
 		${tw`my-12 text-center max-w-xl mx-auto`}
 

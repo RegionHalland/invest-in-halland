@@ -17,7 +17,6 @@ export default ({
 			)
 			const fact = res.data
 			setFact(fact)
-			console.log(fact)
 
 			return res
 		}
