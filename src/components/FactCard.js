@@ -45,10 +45,10 @@ export default ({
 				/>
 			)}
 			<div className="ml-2">
-				<span className="block leading-none text-gray-300 mb-1 text-lg">
+				<span className="block leading-none font-semibold text-gray-300 mb-1 text-lg">
 					{contactName}
 				</span>
-				<span className="block leading-none text-gray-400">
+				<span className="block leading-none font-medium text-gray-400">
 					{contactCompany}
 				</span>
 			</div>

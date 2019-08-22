@@ -45,6 +45,7 @@ const RelatedArticles = ({ articles }) => (
 							<FactCard
 								key={key}
 								alignment="center"
+								fontSize="large"
 								title={article.post_title}
 								url={article.url}
 								contactName={article.contact.post_title}
