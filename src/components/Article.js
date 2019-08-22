@@ -41,4 +41,12 @@ const Article = styled.article`
 			${tw`block mx-auto`}
 		}
 	}
+
+	figure {
+		${tw`mt-12`}
+	}
+
+	figcaption {
+		${tw`text-gray-600 my-2 text-sm`}
+	}
 `
