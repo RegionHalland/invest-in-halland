@@ -51,6 +51,12 @@ export const query = graphql`
 				}
 			}
 			acf {
+				contact {
+					post_title
+					acf {
+						company
+					}
+				}
 				title
 				fact {
 					fact

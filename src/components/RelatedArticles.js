@@ -48,8 +48,16 @@ const RelatedArticles = ({ articles }) => (
 								fontSize="large"
 								title={article.post_title}
 								url={article.url}
-								contactName={article.contact.post_title}
-								contactCompany={article.contact.acf.company}
+								contactName={
+									article.contact
+										? article.contact.post_title
+										: ''
+								}
+								contactCompany={
+									article.contact
+										? article.contact.acf.company
+										: ''
+								}
 								img={
 									article.contact.acf.featured_media
 										? article.contact.acf.featured_media
