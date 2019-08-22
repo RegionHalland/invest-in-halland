@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import FactCard from '../FactCard'
 
 export default ({
 	block: {
@@ -16,6 +17,7 @@ export default ({
 			)
 			const fact = res.data
 			setFact(fact)
+			console.log(fact)
 
 			return res
 		}
@@ -26,8 +28,6 @@ export default ({
 	return !fact.id ? (
 		<div>Loading...</div>
 	) : (
-		<div className="bg-black h-100 w-full text-white p-20">
-			Done! Have {fact.title.rendered}
-		</div>
+		<FactCard title={fact.title.rendered} url={fact.gatsby_url} />
 	)
 }

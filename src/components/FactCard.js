@@ -40,12 +40,8 @@ export default ({ title, img, label, url, fontSize, alignment }) => (
 		<div className="inline-flex items-center">
 			{img && <Img fixed={img} className="rounded" />}
 			<div className="ml-2">
-				<span className="block leading-none text-white mb-1">
-					Kristina Höglund
-				</span>
-				<span className="block leading-none text-gray-300 text-sm">
-					Halmstad Näringsliv
-				</span>
+				<span className="block leading-none text-white mb-1"></span>
+				<span className="block leading-none text-gray-300 text-sm"></span>
 			</div>
 		</div>
 	</Link>
