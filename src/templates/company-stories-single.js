@@ -14,7 +14,7 @@ export default ({
 	<Layout>
 		<SEO title={title} />
 		<div className="mx-auto container">
-			<div class="mx-auto w-full md:w-10/12 lg:w-7/12 px-3">
+			<div className="mx-auto w-full md:w-10/12 lg:w-7/12 px-3">
 				<Article blocks={blocks} acf={acf} />
 			</div>
 			{acf.related_articles && acf.related_articles.length && (
@@ -32,7 +32,6 @@ export const query = graphql`
 				blockName
 				innerHTML
 				attrs {
-					wordpress_id
 					data {
 						fact
 					}
