@@ -13,7 +13,7 @@ export default ({
 	useEffect(() => {
 		const getFact = async () => {
 			const res = await axios.get(
-				`http://api.investinhalland.test/wp-json/wp/v2/fact/${id}`
+				`${process.env.GATSBY_API_PROTOCOL}://${process.env.GATSBY_API_URL}/wp-json/wp/v2/fact/${id}`
 			)
 			const fact = res.data
 			setFact(fact)
