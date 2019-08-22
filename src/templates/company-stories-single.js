@@ -2,7 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
-import BlockParser from '../components/BlocksParser'
+
+import Article from '../components/Article'
 import RelatedArticles from '../components/RelatedArticles'
 
 export default ({
@@ -13,20 +14,9 @@ export default ({
 	<Layout>
 		<SEO title={title} />
 		<div className="mx-auto container">
-			<BlockParser blocks={blocks} />
-
-			{acf.fact && acf.fact.length > 0 && (
-				<React.Fragment>
-					<h2>{acf.title}</h2>
-					{acf.fact.map(fact => (
-						<React.Fragment key={fact.fact}>
-							<h2>{fact.title}</h2>
-							<p>{fact.fact}</p>
-						</React.Fragment>
-					))}
-				</React.Fragment>
-			)}
-
+			<div class="mx-auto w-full md:w-10/12 lg:w-7/12 px-3">
+				<Article blocks={blocks} acf={acf} />
+			</div>
 			{acf.related_articles && acf.related_articles.length && (
 				<RelatedArticles articles={acf.related_articles} />
 			)}
