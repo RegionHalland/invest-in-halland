@@ -9,7 +9,9 @@ const Components = {
 
 const RelatedArticles = ({ articles }) => (
 	<React.Fragment>
-		<h3 className="font-semibold text-2xl">Relaterat innehåll</h3>
+		<div className="flex flex-wrap w-full px-3 mb-3">
+			<h3 className="font-semibold text-2xl">Relaterat innehåll</h3>
+		</div>
 		<div className="flex flex-wrap w-full">
 			{articles.map(related_article => {
 				let article = related_article.related_article
