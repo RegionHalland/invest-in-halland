@@ -1,14 +1,9 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
 import { withKnobs, object, text } from '@storybook/addon-knobs/react'
 import { radios } from '@storybook/addon-knobs'
 
 import FactCard from './FactCard'
-
-export const actions = {
-	onClick: action('onClick'),
-}
 
 export const fontSizes = {
 	small: 'small',
@@ -23,6 +18,8 @@ export const alignment = {
 }
 
 export const title = 'Varför har Halland Sveriges högsta medellivslängd?'
+export const contactName = 'Kristina Höglund'
+export const contactCompany = 'Halmstad Näringsliv'
 export const label = 'Se svaret'
 export const url = '/link'
 
@@ -39,7 +36,7 @@ export const img = {
 		'/static/4a9773549091c227cd2eb82ccd9c5e3a/f4957/gatsby-icon.webp 1x',
 	srcWebp: '/static/4a9773549091c227cd2eb82ccd9c5e3a/f4957/gatsby-icon.webp',
 	tracedSVG:
-		"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3e%3cpath d='M173 1A201 201 0 0 0 23 294a200 200 0 0 0 377-78c1 1 1-7 1-17l-1-15-2-9A201 201 0 0 0 173 1m5 43A158 158 0 0 0 47 164c0 1 42 44 94 95l94 94 8-2a158 158 0 0 0 114-148v-3H257v28h34l34 1a127 127 0 0 1-72 87l-10 5-82-82-82-83a128 128 0 0 1 221-36l5 5 11-8 10-9c2-2-25-29-37-38-18-11-37-20-57-24-11-2-44-4-54-2M43 212a156 156 0 0 0 148 144h6l-76-76-77-77-1 9' fill='%23d3d3d3' fill-rule='evenodd'/%3e%3c/svg%3e",
+		"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50'%3e%3cpath d='M173 1A201 201 0 0 0 23 294a200 200 0 0 0 377-78c1 1 1-7 1-17l-1-15-2-9A201 201 0 0 0 173 1m5 43A158 158 0 0 0 47 164c0 1 42 44 94 95l94 94 8-2a158 158 0 0 0 114-148v-3H257v28h34l34 1a127 127 0 0 1-72 87l-10 5-82-82-82-83a128 128 0 0 1 221-36l5 5 11-8 10-9c2-2-25-29-37-38-18-11-37-20-57-24-11-2-44-4-54-2M43 212a156 156 0 0 0 148 144h6l-76-76-77-77-1 9' fill='%23d3d3d3' fill-rule='evenodd'/%3e%3c/svg%3e",
 }
 
 storiesOf('FactCard', module)
@@ -50,6 +47,8 @@ storiesOf('FactCard', module)
 			return (
 				<FactCard
 					title={text('title', title)}
+					contactName={text('contactName', contactName)}
+					contactCompany={text('contactCompany', contactCompany)}
 					fontSize={radios('fontSize', fontSizes)}
 					alignment={radios('alignment', alignment)}
 					label={text('label', label)}

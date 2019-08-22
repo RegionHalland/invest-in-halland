@@ -4,32 +4,31 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import ReactHtmlParser from 'react-html-parser'
 
-const alignmentObject = {
-	top: 'pb-16 pt-4',
-	center: 'py-16',
-	bottom: 'pt-16 pb-4',
-}
-
 const fontSizeObject = {
 	small: 'text-xl',
 	medium: 'text-2xl',
 	large: 'text-3xl',
 }
 
-export default ({ title, img, label, url, fontSize, alignment }) => (
+export default ({
+	title,
+	contactName,
+	contactCompany,
+	img,
+	label,
+	url,
+	fontSize,
+	alignment,
+}) => (
 	<Link
 		to={url}
-		className="inline-block overflow-hidden relative outline-none px-3 sm:px-4 md:px-4 bg-black"
+		className="flex overflow-hidden flex-col justify-between h-full outline-none p-3 sm:p-4 md:p-4 bg-black"
 	>
-		<div
-			className={`${
-				alignment ? alignmentObject[alignment] : 'pb-16 pt-4'
-			} flex flex-col h-full w-full`}
-		>
+		<div className={`flex flex-col h-full w-full justify-${alignment}`}>
 			<StyledText
 				className={`${
 					fontSize ? fontSizeObject[fontSize] : 'text-2xl'
-				} text-gray-300 font-semibold text-white leading-snug mb-2 max-w-sm`}
+				} font-semibold text-white leading-snug mb-2 max-w-sm`}
 			>
 				{ReactHtmlParser(title)}
 			</StyledText>
@@ -38,10 +37,20 @@ export default ({ title, img, label, url, fontSize, alignment }) => (
 			</span>
 		</div>
 		<div className="inline-flex items-center">
-			{img && <Img fixed={img} className="rounded" />}
+			{img && (
+				<Img
+					fixed={img}
+					style={{ width: '3.2rem', height: '3.2rem' }}
+					className="rounded"
+				/>
+			)}
 			<div className="ml-2">
-				<span className="block leading-none text-white mb-1"></span>
-				<span className="block leading-none text-gray-300 text-sm"></span>
+				<span className="block leading-none text-gray-300 mb-1 text-lg">
+					{contactName}
+				</span>
+				<span className="block leading-none text-gray-400">
+					{contactCompany}
+				</span>
 			</div>
 		</div>
 	</Link>
