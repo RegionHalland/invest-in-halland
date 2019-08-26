@@ -49,6 +49,8 @@ export const query = graphql`
 					}
 					featured_articles {
 						title
+						wordpress_id
+						path
 						area {
 							name
 						}
