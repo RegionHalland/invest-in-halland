@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import tw from 'tailwind.macro'
 
 import ArticleCard from './ArticleCard'
 
@@ -56,35 +57,40 @@ export default ({ articles }) => {
 
 	return (
 		<div className="container mx-auto">
-			<div className="w-full py-6 md:py-12 px-3">
+			<OuterFilterContainer className="w-full py-6 md:py-12 px-3">
 				<span className="block font-bold text-sm text-gray-500 mb-2">
 					Områden
 				</span>
 				{areas.length && (
-					<ul className="inline-flex">
-						<li className="mr-6">
-							<FilterButton
-								onClick={() => filter('all')}
-								active={currentFilter === 'all'}
-								label="Alla områden"
-							/>
-						</li>
-						{areas.map((area, index) => {
-							const margin =
-								index === areas.length - 1 ? null : 'mr-6'
-							return (
-								<li key={index} className={margin}>
-									<FilterButton
-										onClick={() => filter(area)}
-										active={currentFilter === area}
-										label={area}
-									/>
-								</li>
-							)
-						})}
-					</ul>
+					<FilterContainer className="w-full overflow-x-scroll">
+						<ul className="inline-flex">
+							<li className="whitespace-no-wrap mr-6">
+								<FilterButton
+									onClick={() => filter('all')}
+									active={currentFilter === 'all'}
+									label="Alla områden"
+								/>
+							</li>
+							{areas.map((area, index) => {
+								const margin =
+									index === areas.length - 1 ? null : 'mr-6'
+								return (
+									<li
+										key={index}
+										className={`whitespace-no-wrap ${margin}`}
+									>
+										<FilterButton
+											onClick={() => filter(area)}
+											active={currentFilter === area}
+											label={area}
+										/>
+									</li>
+								)
+							})}
+						</ul>
+					</FilterContainer>
 				)}
-			</div>
+			</OuterFilterContainer>
 			<div className="flex flex-wrap w-full">
 				{filteredArticles.map((article, index) => {
 					const classNames =
@@ -135,4 +141,30 @@ const FilterButton = ({ onClick, active, label }) => {
 
 const StyledFilterButton = styled.button`
 	transition: border-color 0.125s ease-in-out, color 0.125s ease-in-out;
+`
+
+const FilterContainer = styled.div`
+	::-webkit-scrollbar {
+		display: none;
+	}
+
+	-ms-overflow-style: none;
+	overflow: -moz-scrollbars-none;
+`
+
+const OuterFilterContainer = styled.div`
+	position: relative;
+
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+		width: 100px;
+		background: linear-gradient(to left, #fff, rgba(255, 255, 255, 0));
+		z-index: 10;
+		${tw`mr-3`}
+	}
 `
