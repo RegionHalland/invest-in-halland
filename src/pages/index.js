@@ -16,19 +16,17 @@ const IndexPage = ({ data }) => (
 
 export const query = graphql`
 	query {
-		file(relativePath: { eq: "gatsby-icon.png" }) {
-			childImageSharp {
-				fixed {
-					base64
-					tracedSVG
-					aspectRatio
-					width
-					height
-					src
-					srcSet
-					srcWebp
-					srcSetWebp
-					originalName
+		wordpressAcfOptions {
+			options {
+				startpage {
+					introduction_text
+					title
+					words {
+						word
+					}
+					featured_articles {
+						post_title
+					}
 				}
 			}
 		}
