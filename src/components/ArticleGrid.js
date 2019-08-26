@@ -1,8 +1,81 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
+import Masonry from 'react-masonry-component'
 
 import ArticleCard from './ArticleCard'
+
+const masonryOptions = {
+	transitionDuration: 0,
+}
+
+const imagesLoadedOptions = { background: '.my-bg-image-el' }
+
+const testArticles = [
+	{
+		id: 0,
+		title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+		category: 'Hälsovård',
+	},
+	{
+		id: 1,
+		title: 'Perspiciatis corrupti sint nostrum qui deleniti.',
+		category: 'Hälsovård',
+	},
+	{
+		id: 2,
+		title: 'Exime similique, consequuntur rem quas dolore blanditiis ex ut',
+		category: 'Hälsovård',
+	},
+	{
+		id: 3,
+		title: 'Corrupti sint nostrum qui necessitatibus ex minima',
+		category: 'Hälsovård',
+	},
+	{
+		id: 4,
+		title: 'Explicabo fugiat iste neque. Maxime similique ex ut deleniti.',
+		category: 'Hälsovård',
+	},
+	{
+		id: 5,
+		title:
+			'Minima, explicabo fugiat iste neque. Maxime similique, consequuntur rem quas dolore blanditiis ex ut deleniti.',
+		category: 'Hälsovård',
+	},
+	{
+		id: 6,
+		title: 'Fugiat iste neque. Rem quas dolore blanditiis ex ut deleniti.',
+		category: 'Hälsovård',
+	},
+	{
+		id: 7,
+		title:
+			'Nostrum qui necessitatibus ex minima explicabo fugiat iste neque.',
+		category: 'Hälsovård',
+	},
+	{
+		id: 8,
+		title: 'Consequuntur rem quas dolore.',
+		category: 'Hälsovård',
+	},
+	{
+		id: 9,
+		title:
+			'Perspiciatis consequuntur rem quas dolore blanditiis ex ut deleniti.',
+		category: 'Hälsovård',
+	},
+	{
+		id: 10,
+		title: 'Maxime blanditiis ex ut deleniti.',
+		category: 'Hälsovård',
+	},
+	{
+		id: 11,
+		title: 'Lima explicabo fugiat iste neque. Maxime similique',
+		category: 'Hälsovård',
+	},
+]
 
 export default ({ articles }) => {
 	const [areas, setAreas] = useState([])
@@ -87,35 +160,27 @@ export default ({ articles }) => {
 					</FilterContainer>
 				)}
 			</OuterFilterContainer>
-			<div className="flex flex-wrap w-full">
-				{filteredArticles.map((article, index) => {
-					const classNames =
-						index === 0 || index === 1 ? 'w-6/12' : 'w-4/12'
-					return (
-						<div className={`${classNames} mb-6 px-3`}>
-							<ArticleCard
-								ratio={
-									index === 0 || index === 1 ? '1:1' : '2:1'
-								}
-								key={article.id}
-								url={article.path}
-								title={article.title}
-								category={
-									article.area && article.area.length
-										? article.area[0].name
-										: ''
-								}
-								img={
-									article.featured_media
-										? article.featured_media.localFile
-												.childImageSharp.fluid
-										: ''
-								}
-							/>
+			<Masonry
+				className="w-full"
+				elementType={'ul'}
+				options={masonryOptions}
+				disableImagesLoaded={false}
+				updateOnEachImageLoad={false}
+				imagesLoadedOptions={imagesLoadedOptions}
+			>
+				{testArticles.map(article => (
+					<li key={article.id} className="w-6/12 xl:w-4/12 px-3 mb-6">
+						<div className="p-3 border rounded pt-64 min-h-64">
+							<span className="uppercase text-xs font-sans font-medium mb-2 block">
+								{article.category}
+							</span>
+							<h2 className="text-3xl font-semibold font-sans leading-tight">
+								{article.title}
+							</h2>
 						</div>
-					)
-				})}
-			</div>
+					</li>
+				))}
+			</Masonry>
 		</div>
 	)
 }
