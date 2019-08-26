@@ -9,7 +9,7 @@ import resolveConfig from 'tailwindcss/resolveConfig'
 // https://tailwindcss.com/docs/configuration#referencing-in-javascript
 const screens = resolveConfig().theme.screens
 
-export default ({ subtitle, title, image }) => {
+export default ({ subtitle, title, image, textAlign }) => {
 	return (
 		<HeroContainer className="relative flex flex-wrap items-center py-8 bg-black">
 			<div className="container mx-auto z-10">
@@ -19,7 +19,11 @@ export default ({ subtitle, title, image }) => {
 							{subtitle}
 						</span>
 					)}
-					<h1 className="block text-white font-bold text-3xl md:text-5xl xl:text-6xl leading-tight">
+					<h1
+						className={`${
+							textAlign ? `text-${textAlign} ` : ''
+						}block text-white font-bold text-3xl md:text-5xl xl:text-6xl leading-tight`}
+					>
 						{ReactHtmlParser(title)}
 					</h1>
 				</div>
