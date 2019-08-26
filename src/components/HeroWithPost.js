@@ -20,7 +20,7 @@ export default ({ subtitle, title, image }) => {
 						</span>
 					)}
 					<h1 className="block text-white font-bold text-3xl md:text-5xl xl:text-6xl leading-tight">
-						{title}
+						{ReactHtmlParser(title)}
 					</h1>
 				</div>
 				{image && (
