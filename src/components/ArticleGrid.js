@@ -71,22 +71,18 @@ export default ({ articles }) => {
 									label="Alla områden"
 								/>
 							</li>
-							{areas.map((area, index) => {
-								const margin =
-									index === areas.length - 1 ? null : 'mr-6'
-								return (
-									<li
-										key={index}
-										className={`whitespace-no-wrap ${margin}`}
-									>
-										<FilterButton
-											onClick={() => filter(area)}
-											active={currentFilter === area}
-											label={area}
-										/>
-									</li>
-								)
-							})}
+							{areas.map((area, index) => (
+								<li
+									key={index}
+									className={`whitespace-no-wrap mr-6`}
+								>
+									<FilterButton
+										onClick={() => filter(area)}
+										active={currentFilter === area}
+										label={area}
+									/>
+								</li>
+							))}
 						</ul>
 					</FilterContainer>
 				)}
@@ -150,6 +146,7 @@ const FilterContainer = styled.div`
 
 	-ms-overflow-style: none;
 	overflow: -moz-scrollbars-none;
+	-webkit-overflow-scrolling: touch;
 `
 
 const OuterFilterContainer = styled.div`
