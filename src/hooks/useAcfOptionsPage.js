@@ -5,24 +5,27 @@ export const useAcfOptionsPage = () => {
 		{
 			wordpressAcfOptions {
 				options {
-					first_part
-					company_stories {
+					startpage {
+						introduction_text
 						title
-						sub_title
+						words {
+							word
+						}
+						featured_articles {
+							post_title
+						}
 					}
 					description
 					right_column {
+						title
 						content {
 							label
 							url
 						}
-						title
 					}
 					opportunities {
 						sub_title
-					}
-					words {
-						word
+						title
 					}
 				}
 			}
