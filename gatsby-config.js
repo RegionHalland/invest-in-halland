@@ -68,6 +68,7 @@ module.exports = {
 					'**/fact',
 					'**/company_story',
 					'**/opportunity',
+					'**/contact',
 					'**/menus',
 					'**/area',
 					'**/municipality',

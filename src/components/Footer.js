@@ -8,7 +8,7 @@ import { useNavigationItems } from '../hooks/useNavigationItems'
 import { useAcfOptionsPage } from '../hooks/useAcfOptionsPage'
 
 export default () => {
-	const { items: pages } = useNavigationItems()
+	const pages = useNavigationItems()
 	const {
 		options: {
 			description,

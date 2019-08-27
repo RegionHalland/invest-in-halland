@@ -14,5 +14,15 @@ export const useNavigationItems = () => {
 		}
 	`)
 
-	return wordpressWpApiMenusMenusItems
+	const itemsWithContact = [
+		...wordpressWpApiMenusMenusItems.items,
+		{
+			order: 99,
+			title: 'Kontakta oss',
+			url: 'kontakta-oss',
+			wordpress_id: 1239123,
+		},
+	]
+
+	return itemsWithContact
 }
