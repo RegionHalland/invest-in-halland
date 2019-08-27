@@ -5,16 +5,10 @@ import Img from 'gatsby-image'
 import ReactHtmlParser from 'react-html-parser'
 import propTypes from 'prop-types'
 
-const fontSizeObject = {
-	small: 'text-xl',
-	medium: 'text-2xl',
-	large: 'text-3xl',
-}
-
 const paddings = [
-	'pt-16 md:pt-32 lg:pt-48',
-	'pt-20 md:pt-40 lg:pt-56',
-	'pt-24 md:pt-48 lg:pt-64',
+	'pb-12 md:pb-20 lg:pb-32',
+	'pb-16 md:pb-24 lg:pb-40',
+	'pb-20 md:pb-32 lg:pb-48',
 ]
 
 const FactCard = ({
@@ -38,21 +32,19 @@ const FactCard = ({
 	return (
 		<Link
 			to={url}
-			className="flex overflow-hidden flex-col justify-between h-full outline-none p-3 sm:p-4 md:p-4 bg-black rounded"
+			className="flex overflow-hidden  flex-col justify-between h-full outline-none p-3 sm:p-4 md:p-4 bg-black rounded w-full"
 		>
-			<div className={`flex flex-col h-full w-full justify-${alignment}`}>
-				<StyledText
-					className={`${
-						fontSize ? fontSizeObject[fontSize] : 'text-2xl'
-					} font-semibold text-white leading-snug mb-2 max-w-sm`}
-				>
+			<div
+				className={`flex flex-col h-full w-full justify-${alignment} ${padding}`}
+			>
+				<Title className="text-xl lg:text-3xl font-semibold font-sans text-white leading-tight break-words w-full">
 					{ReactHtmlParser(title)}
-				</StyledText>
+				</Title>
 				<span className="text-gray-300 underline">
 					{label ? label : 'Se svaret'}
 				</span>
 			</div>
-			<div className={`inline-flex items-center ${padding}`}>
+			<div className="hidden md:flex md:items-center">
 				{typeof contactImg === 'object' && (
 					<Img
 						fixed={contactImg}
@@ -69,11 +61,11 @@ const FactCard = ({
 						className="rounded"
 					/>
 				)}
-				<div className="ml-2">
-					<span className="block leading-none font-semibold text-gray-300 mb-1 text-lg">
+				<div className="w-full ml-2">
+					<span className="block leading-none font-semibold text-gray-300 mb-1 text-sm md:text-base lg:text-lg">
 						{contactName}
 					</span>
-					<span className="block leading-none font-medium text-gray-400">
+					<span className="block leading-none font-medium text-gray-400 text-xs md:text-sm lg:text-base">
 						{contactCompany}
 					</span>
 				</div>
@@ -82,7 +74,7 @@ const FactCard = ({
 	)
 }
 
-const StyledText = styled.h2`
+const Title = styled.h2`
 	& > span {
 		color: #5cb78a;
 	}
@@ -96,7 +88,6 @@ FactCard.propTypes = {
 	contactImgAlt: propTypes.string.isRequired,
 	label: propTypes.string,
 	url: propTypes.string.isRequired,
-	fontSize: propTypes.string,
 	alignment: propTypes.string,
 	randomHeight: propTypes.bool,
 }

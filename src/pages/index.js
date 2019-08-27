@@ -49,10 +49,11 @@ const IndexPage = ({
 					) {
 						return (
 							<li
-								className="w-6/12 px-3 mb-6"
+								className="w-full md:w-6/12 px-3 mb-6"
 								key={article.wordpress_id}
 							>
 								<ArticleCard
+									randomHeight={true}
 									title={article.title}
 									url={article.path}
 									subtitle={
@@ -74,10 +75,11 @@ const IndexPage = ({
 					if (article.post_type === 'fact') {
 						return (
 							<li
-								className="w-6/12 px-3 mb-6"
+								className="w-full md:w-6/12 px-3 mb-6"
 								key={article.wordpress_id}
 							>
 								<FactCard
+									randomHeight={true}
 									alignment="center"
 									fontSize="large"
 									title={article.title}
@@ -108,6 +110,8 @@ const IndexPage = ({
 							</li>
 						)
 					}
+
+					return null
 				})}
 			</Masonry>
 		</div>
