@@ -1,4 +1,5 @@
 import React from 'react'
+import propTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
@@ -9,7 +10,7 @@ const paddings = [
 	'pt-24 md:pt-48 lg:pt-64',
 ]
 
-export default ({ title, subtitle, img, url, randomHeight }) => {
+const ArticleCard = ({ title, subtitle, img, url, randomHeight }) => {
 	// If the randomHeight prop is passed, give each card
 	// a random padding for more variation when they are stacked in a grid.
 	const padding = randomHeight
@@ -55,3 +56,13 @@ const StyledImg = styled(Img)`
 		z-index: 5;
 	}
 `
+
+ArticleCard.propTypes = {
+	title: propTypes.string.isRequired,
+	subtitle: propTypes.string,
+	img: propTypes.any,
+	url: propTypes.string.isRequired,
+	randomHeight: propTypes.bool,
+}
+
+export default ArticleCard
