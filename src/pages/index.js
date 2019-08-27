@@ -22,96 +22,92 @@ const IndexPage = ({
 			},
 		},
 	},
-}) => {
-	console.log(featured_articles)
-	return (
-		<Layout>
-			<SEO title="Home" />
-			<HeroWithPost
-				title={title + '<br />' + words[0].word}
-				textAlign="center"
-			/>
-			<div className="container mx-auto z-10">
-				<div className="py-20 w-2/4 mx-auto text-center">
-					{ReactHtmlParser(introduction_text)}
-				</div>
-				<Masonry
-					className="w-full lg:w-10/12 mx-auto"
-					elementType={'ul'}
-					options={{
-						transitionDuration: 250,
-					}}
-					disableImagesLoaded={false}
-					updateOnEachImageLoad={false}
-				>
-					{featured_articles.map(article => {
-						if (
-							article.post_type === 'company_story' ||
-							article.post_type === 'opportunity'
-						) {
-							return (
-								<li
-									className="w-6/12 px-3 mb-6"
-									key={article.wordpress_id}
-								>
-									<ArticleCard
-										title={article.title}
-										url={article.path}
-										subtitle={
-											article.area && article.area.length
-												? article.area[0].name
-												: null
-										}
-										img={
-											article.featured_media
-												? article.featured_media
-														.localFile
-														.childImageSharp.fluid
-												: ''
-										}
-									/>
-								</li>
-							)
-						}
-
-						if (article.post_type === 'fact') {
-							return (
-								<li
-									className="w-6/12 px-3 mb-6"
-									key={article.wordpress_id}
-								>
-									<FactCard
-										alignment="center"
-										fontSize="large"
-										title={article.title}
-										url={article.path}
-										contactName={
-											article.contact
-												? article.contact.post_title
-												: ''
-										}
-										contactCompany={
-											article.contact
-												? article.contact.acf.company
-												: ''
-										}
-										contactImg={
-											article.contact.acf.image
-												? article.contact.acf.image
-														.localFile
-														.childImageSharp.fixed
-												: null
-										}
-									/>
-								</li>
-							)
-						}
-					})}
-				</Masonry>
+}) => (
+	<Layout>
+		<SEO title="Home" />
+		<HeroWithPost
+			title={title + '<br />' + words[0].word}
+			textAlign="center"
+		/>
+		<div className="container mx-auto z-10">
+			<div className="py-20 w-2/4 mx-auto text-center">
+				{ReactHtmlParser(introduction_text)}
 			</div>
-		</Layout>
-	)
-}
+			<Masonry
+				className="w-full lg:w-10/12 mx-auto"
+				elementType={'ul'}
+				options={{
+					transitionDuration: 250,
+				}}
+				disableImagesLoaded={false}
+				updateOnEachImageLoad={false}
+			>
+				{featured_articles.map(article => {
+					if (
+						article.post_type === 'company_story' ||
+						article.post_type === 'opportunity'
+					) {
+						return (
+							<li
+								className="w-6/12 px-3 mb-6"
+								key={article.wordpress_id}
+							>
+								<ArticleCard
+									title={article.title}
+									url={article.path}
+									subtitle={
+										article.area && article.area.length
+											? article.area[0].name
+											: null
+									}
+									img={
+										article.featured_media
+											? article.featured_media.localFile
+													.childImageSharp.fluid
+											: ''
+									}
+								/>
+							</li>
+						)
+					}
+
+					if (article.post_type === 'fact') {
+						return (
+							<li
+								className="w-6/12 px-3 mb-6"
+								key={article.wordpress_id}
+							>
+								<FactCard
+									alignment="center"
+									fontSize="large"
+									title={article.title}
+									url={article.path}
+									contactName={
+										article.contact
+											? article.contact.post_title
+											: ''
+									}
+									contactCompany={
+										article.contact
+											? article.contact.acf.company
+											: ''
+									}
+									contactImg={
+										article.contact.acf.image
+											? article.contact.acf.image
+													.localFile.childImageSharp
+													.fixed
+											: null
+									}
+								/>
+							</li>
+						)
+					}
+				})}
+			</Masonry>
+		</div>
+	</Layout>
+)
 
 export const query = graphql`
 	query {
