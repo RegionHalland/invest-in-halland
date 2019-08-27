@@ -39,8 +39,8 @@ const Contact = ({
 			</div>
 		</div>
 
-		<div className="container mx-auto px-3 flex flex-wrap">
-			<div className="w-1/4 bg-gray-500">
+		<div className="container mx-auto px-3 flex flex-wrap-reverse">
+			<div className="w-full md:w-1/4 bg-gray-500">
 				<form>
 					<input
 						type="search"
@@ -49,7 +49,7 @@ const Contact = ({
 					></input>
 				</form>
 			</div>
-			<div className="w-3/4 bg-gray-400">
+			<div className="w-full md:w-3/4 bg-gray-400">
 				<ul>
 					{contacts.map(contactNode => {
 						const contact = contactNode.node
