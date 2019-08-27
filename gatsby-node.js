@@ -1,6 +1,5 @@
 const path = require('path')
 const slash = require('slash')
-const slugify = require('slugify')
 
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions
@@ -13,6 +12,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	const opportunitySingle = path.resolve(
 		'./src/templates/opportunities-single.js'
 	)
+	const factSingle = path.resolve('./src/templates/fact-single.js')
 
 	const templates = {
 		opportunity: opportunities,
@@ -63,6 +63,30 @@ exports.createPages = async ({ graphql, actions }) => {
 		createPage({
 			path: node.path,
 			component: opportunitySingle,
+			context: {
+				slug: node.slug,
+			},
+		})
+	})
+
+	/**
+	 * Create fact single page
+	 */
+	const factResult = await graphql(`
+		{
+			allWordpressWpFact {
+				nodes {
+					path
+					slug
+				}
+			}
+		}
+	`)
+
+	factResult.data.allWordpressWpFact.nodes.forEach(node => {
+		createPage({
+			path: node.path,
+			component: factSingle,
 			context: {
 				slug: node.slug,
 			},
