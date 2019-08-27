@@ -22,6 +22,7 @@ const FactCard = ({
 	contactName,
 	contactCompany,
 	contactImg,
+	contactImgAlt,
 	label,
 	url,
 	fontSize,
@@ -55,6 +56,7 @@ const FactCard = ({
 				{typeof contactImg === 'object' && (
 					<Img
 						fixed={contactImg}
+						alt={contactImgAlt}
 						style={{ width: '3.2rem', height: '3.2rem' }}
 						className="rounded"
 					/>
@@ -62,6 +64,7 @@ const FactCard = ({
 				{typeof contactImg === 'string' && (
 					<img
 						src={contactImg}
+						alt={contactImgAlt}
 						style={{ width: '3.2rem', height: '3.2rem' }}
 						className="rounded"
 					/>
@@ -90,6 +93,7 @@ FactCard.propTypes = {
 	contactName: propTypes.string.isRequired,
 	contactCompany: propTypes.string.isRequired,
 	contactImg: propTypes.any.isRequired,
+	contactImgAlt: propTypes.string.isRequired,
 	label: propTypes.string,
 	url: propTypes.string.isRequired,
 	fontSize: propTypes.string,

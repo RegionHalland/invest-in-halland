@@ -99,6 +99,11 @@ const IndexPage = ({
 													.fixed
 											: null
 									}
+									contactImgAlt={
+										article.contact.acf.image
+											? article.contact.acf.image.alt_text
+											: ''
+									}
 								/>
 							</li>
 						)
@@ -135,6 +140,7 @@ export const query = graphql`
 								phone
 								linkedin
 								image {
+									alt_text
 									localFile {
 										childImageSharp {
 											fixed(width: 90) {
