@@ -58,7 +58,7 @@ const RelatedArticles = ({ articles }) => (
 										? article.contact.acf.company
 										: ''
 								}
-								img={
+								contactImg={
 									article.contact.acf.featured_media
 										? article.contact.acf.featured_media
 												.localFile.childImageSharp.fixed

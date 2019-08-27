@@ -27,6 +27,18 @@ export default ({
 	return !fact.id ? (
 		<div>Loading...</div>
 	) : (
-		<FactCard title={fact.title.rendered} url={fact.gatsby_url} />
+		<FactCard
+			alignment="center"
+			fontSize="large"
+			title={fact.title.rendered}
+			url={fact.gatsby_url}
+			contactName={fact.acf.contact.post_title}
+			contactCompany={fact.acf.contact.acf.company}
+			contactImg={
+				fact.acf.contact.acf.image
+					? fact.acf.contact.acf.image.sizes.thumbnail
+					: null
+			}
+		/>
 	)
 }

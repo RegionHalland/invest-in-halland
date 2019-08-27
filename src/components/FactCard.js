@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import ReactHtmlParser from 'react-html-parser'
+import propTypes from 'prop-types'
 
 const fontSizeObject = {
 	small: 'text-xl',
@@ -10,11 +11,11 @@ const fontSizeObject = {
 	large: 'text-3xl',
 }
 
-export default ({
+const FactCard = ({
 	title,
 	contactName,
 	contactCompany,
-	img,
+	contactImg,
 	label,
 	url,
 	fontSize,
@@ -37,9 +38,16 @@ export default ({
 			</span>
 		</div>
 		<div className="inline-flex items-center">
-			{img && (
+			{typeof contactImg === 'object' && (
 				<Img
-					fixed={img}
+					fixed={contactImg}
+					style={{ width: '3.2rem', height: '3.2rem' }}
+					className="rounded"
+				/>
+			)}
+			{typeof contactImg === 'string' && (
+				<img
+					src={contactImg}
 					style={{ width: '3.2rem', height: '3.2rem' }}
 					className="rounded"
 				/>
@@ -61,3 +69,16 @@ const StyledText = styled.h2`
 		color: #5cb78a;
 	}
 `
+
+FactCard.propTypes = {
+	title: propTypes.string.isRequired,
+	contactName: propTypes.string.isRequired,
+	contactCompany: propTypes.string.isRequired,
+	contactImg: propTypes.any.isRequired,
+	label: propTypes.string,
+	url: propTypes.string.isRequired,
+	fontSize: propTypes.string,
+	alignment: propTypes.string,
+}
+
+export default FactCard
