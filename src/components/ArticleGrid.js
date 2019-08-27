@@ -5,78 +5,6 @@ import Masonry from 'react-masonry-component'
 
 import ArticleCard from './ArticleCard'
 
-const masonryOptions = {
-	transitionDuration: 0,
-}
-
-const imagesLoadedOptions = { background: '.my-bg-image-el' }
-
-const testArticles = [
-	{
-		id: 0,
-		title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-		category: 'Hälsovård',
-	},
-	{
-		id: 1,
-		title: 'Perspiciatis corrupti sint nostrum qui deleniti.',
-		category: 'Hälsovård',
-	},
-	{
-		id: 2,
-		title: 'Exime similique, consequuntur rem quas dolore blanditiis ex ut',
-		category: 'Hälsovård',
-	},
-	{
-		id: 3,
-		title: 'Corrupti sint nostrum qui necessitatibus ex minima',
-		category: 'Hälsovård',
-	},
-	{
-		id: 4,
-		title: 'Explicabo fugiat iste neque. Maxime similique ex ut deleniti.',
-		category: 'Hälsovård',
-	},
-	{
-		id: 5,
-		title:
-			'Minima, explicabo fugiat iste neque. Maxime similique, consequuntur rem quas dolore blanditiis ex ut deleniti.',
-		category: 'Hälsovård',
-	},
-	{
-		id: 6,
-		title: 'Fugiat iste neque. Rem quas dolore blanditiis ex ut deleniti.',
-		category: 'Hälsovård',
-	},
-	{
-		id: 7,
-		title:
-			'Nostrum qui necessitatibus ex minima explicabo fugiat iste neque.',
-		category: 'Hälsovård',
-	},
-	{
-		id: 8,
-		title: 'Consequuntur rem quas dolore.',
-		category: 'Hälsovård',
-	},
-	{
-		id: 9,
-		title:
-			'Perspiciatis consequuntur rem quas dolore blanditiis ex ut deleniti.',
-		category: 'Hälsovård',
-	},
-	{
-		id: 10,
-		title: 'Maxime blanditiis ex ut deleniti.',
-		category: 'Hälsovård',
-	},
-	{
-		id: 11,
-		title: 'Lima explicabo fugiat iste neque. Maxime similique',
-		category: 'Hälsovård',
-	},
-]
-
 export default ({ articles }) => {
 	const [areas, setAreas] = useState([])
 	const [allArticles, setAllArticles] = useState([])
@@ -131,13 +59,13 @@ export default ({ articles }) => {
 	return (
 		<div className="container mx-auto">
 			<OuterFilterContainer className="w-full py-6 md:py-12 px-3">
-				<span className="block font-bold text-sm text-gray-500 mb-2">
+				<span className="block font-bold text-xs md:text-sm text-gray-500 mb-2">
 					Områden
 				</span>
 				{areas.length && (
 					<FilterContainer className="w-full overflow-x-scroll">
 						<ul className="inline-flex">
-							<li className="whitespace-no-wrap mr-6">
+							<li className="whitespace-no-wrap mr-4 md:mr-6">
 								<FilterButton
 									onClick={() => filter('all')}
 									active={currentFilter === 'all'}
@@ -147,7 +75,7 @@ export default ({ articles }) => {
 							{areas.map((area, index) => (
 								<li
 									key={index}
-									className={`whitespace-no-wrap mr-6`}
+									className={`whitespace-no-wrap mr-4 md:mr-6`}
 								>
 									<FilterButton
 										onClick={() => filter(area)}
@@ -163,21 +91,30 @@ export default ({ articles }) => {
 			<Masonry
 				className="w-full"
 				elementType={'ul'}
-				options={masonryOptions}
+				options={{
+					transitionDuration: 250,
+				}}
 				disableImagesLoaded={false}
 				updateOnEachImageLoad={false}
-				imagesLoadedOptions={imagesLoadedOptions}
 			>
-				{testArticles.map(article => (
-					<li key={article.id} className="w-6/12 xl:w-4/12 px-3 mb-6">
-						<div className="p-3 border rounded pt-64 min-h-64">
-							<span className="uppercase text-xs font-sans font-medium mb-2 block">
-								{article.category}
-							</span>
-							<h2 className="text-3xl font-semibold font-sans leading-tight">
-								{article.title}
-							</h2>
-						</div>
+				{filteredArticles.map(article => (
+					<li className="w-6/12 xl:w-4/12 px-3 mb-6" key={article.id}>
+						<ArticleCard
+							title={article.title}
+							key={article.id}
+							url={article.path}
+							subtitle={
+								article.area && article.area.length
+									? article.area[0].name
+									: null
+							}
+							img={
+								article.featured_media
+									? article.featured_media.localFile
+											.childImageSharp.fluid
+									: ''
+							}
+						/>
 					</li>
 				))}
 			</Masonry>
@@ -193,7 +130,7 @@ const FilterButton = ({ onClick, active, label }) => {
 	return (
 		<StyledFilterButton
 			onClick={onClick}
-			className={`font-bold text-lg border-b-2 hover:text-black focus:outline-none ${classNames}`}
+			className={`font-bold md:text-lg border-b-2 hover:text-black focus:outline-none ${classNames}`}
 		>
 			{label}
 		</StyledFilterButton>
@@ -227,6 +164,7 @@ const OuterFilterContainer = styled.div`
 		width: 100px;
 		background: linear-gradient(to left, #fff, rgba(255, 255, 255, 0));
 		z-index: 10;
+		pointer-events: none;
 		${tw`mr-3`}
 	}
 `
