@@ -1,72 +1,68 @@
 import React from 'react'
+import propTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
-const alignmentObject = {
-	top: 'justify-start',
-	center: 'justify-center',
-	bottom: 'justify-end',
-}
+const paddings = [
+	'pt-16 md:pt-32 lg:pt-48',
+	'pt-20 md:pt-40 lg:pt-56',
+	'pt-24 md:pt-48 lg:pt-64',
+]
 
-const fontSizeObject = {
-	small: 'text-xl',
-	medium: 'text-2xl',
-	large: 'text-3xl',
-}
+const ArticleCard = ({ title, subtitle, img, url, randomHeight }) => {
+	// If the randomHeight prop is passed, give each card
+	// a random padding for more variation when they are stacked in a grid.
+	const padding = randomHeight
+		? paddings[Math.floor(Math.random() * paddings.length)]
+		: paddings[paddings.length - 1]
 
-export default ({
-	ratio,
-	title,
-	img,
-	category,
-	url,
-	fontSize,
-	sizes,
-	alignment,
-}) => (
-	<StyledLink
-		to={url}
-		ratio={ratio}
-		className="block overflow-hidden relative outline-none"
-	>
-		{img && (
-			<Img
-				style={{ position: 'absolute' }}
-				className="h-full w-full bottom-0 top-0 z-0"
-				objectFit="cover"
-				objectPosition="50% 50%"
-				fluid={img}
-			/>
-		)}
-		<div className="absolute h-full w-full top-0 left-0 bg-black opacity-25" />
-		<Inner
-			className={`${
-				alignment ? alignmentObject[alignment] : 'justify-end'
-			} absolute flex flex-col left-0 top-0 h-full w-full p-4 z-10`}
+	return (
+		<Link
+			to={url}
+			className={`block relative p-3 rounded min-h-64 overflow-hidden w-full outline-none bg-black ${padding}`}
 		>
-			<span className="uppercase text-xs font-sans font-medium text-gray-300 mb-2 block">
-				{category}
+			<span className="relative z-10 uppercase text-xs font-sans font-medium text-gray-300 mb-2 block">
+				{subtitle}
 			</span>
-			<h2
-				className={`${
-					fontSize ? fontSizeObject[fontSize] : 'text-3xl'
-				} font-semibold font-sans text-white leading-snug`}
-			>
+			<h2 className="relative z-10 text-xl lg:text-3xl font-semibold font-sans text-white leading-tight break-words w-full">
 				{title}
 			</h2>
-		</Inner>
-	</StyledLink>
-)
+			{img && (
+				<StyledImg
+					style={{ position: 'absolute' }}
+					className="h-full w-full bottom-0 top-0 left-0 z-0"
+					objectFit="cover"
+					objectPosition="50% 50%"
+					fluid={img}
+				/>
+			)}
+		</Link>
+	)
+}
 
-const Inner = styled.div`
-	transition: transform 0.25s;
-	&:hover {
-		transform: translateY(-0.5rem);
+const StyledImg = styled(Img)`
+	&:before {
+		content: '';
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(
+			to top,
+			rgba(0, 0, 0, 0.5),
+			rgba(0, 0, 0, 0)
+		);
+		z-index: 5;
 	}
 `
 
-const StyledLink = styled(Link)`
-	height: 0;
-	padding-bottom: ${props => (props.ratio === '1:1' ? '100%' : '150%')};
-`
+ArticleCard.propTypes = {
+	title: propTypes.string.isRequired,
+	subtitle: propTypes.string,
+	img: propTypes.any,
+	url: propTypes.string.isRequired,
+	randomHeight: propTypes.bool,
+}
+
+export default ArticleCard
