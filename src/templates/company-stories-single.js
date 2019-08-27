@@ -74,6 +74,7 @@ export const query = graphql`
 							acf {
 								company
 								featured_media {
+									alt_text
 									localFile {
 										childImageSharp {
 											fixed(width: 90, height: 90) {
@@ -85,6 +86,7 @@ export const query = graphql`
 							}
 						}
 						featured_media {
+							alt_text
 							localFile {
 								childImageSharp {
 									fluid(maxWidth: 1920) {

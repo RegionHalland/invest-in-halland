@@ -39,6 +39,9 @@ export default ({
 					? fact.acf.contact.acf.image.sizes.thumbnail
 					: null
 			}
+			contactImgAlt={
+				fact.acf.contact.acf.image ? fact.acf.contact.acf.image.alt : ''
+			}
 		/>
 	)
 }

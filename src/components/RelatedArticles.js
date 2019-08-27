@@ -64,6 +64,12 @@ const RelatedArticles = ({ articles }) => (
 												.localFile.childImageSharp.fixed
 										: null
 								}
+								contactImgAlt={
+									article.contact.acf.featured_media
+										? article.contact.acf.featured_media
+												.alt_text
+										: ''
+								}
 							/>
 						</div>
 					)
