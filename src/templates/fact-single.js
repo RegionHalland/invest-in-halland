@@ -20,7 +20,7 @@ export default ({
 			<div className="bg-black">
 				<div className="mx-auto container pt-24">
 					<div className="w-1/2">
-						<a
+						<button
 							className="inline-flex items-center text-white cursor-pointer mb-4 block"
 							onClick={e => {
 								e.preventDefault()
@@ -34,7 +34,7 @@ export default ({
 								/>
 							</span>
 							<span className="leading-none">Tillbaka</span>
-						</a>
+						</button>
 						<h1 className="text-white font-bold text-3xl md:text-5xl xl:text-6xl leading-tight mb-10">
 							{title}
 						</h1>
@@ -67,19 +67,28 @@ export default ({
 								<div className="pt-1">
 									<span className="block leading-none text-sm font-medium text-gray-400 pt-3">
 										LinkedIn:&nbsp;
-										<a className="text-white">
+										<a
+											href={acf.contact.acf.linkedin}
+											className="text-white"
+										>
 											{acf.contact.acf.linkedin}
 										</a>
 									</span>
 									<span className="block leading-none text-sm font-medium text-gray-400 pt-3">
 										Email:&nbsp;
-										<a className="text-white">
+										<a
+											href={`mailto:${acf.contact.acf.email}`}
+											className="text-white"
+										>
 											{acf.contact.acf.email}
 										</a>
 									</span>
 									<span className="block leading-none text-sm font-medium text-gray-400 pt-3">
 										Telefon:&nbsp;
-										<a className="text-white">
+										<a
+											href={`tel:${acf.contact.acf.phone}`}
+											className="text-white"
+										>
 											{acf.contact.acf.phone}
 										</a>
 									</span>
@@ -117,7 +126,7 @@ export const query = graphql`
 						image {
 							localFile {
 								childImageSharp {
-									fixed(width: 200, height: 200) {
+									fixed(width: 90, height: 90) {
 										...GatsbyImageSharpFixed_withWebp
 									}
 								}
@@ -148,7 +157,7 @@ export const query = graphql`
 								featured_media {
 									localFile {
 										childImageSharp {
-											fixed(width: 100, height: 100) {
+											fixed(width: 90, height: 90) {
 												...GatsbyImageSharpFixed_withWebp
 											}
 										}

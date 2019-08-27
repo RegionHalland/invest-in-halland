@@ -16,6 +16,7 @@ const FactCard = ({
 	contactName,
 	contactCompany,
 	contactImg,
+	contactImgAlt,
 	label,
 	url,
 	fontSize,
@@ -40,6 +41,7 @@ const FactCard = ({
 		<div className="inline-flex items-center">
 			{typeof contactImg === 'object' && (
 				<Img
+					alt={contactImgAlt}
 					fixed={contactImg}
 					style={{ width: '3.2rem', height: '3.2rem' }}
 					className="rounded"
@@ -47,6 +49,7 @@ const FactCard = ({
 			)}
 			{typeof contactImg === 'string' && (
 				<img
+					alt={contactImgAlt}
 					src={contactImg}
 					style={{ width: '3.2rem', height: '3.2rem' }}
 					className="rounded"
@@ -79,6 +82,7 @@ FactCard.propTypes = {
 	url: propTypes.string.isRequired,
 	fontSize: propTypes.string,
 	alignment: propTypes.string,
+	contactImgAlt: propTypes.string.isRequired,
 }
 
 export default FactCard
