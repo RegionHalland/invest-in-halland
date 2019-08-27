@@ -39,11 +39,17 @@ const Contact = ({
 			</div>
 		</div>
 
-		<div className="container mx-auto px-3 flex">
-			<div className="w-1/5">
-				<h1>Filter</h1>
+		<div className="container mx-auto px-3 flex flex-wrap">
+			<div className="w-1/4 bg-gray-500">
+				<form>
+					<input
+						type="search"
+						className="w-full"
+						placeholder="Sök efter kontaktperson"
+					></input>
+				</form>
 			</div>
-			<div className="w-3/5">
+			<div className="w-3/4 bg-gray-400">
 				<ul>
 					{contacts.map(contactNode => {
 						const contact = contactNode.node
