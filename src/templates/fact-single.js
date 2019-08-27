@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import { ChevronLeft } from 'react-feather'
 
 import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
@@ -20,13 +21,19 @@ export default ({
 				<div className="mx-auto container pt-24">
 					<div className="w-1/2">
 						<a
-							className="text-white cursor-pointer mb-4 block"
+							className="inline-flex items-center text-white cursor-pointer mb-4 block"
 							onClick={e => {
 								e.preventDefault()
 								window.history.back()
 							}}
 						>
-							Tillbaka
+							<span className="bg-green-500 mr-2 px-1 rounded">
+								<ChevronLeft
+									className="text-white stroke-current inline-block"
+									size="18"
+								/>
+							</span>
+							<span className="leading-none">Tillbaka</span>
 						</a>
 						<h1 className="text-white font-bold text-3xl md:text-5xl xl:text-6xl leading-tight mb-10">
 							{title}
