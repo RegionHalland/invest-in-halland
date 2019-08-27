@@ -98,6 +98,7 @@ export default ({ articles }) => {
 							title={article.title}
 							key={article.id}
 							url={article.path}
+							randomHeight={true}
 							subtitle={
 								article.area && article.area.length
 									? article.area[0].name
