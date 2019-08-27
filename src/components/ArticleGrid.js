@@ -9,11 +9,11 @@ export default ({ articles }) => {
 	const [areas, setAreas] = useState([])
 	const [allArticles, setAllArticles] = useState([])
 	const [filteredArticles, setFilteredArticles] = useState([])
-	const [currentFilter, setCurrentFilter] = useState([])
+	const [currentFilter, setCurrentFilter] = useState('all')
 
 	useEffect(() => {
 		// Add areas as an array with strings for easier filtering in the ”filter” function
-		const articlesWithAreasArray = articles.map(el => ({
+		const articlesWithAreas = articles.map(el => ({
 			...el,
 			areas:
 				el.area && el.area.length
@@ -21,12 +21,9 @@ export default ({ articles }) => {
 					: [],
 		}))
 
-		//Set inital filter to all
-		setCurrentFilter('all')
-		// Add all Articles to the state
-		setFilteredArticles(articlesWithAreasArray)
-		// Add all Articles to the state for use later with the 'all' filter
-		setAllArticles(articlesWithAreasArray)
+		// Add filtered and an all articles to the state
+		setFilteredArticles(articlesWithAreas)
+		setAllArticles(articlesWithAreas)
 
 		// Get all unique categories for use with the filter
 		const uniqueAreas = [
@@ -41,19 +38,17 @@ export default ({ articles }) => {
 		setAreas(Array.from(uniqueAreas))
 	}, [])
 
+	// Filter function
 	const filter = area => {
-		// Set current filter to make it possible to underline the current filter
 		setCurrentFilter(area)
 
-		// Show all Company Stories
-		if (area === 'all') return setFilteredArticles(allArticles)
+		if (area === 'all') {
+			return setFilteredArticles(allArticles)
+		}
 
-		// Filter out all the Company Stories which does not have a matching area
-		const filteredArticles = allArticles.filter(story =>
-			story.areas.includes(area)
+		setFilteredArticles(
+			allArticles.filter(story => story.areas.includes(area))
 		)
-
-		setFilteredArticles(filteredArticles)
 	}
 
 	return (
