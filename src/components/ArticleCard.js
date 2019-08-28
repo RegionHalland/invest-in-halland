@@ -22,7 +22,7 @@ const ArticleCard = ({ title, subtitle, img, url, randomHeight }) => {
 			to={url}
 			className={`block relative p-3 rounded min-h-64 overflow-hidden w-full outline-none bg-black ${padding}`}
 		>
-			<span className="relative z-10 uppercase text-xs font-sans font-medium text-gray-300 mb-2 block">
+			<span className="relative z-10 uppercase text-xs font-sans font-medium text-gray-300 mb-1 md:mb-2 block">
 				{subtitle}
 			</span>
 			<h2 className="relative z-10 text-xl lg:text-3xl font-semibold font-sans text-white leading-tight break-words w-full">
