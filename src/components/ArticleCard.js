@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactHtmlParser from 'react-html-parser'
 import propTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
@@ -23,10 +24,10 @@ const ArticleCard = ({ title, subtitle, img, url, randomHeight }) => {
 			className={`block relative p-3 rounded min-h-64 overflow-hidden w-full outline-none bg-black ${padding}`}
 		>
 			<span className="relative z-10 uppercase text-xs font-sans font-medium text-gray-300 mb-1 md:mb-2 block">
-				{subtitle}
+				{ReactHtmlParser(subtitle)}
 			</span>
 			<h2 className="relative z-10 text-xl lg:text-3xl font-semibold font-sans text-white leading-tight break-words w-full">
-				{title}
+				{ReactHtmlParser(title)}
 			</h2>
 			{img && (
 				<StyledImg

@@ -36,27 +36,25 @@ module.exports = ({ entities }) => {
 
 			// Replace areas with links to their nodes.
 			if (hasAreas) {
-				e.area___NODE = e.area.map(
-					c => areas.find(gObj => c === gObj.wordpress_id).id
+				e.area = e.area.map(
+					c => areas.find(gObj => c === gObj.wordpress_id).name
 				)
-				delete e.area
 			}
 
 			// Replace actors with links to their nodes.
 			if (hasActors) {
-				e.actor___NODE = e.actor.map(
-					c => actors.find(gObj => c === gObj.wordpress_id).id
+				e.actor = e.actor.map(
+					c => actors.find(gObj => c === gObj.wordpress_id).name
 				)
-				delete e.actor
 			}
 
 			// Replace municipalities with links to their nodes.
 			if (hasMunicipalities) {
-				e.municipality___NODE = e.municipality.map(
-					c => municipalities.find(gObj => c === gObj.wordpress_id).id
+				e.municipality = e.municipality.map(
+					c =>
+						municipalities.find(gObj => c === gObj.wordpress_id)
+							.name
 				)
-
-				delete e.municipality
 			}
 		}
 		return e

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { Search } from 'react-feather'
+import _ from 'lodash'
+import Fuse from 'fuse.js'
 
 import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
@@ -14,12 +16,83 @@ const Contact = ({
 				contact: { title, sub_title, featured_image, email, phone },
 			},
 		},
-		allWordpressWpContact: { edges: contacts },
+
+		allWordpressWpContact: { nodes: contacts },
 	},
 }) => {
+	const [municipalities, setMunicipalities] = useState([])
+	const [areas, setAreas] = useState([])
+	const [actors, setActors] = useState([])
+
+	const [filteredContacts, setFilteredContacts] = useState([])
+
 	useEffect(() => {
-		console.log(contacts)
+		// Set default filter to all contacts
+		setFilteredContacts(contacts)
+
+		// Create unique terms from contacts
+		createUniqueTerms()
 	}, [])
+
+	const createUniqueTerms = () => {
+		// Create a array of unqiue municipalities
+		const uniqueMunicipalities = [
+			...new Set(
+				[].concat(...contacts.map(contact => contact.municipality))
+			),
+		]
+		setMunicipalities(uniqueMunicipalities)
+
+		// Create a array of unqiue areas
+		const uniqueAreas = [
+			...new Set([].concat(...contacts.map(contact => contact.area))),
+		]
+		setAreas(uniqueAreas)
+
+		// Create a array of unqiue actors
+		const uniqueActors = [
+			...new Set([].concat(...contacts.map(contact => contact.actor))),
+		]
+		setActors(uniqueActors)
+	}
+
+	const handleSearch = q => {
+		//console.log('handelsearch', q.target.value)
+		if (q.length === 0) return setFilteredContacts(contacts)
+
+		const options = {
+			shouldSort: true,
+			threshold: 0.6,
+			location: 0,
+			distance: 100,
+			maxPatternLength: 32,
+			minMatchCharLength: 1,
+			keys: ['title'],
+		}
+		const fuse = new Fuse(contacts, options) // "list" is the item array
+		var result = fuse.search(q)
+
+		setFilteredContacts(result)
+		console.log('searchResult', result)
+	}
+
+	const handleFilter = (type, term) => {
+		console.log('filter this', type, term)
+
+		const options = {
+			shouldSort: true,
+			threshold: 0.6,
+			location: 0,
+			distance: 100,
+			maxPatternLength: 32,
+			minMatchCharLength: 1,
+			keys: [type],
+		}
+		const fuse = new Fuse(contacts, options) // "list" is the item array
+		var result = fuse.search(term)
+		console.log('filterResult', result)
+		setFilteredContacts(result)
+	}
 
 	return (
 		<Layout>
@@ -63,22 +136,60 @@ const Contact = ({
 									type="search"
 									placeholder="Sök efter kontaktperson"
 									className="bg-transparent w-full h-full pl-12 pr-4"
+									onChange={e => handleSearch(e.target.value)}
 								></input>
 							</div>
 						</form>
 					</div>
-					<h2>Kommuner</h2>
-					<h2>Område</h2>
 
-					<h2>Aktör</h2>
+					<h2 className="text-xs font-semibold text-gray-600 mt-10">
+						Kommuner
+					</h2>
+					<ul>
+						{municipalities.map(municipality => (
+							<li
+								key={municipality}
+								onClick={() =>
+									handleFilter('municipality', municipality)
+								}
+							>
+								{municipality}
+							</li>
+						))}
+					</ul>
+					<h2 className="text-xs font-semibold text-gray-600 mt-10">
+						Område
+					</h2>
+					<ul>
+						{areas.map(area => (
+							<li
+								key={area}
+								onClick={() => handleFilter('area', area)}
+							>
+								{area}
+							</li>
+						))}
+					</ul>
+					<h2 className="text-xs font-semibold text-gray-600 mt-10">
+						Aktör
+					</h2>
+					<ul>
+						{actors.map(actor => (
+							<li
+								key={actor}
+								onClick={() => handleFilter('actor', actor)}
+							>
+								{actor}
+							</li>
+						))}
+					</ul>
 				</div>
 				<div className="w-full md:w-7/12 px-3">
 					<ul>
-						{contacts.map(contactNode => {
-							const contact = contactNode.node
+						{filteredContacts.map(contact => {
 							return (
 								<li key={contact.id}>
-									<div className="flex">
+									<div className="flex mb-12">
 										<div className="pr-6">
 											<Img
 												className="rounded-lg"
@@ -177,24 +288,22 @@ export const query = graphql`
 			}
 		}
 		allWordpressWpContact {
-			edges {
-				node {
-					title
-					id
-					area {
-						name
-					}
-					acf {
-						company
-						email
-						linkedin
-						phone
-						image {
-							localFile {
-								childImageSharp {
-									fixed(width: 140, height: 140) {
-										...GatsbyImageSharpFixed_withWebp
-									}
+			nodes {
+				title
+				id
+				area
+				municipality
+				actor
+				acf {
+					company
+					email
+					linkedin
+					phone
+					image {
+						localFile {
+							childImageSharp {
+								fixed(width: 140, height: 140) {
+									...GatsbyImageSharpFixed_withWebp
 								}
 							}
 						}
