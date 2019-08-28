@@ -6,7 +6,7 @@ require('dotenv').config({
  * Normalizer is used to add area taxonmy to custom post type responses in GraphQL
  * Read more here: https://www.gatsbyjs.org/packages/gatsby-source-wordpress/#using-a-custom-normalizer
  */
-const areaNormalizer = require('./area-normalizer')
+const taxonomiesNormalizer = require('./taxonomies-normalizer')
 
 module.exports = {
 	siteMetadata: {
@@ -63,7 +63,7 @@ module.exports = {
 				protocol: process.env.GATSBY_API_PROTOCOL,
 				hostingWPCOM: false,
 				useACF: true,
-				normalizer: areaNormalizer,
+				normalizer: taxonomiesNormalizer,
 				includedRoutes: [
 					'**/fact',
 					'**/company_story',
