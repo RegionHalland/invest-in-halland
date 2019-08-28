@@ -13,19 +13,19 @@ export default ({ blocks, acf }) => (
 const Article = styled.article`
 	${tw`text-gray-700`};
 
-	h2 {
+	> h2 {
 		${tw`font-semibold text-black text-xl mt-12 mb-3`};
 	}
 
-	p {
+	> p {
 		${tw`text-lg leading-normal mb-3`};
 	}
 
-	.introduction {
+	> .introduction {
 		${tw`text-xl text-black`};
 	}
 
-	blockquote {
+	> blockquote {
 		${tw`my-12 text-center max-w-xl mx-auto`}
 
 		p {
@@ -46,11 +46,11 @@ const Article = styled.article`
 		}
 	}
 
-	figure {
+	> figure {
 		${tw`mt-12`}
-	}
 
-	figcaption {
-		${tw`text-gray-600 my-2 text-sm`}
+		figcaption {
+			${tw`text-gray-600 my-2 text-sm`}
+		}
 	}
 `
