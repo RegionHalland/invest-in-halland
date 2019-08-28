@@ -8,6 +8,7 @@ import SEO from '../components/Seo'
 import HeroWithPost from '../components/HeroWithPost'
 import ArticleCard from '../components/ArticleCard'
 import FactCard from '../components/FactCard'
+import MapCard from '../components/MapCard'
 
 const IndexPage = ({
 	data: {
@@ -42,16 +43,19 @@ const IndexPage = ({
 				disableImagesLoaded={false}
 				updateOnEachImageLoad={false}
 			>
-				{featured_articles.map(article => {
-					if (
-						article.post_type === 'company_story' ||
-						article.post_type === 'opportunity'
-					) {
-						return (
-							<li
-								className="w-full md:w-6/12 px-3 mb-6"
-								key={article.wordpress_id}
-							>
+				{featured_articles.map((article, index) => (
+					<React.Fragment key={article.wordpress_id}>
+						{index === 3 && (
+							<li className="w-full md:w-6/12 px-3 mb-6">
+								<MapCard
+									title="Halland, Sverige, världen"
+									category="Kommunikationer"
+								/>
+							</li>
+						)}
+						<li className="w-full md:w-6/12 px-3 mb-6">
+							{(article.post_type === 'company_story' ||
+								article.post_type === 'opportunity') && (
 								<ArticleCard
 									randomHeight={true}
 									title={article.title}
@@ -68,16 +72,9 @@ const IndexPage = ({
 											: ''
 									}
 								/>
-							</li>
-						)
-					}
+							)}
 
-					if (article.post_type === 'fact') {
-						return (
-							<li
-								className="w-full md:w-6/12 px-3 mb-6"
-								key={article.wordpress_id}
-							>
+							{article.post_type === 'fact' && (
 								<FactCard
 									randomHeight={true}
 									alignment="center"
@@ -107,12 +104,10 @@ const IndexPage = ({
 											: ''
 									}
 								/>
-							</li>
-						)
-					}
-
-					return null
-				})}
+							)}
+						</li>
+					</React.Fragment>
+				))}
 			</Masonry>
 		</div>
 	</Layout>
