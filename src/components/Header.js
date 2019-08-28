@@ -15,7 +15,7 @@ import useTailwindBreakpoint from '../hooks/useTailwindBreakpoint'
 export default ({ siteTitle }) => {
 	const [menuOpen, setMenuOpen] = useState(false)
 	const breakpoint = useTailwindBreakpoint()
-	const { items: pages } = useNavigationItems()
+	const pages = useNavigationItems()
 	const {
 		options: {
 			right_column: { content: links },

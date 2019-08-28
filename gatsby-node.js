@@ -17,9 +17,8 @@ exports.createPages = async ({ graphql, actions }) => {
 	const templates = {
 		opportunity: opportunities,
 		company_story: companyStory,
-		companyStorySingle: companyStorySingle,
-		opportunitySingle: opportunitySingle,
 	}
+	const contact = path.resolve('./src/templates/contact.js')
 
 	/**
 	 * Create company_story single page
@@ -91,6 +90,14 @@ exports.createPages = async ({ graphql, actions }) => {
 				slug: node.slug,
 			},
 		})
+	})
+
+	/**
+	 * Create kontakta oss page
+	 */
+	createPage({
+		path: 'kontakta-oss',
+		component: contact,
 	})
 
 	/**
