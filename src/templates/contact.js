@@ -106,7 +106,7 @@ const Contact = ({
 				<div className="container mx-auto flex px-3 flex-wrap-reverse">
 					<div className="pr-16">
 						<span className="block text-gray-300">E-post</span>
-						<span className="text-white text-3xl font-bold">
+						<span className="text-white text-1xl sm:text-2xl font-bold">
 							{email}
 						</span>
 					</div>
@@ -114,14 +114,14 @@ const Contact = ({
 						<span className="block text-gray-300">
 							Direktnummer
 						</span>
-						<span className="text-white text-3xl font-bold">
+						<span className="text-white text-1xl sm:text-2xl font-bold">
 							{phone}
 						</span>
 					</div>
 				</div>
 			</div>
 
-			<div className="container mx-auto flex flex-wrap-reverse">
+			<div className="container mx-auto flex flex-wrap">
 				<div className="w-full md:w-4/12 px-3">
 					<div className="max-w-xs">
 						<form className="flex flex-grow h-12 rounded-lg bg-gray-300">
@@ -189,7 +189,7 @@ const Contact = ({
 						{filteredContacts.map(contact => {
 							return (
 								<li key={contact.id}>
-									<div className="flex mb-12">
+									<div className="flex mb-12 flex-wrap md:flex-no-wrap">
 										<div className="pr-6">
 											<Img
 												className="rounded-lg"
