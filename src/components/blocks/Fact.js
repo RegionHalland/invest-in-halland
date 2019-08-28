@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import FactCard from '../FactCard'
+import Spinner from '../Spinner'
 
 export default ({
 	block: {
@@ -25,9 +26,13 @@ export default ({
 	}, [])
 
 	return !fact.id ? (
-		<div>Loading...</div>
+		<div className="my-6">
+			<div class="flex items-center justify-center bg-black p-8 rounded">
+				<Spinner />
+			</div>
+		</div>
 	) : (
-		<div className="py-8">
+		<div className="my-6">
 			<FactCard
 				title={fact.title.rendered}
 				url={fact.gatsby_url}
