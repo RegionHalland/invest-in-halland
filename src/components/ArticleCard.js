@@ -21,7 +21,7 @@ const ArticleCard = ({ title, subtitle, img, url, randomHeight }) => {
 	return (
 		<StyledLink
 			to={url}
-			className={`block relative p-3 rounded min-h-64 overflow-hidden w-full outline-none bg-black ${padding}`}
+			className={`block relative p-3 rounded overflow-hidden w-full outline-none bg-black ${padding}`}
 		>
 			<div className="relative z-10 articleCard--inner">
 				<span className="uppercase text-xs font-sans font-medium text-gray-300 mb-1 md:mb-2 block">
