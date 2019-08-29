@@ -39,7 +39,7 @@ export default ({
 							{title}
 						</h1>
 
-						<Article blocks={blocks} acf={acf} />
+						<Article blocks={blocks} acf={acf} inverse={true} />
 
 						<div className="inline-flex items-start mt-20 mb-24">
 							{acf.contact.acf.image.localFile.childImageSharp
