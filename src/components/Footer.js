@@ -17,7 +17,7 @@ export default () => {
 	} = useAcfOptionsPage()
 
 	return (
-		<footer>
+		<footer class="py-8">
 			<div className="container mx-auto flex flex-wrap">
 				<div className="w-full lg:w-6/12 px-3 mb-8">
 					<div className="w-48 mb-6">
