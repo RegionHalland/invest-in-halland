@@ -14,7 +14,6 @@ export default ({
 	},
 }) => {
 	const subtitle = area && area.length ? area[0].name : null
-	console.log(acf)
 
 	return (
 		<Layout>

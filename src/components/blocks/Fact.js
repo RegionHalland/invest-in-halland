@@ -27,7 +27,7 @@ export default ({
 
 	return !fact.id ? (
 		<div className="my-6">
-			<div class="flex items-center justify-center bg-black p-8 rounded">
+			<div className="flex items-center justify-center bg-black p-8 rounded">
 				<Spinner />
 			</div>
 		</div>
