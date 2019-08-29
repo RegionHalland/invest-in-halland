@@ -1,20 +1,24 @@
 import React from 'react'
+import propTypes from 'prop-types'
 import styled from 'styled-components'
 import tw from 'tailwind.macro'
 
 import BlockParser from './BlocksParser'
 
-export default ({ blocks, acf }) => (
-	<Article>
-		<BlockParser blocks={blocks} />
-	</Article>
-)
+const Article = ({ blocks, acf, inverse }) => {
+	return (
+		<StyledArticle inverse={inverse}>
+			<BlockParser blocks={blocks} />
+		</StyledArticle>
+	)
+}
 
-const Article = styled.article`
-	${tw`text-gray-700`};
+const StyledArticle = styled.article`
+	${props => (props.inverse ? tw`text-gray-300` : tw`text-gray-700`)}
 
 	> h2 {
-		${tw`font-semibold text-black text-xl mt-12 mb-3`};
+		${tw`font-semibold text-xl mt-12 mb-3`};
+		${props => (props.inverse ? tw`text-white` : tw`text-black`)}
 	}
 
 	> p {
@@ -22,7 +26,8 @@ const Article = styled.article`
 	}
 
 	> .introduction {
-		${tw`text-xl text-black`};
+		${tw`text-xl`};
+		${props => (props.inverse ? tw`text-white` : tw`text-black`)}
 	}
 
 	> blockquote {
@@ -33,7 +38,8 @@ const Article = styled.article`
 		}
 
 		cite {
-			${tw`not-italic text-gray-500`}
+			${tw`not-italic`}
+			${props => (props.inverse ? tw`text-gray-400` : tw`text-gray-500`)}
 		}
 
 		&:before {
@@ -50,7 +56,16 @@ const Article = styled.article`
 		${tw`mt-12`}
 
 		figcaption {
-			${tw`text-gray-600 my-2 text-sm`}
+			${tw`my-2 text-sm`}
+			${props => (props.inverse ? tw`text-gray-400` : tw`text-gray-600`)}
 		}
 	}
 `
+
+Article.propTypes = {
+	blocks: propTypes.array.isRequired,
+	acf: propTypes.any,
+	inverse: propTypes.bool,
+}
+
+export default Article
