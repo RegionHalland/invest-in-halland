@@ -97,11 +97,17 @@ export default ({
 						</div>
 					</div>
 				</div>
-				<div className="mx-auto container pb-16 text-white">
-					{acf.related_articles && acf.related_articles.length && (
-						<RelatedArticles articles={acf.related_articles} />
-					)}
-				</div>
+				{acf.related_articles && (
+					<div className="py-16 bg-gray-700">
+						<div className="mx-auto container text-white">
+							{acf.related_articles.length && (
+								<RelatedArticles
+									articles={acf.related_articles}
+								/>
+							)}
+						</div>
+					</div>
+				)}
 			</div>
 		</Layout>
 	)
