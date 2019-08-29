@@ -50,6 +50,9 @@ const IndexPage = ({
 								<MapCard
 									title="Halland, Sverige, världen"
 									category="Kommunikationer"
+									url={
+										'/mojligheter-i-halland/goda-kommunikationer-knyter-ihop-halland-med-resten-av-varlden/'
+									}
 								/>
 							</li>
 						)}
