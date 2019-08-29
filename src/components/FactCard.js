@@ -30,12 +30,12 @@ const FactCard = ({
 		: paddings[paddings.length - 1]
 
 	return (
-		<Link
+		<StyledLink
 			to={url}
 			className="flex overflow-hidden  flex-col justify-between h-full outline-none p-3 sm:p-4 md:p-4 bg-black rounded w-full"
 		>
 			<div
-				className={`flex flex-col h-full w-full justify-${alignment} ${padding}`}
+				className={`factCard--inner flex flex-col h-full w-full justify-${alignment} ${padding}`}
 			>
 				<Title className="text-xl lg:text-3xl font-semibold font-sans text-white leading-tight break-words w-full">
 					{ReactHtmlParser(title)}
@@ -70,13 +70,23 @@ const FactCard = ({
 					</span>
 				</div>
 			</div>
-		</Link>
+		</StyledLink>
 	)
 }
 
 const Title = styled.h2`
 	& > span {
 		color: #5cb78a;
+	}
+`
+
+const StyledLink = styled(Link)`
+	.factCard--inner {
+		transition: transform 0.25s;
+	}
+
+	&:hover .factCard--inner {
+		transform: translateY(-0.5rem);
 	}
 `
 

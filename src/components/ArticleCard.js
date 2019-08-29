@@ -19,16 +19,18 @@ const ArticleCard = ({ title, subtitle, img, url, randomHeight }) => {
 		: paddings[paddings.length - 1]
 
 	return (
-		<Link
+		<StyledLink
 			to={url}
 			className={`block relative p-3 rounded min-h-64 overflow-hidden w-full outline-none bg-black ${padding}`}
 		>
-			<span className="relative z-10 uppercase text-xs font-sans font-medium text-gray-300 mb-1 md:mb-2 block">
-				{ReactHtmlParser(subtitle)}
-			</span>
-			<h2 className="relative z-10 text-xl lg:text-3xl font-semibold font-sans text-white leading-tight break-words w-full">
-				{ReactHtmlParser(title)}
-			</h2>
+			<div className="relative z-10 articleCard--inner">
+				<span className="uppercase text-xs font-sans font-medium text-gray-300 mb-1 md:mb-2 block">
+					{ReactHtmlParser(subtitle)}
+				</span>
+				<h2 className="text-xl lg:text-3xl font-semibold font-sans text-white leading-tight break-words w-full">
+					{ReactHtmlParser(title)}
+				</h2>
+			</div>
 			{img && (
 				<StyledImg
 					style={{ position: 'absolute' }}
@@ -38,7 +40,7 @@ const ArticleCard = ({ title, subtitle, img, url, randomHeight }) => {
 					fluid={img}
 				/>
 			)}
-		</Link>
+		</StyledLink>
 	)
 }
 
@@ -55,6 +57,16 @@ const StyledImg = styled(Img)`
 			rgba(0, 0, 0, 0)
 		);
 		z-index: 5;
+	}
+`
+
+const StyledLink = styled(Link)`
+	.articleCard--inner {
+		transition: transform 0.25s;
+	}
+
+	&:hover .articleCard--inner {
+		transform: translateY(-0.5rem);
 	}
 `
 
