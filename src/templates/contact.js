@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { Search } from 'react-feather'
-import _ from 'lodash'
 import Fuse from 'fuse.js'
 
 import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
 import HeroWithPost from '../components/HeroWithPost'
 
-let filterTags = new Set()
 let filteredResult = new Set()
 
 const Contact = ({
@@ -35,8 +33,6 @@ const Contact = ({
 	useEffect(() => {
 		// Set default filter to all contacts
 		setFilteredContacts(contacts)
-
-		console.log(contacts)
 
 		// Create unique terms from contacts
 		createUniqueTerms()
