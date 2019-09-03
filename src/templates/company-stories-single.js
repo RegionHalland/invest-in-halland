@@ -64,6 +64,15 @@ export const query = graphql`
 					data {
 						fact
 						introduction
+						summary_title
+						summary_question_1
+						summary_answer_1
+						summary_question_2
+						summary_answer_2
+						summary_question_3
+						summary_answer_3
+						summary_question_4
+						summary_answer_4
 					}
 				}
 			}
@@ -99,10 +108,6 @@ export const query = graphql`
 					}
 				}
 				title
-				fact {
-					fact
-					title
-				}
 				related_articles {
 					related_article {
 						post_title

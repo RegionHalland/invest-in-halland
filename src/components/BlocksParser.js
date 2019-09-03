@@ -3,10 +3,12 @@ import ReactHtmlParser from 'react-html-parser'
 
 import Fact from './blocks/Fact'
 import Introduction from './blocks/Introduction'
+import Summary from './blocks/Summary'
 
 const Components = {
 	'acf/fact': Fact,
 	'acf/introduction': Introduction,
+	'acf/summary': Summary,
 }
 
 const BlocksParser = ({ blocks }) => {
