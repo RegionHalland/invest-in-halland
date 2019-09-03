@@ -9,6 +9,9 @@ import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
 import HeroWithPost from '../components/HeroWithPost'
 
+let filterTags = new Set()
+let filteredResult = new Set()
+
 const Contact = ({
 	data: {
 		wordpressAcfOptions: {
@@ -24,11 +27,16 @@ const Contact = ({
 	const [areas, setAreas] = useState([])
 	const [actors, setActors] = useState([])
 
+	const [activeFilters, setActiveFilters] = useState(new Set())
+
 	const [filteredContacts, setFilteredContacts] = useState([])
 
+	// Set filtered contacts to default
 	useEffect(() => {
 		// Set default filter to all contacts
 		setFilteredContacts(contacts)
+
+		console.log(contacts)
 
 		// Create unique terms from contacts
 		createUniqueTerms()
@@ -57,7 +65,6 @@ const Contact = ({
 	}
 
 	const handleSearch = q => {
-		//console.log('handelsearch', q.target.value)
 		if (q.length === 0) return setFilteredContacts(contacts)
 
 		const options = {
@@ -69,30 +76,30 @@ const Contact = ({
 			minMatchCharLength: 1,
 			keys: ['title'],
 		}
-		const fuse = new Fuse(contacts, options) // "list" is the item array
+		const fuse = new Fuse(contacts, options) // "contacts" is the item array
 		var result = fuse.search(q)
 
 		setFilteredContacts(result)
-		console.log('searchResult', result)
 	}
 
-	const handleFilter = (type, term) => {
-		console.log('filter this', type, term)
+	useEffect(() => {
+		if (![...activeFilters].length) return setFilteredContacts(contacts)
 
-		const options = {
-			shouldSort: true,
-			threshold: 0.6,
-			location: 0,
-			distance: 100,
-			maxPatternLength: 32,
-			minMatchCharLength: 1,
-			keys: [type],
-		}
-		const fuse = new Fuse(contacts, options) // "list" is the item array
-		var result = fuse.search(term)
-		console.log('filterResult', result)
-		setFilteredContacts(result)
-	}
+		// Filter out contacts with active filters
+		filteredResult = new Set(
+			[].concat(
+				...[...activeFilters].map(t =>
+					contacts.filter(contact =>
+						[...activeFilters].every(tag =>
+							contact.tags.includes(tag)
+						)
+					)
+				)
+			)
+		)
+
+		setFilteredContacts([...filteredResult])
+	}, [activeFilters])
 
 	return (
 		<Layout>
@@ -142,42 +149,166 @@ const Contact = ({
 						</form>
 					</div>
 
-					<h2 className="text-xs font-semibold text-gray-600 mt-10">
+					<h2 className="text-sm font-semibold text-gray-600 mt-10 mb-4">
 						Kommuner
 					</h2>
 					<ul>
+						<li
+							className={`${
+								[...activeFilters].every(
+									tag => !municipalities.includes(tag)
+								)
+									? 'underline'
+									: null
+							} text-gray-500 font-semibold text-lg mb-4`}
+							onClick={() =>
+								setActiveFilters(
+									new Set(
+										[...activeFilters].filter(
+											tag => !municipalities.includes(tag)
+										)
+									)
+								)
+							}
+						>
+							Alla kommuner
+						</li>
 						{municipalities.map(municipality => (
 							<li
 								key={municipality}
+								className={`${
+									[...activeFilters].includes(municipality)
+										? 'underline'
+										: null
+								} text-gray-500 font-semibold text-lg mb-4`}
 								onClick={() =>
-									handleFilter('municipality', municipality)
+									!activeFilters.has(municipality)
+										? setActiveFilters(
+												new Set([
+													...activeFilters,
+													municipality,
+												])
+										  )
+										: setActiveFilters(
+												new Set(
+													[...activeFilters].filter(
+														af =>
+															!af.includes(
+																municipality
+															)
+													)
+												)
+										  )
 								}
 							>
 								{municipality}
 							</li>
 						))}
 					</ul>
-					<h2 className="text-xs font-semibold text-gray-600 mt-10">
-						Område
+
+					<h2 className="text-sm font-semibold text-gray-600 mt-10 mb-4">
+						Områden
 					</h2>
 					<ul>
+						<li
+							className={`${
+								[...activeFilters].every(
+									tag => !areas.includes(tag)
+								)
+									? 'underline'
+									: null
+							} text-gray-500 font-semibold text-lg mb-4`}
+							onClick={() =>
+								setActiveFilters(
+									new Set(
+										[...activeFilters].filter(
+											tag => !areas.includes(tag)
+										)
+									)
+								)
+							}
+						>
+							Alla områden
+						</li>
 						{areas.map(area => (
 							<li
 								key={area}
-								onClick={() => handleFilter('area', area)}
+								className={`${
+									[...activeFilters].includes(area)
+										? 'underline'
+										: null
+								} text-gray-500 font-semibold text-lg mb-4`}
+								onClick={() =>
+									!activeFilters.has(area)
+										? setActiveFilters(
+												new Set([
+													...activeFilters,
+													area,
+												])
+										  )
+										: setActiveFilters(
+												new Set(
+													[...activeFilters].filter(
+														af => !af.includes(area)
+													)
+												)
+										  )
+								}
 							>
 								{area}
 							</li>
 						))}
 					</ul>
-					<h2 className="text-xs font-semibold text-gray-600 mt-10">
-						Aktör
+
+					<h2 className="text-sm font-semibold text-gray-600 mt-10 mb-4">
+						Aktörer
 					</h2>
 					<ul>
+						<li
+							className={`${
+								[...activeFilters].every(
+									tag => !actors.includes(tag)
+								)
+									? 'underline'
+									: null
+							} text-gray-500 font-semibold text-lg mb-4`}
+							onClick={() =>
+								setActiveFilters(
+									new Set(
+										[...activeFilters].filter(
+											tag => !actors.includes(tag)
+										)
+									)
+								)
+							}
+						>
+							Alla aktörer
+						</li>
 						{actors.map(actor => (
 							<li
 								key={actor}
-								onClick={() => handleFilter('actor', actor)}
+								className={`${
+									[...activeFilters].includes(actor)
+										? 'underline'
+										: null
+								} text-gray-500 font-semibold text-lg mb-4`}
+								onClick={() =>
+									!activeFilters.has(actor)
+										? setActiveFilters(
+												new Set([
+													...activeFilters,
+													actor,
+												])
+										  )
+										: setActiveFilters(
+												new Set(
+													[...activeFilters].filter(
+														af =>
+															!af.includes(actor)
+													)
+												)
+										  )
+								}
 							>
 								{actor}
 							</li>
@@ -193,6 +324,14 @@ const Contact = ({
 										<div className="pr-6">
 											<Img
 												className="rounded-lg"
+												placeholderStyle={{
+													width: '150px',
+													height: '150px',
+												}}
+												style={{
+													width: '150px',
+													height: '150px',
+												}}
 												fixed={
 													contact.acf.image
 														? contact.acf.image
@@ -210,27 +349,28 @@ const Contact = ({
 											<span className="text-sm font-medium text-gray-600">
 												{contact.acf.company}
 											</span>
-											<p className="py-4 text-gray-700">
-												Kristine hjälper företag att
-												hitta lokaler och knyta
-												kontakter. Hon har jobbat inom
-												näringslivet i över 20 år och
-												vet vad det innebär för företag
-												att etablera sig.
-											</p>
-											<div>
-												<span className="font-medium text-gray-600">
-													LinkedIn:&nbsp;
-												</span>
-												<a
-													href={contact.acf.linkedin}
-													className="font-semibold text-sm underline text-black"
-												>
-													{contact.acf.linkedin}
-												</a>
-											</div>
-											<div>
-												<span className="font-medium text-gray-600 text-black">
+											{contact.acf.about && (
+												<p className="py-3 text-gray-700">
+													{contact.acf.about}
+												</p>
+											)}
+											{contact.acf.linkedin && (
+												<div className="mb-1">
+													<span className="font-semibold text-sm text-gray-600">
+														LinkedIn:&nbsp;
+													</span>
+													<a
+														href={
+															contact.acf.linkedin
+														}
+														className="font-semibold text-sm underline text-black"
+													>
+														{contact.acf.linkedin}
+													</a>
+												</div>
+											)}
+											<div className="mb-1">
+												<span className="font-semibold text-sm text-gray-600">
 													Email:&nbsp;
 												</span>
 												<a
@@ -241,12 +381,12 @@ const Contact = ({
 												</a>
 											</div>
 											<div>
-												<span className="font-medium text-gray-600">
+												<span className="font-semibold text-sm text-gray-600">
 													Telefon:&nbsp;
 												</span>
 												<a
 													href={`tel:${contact.acf.phone}`}
-													className="font-semibold text-sm underline"
+													className="font-semibold text-sm underline text-black"
 												>
 													{contact.acf.phone}
 												</a>
@@ -291,10 +431,12 @@ export const query = graphql`
 			nodes {
 				title
 				id
+				tags
 				area
 				municipality
 				actor
 				acf {
+					about
 					company
 					email
 					linkedin
@@ -302,7 +444,7 @@ export const query = graphql`
 					image {
 						localFile {
 							childImageSharp {
-								fixed(width: 140, height: 140) {
+								fixed(width: 300, height: 300, quality: 100) {
 									...GatsbyImageSharpFixed_withWebp
 								}
 							}

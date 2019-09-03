@@ -27,6 +27,7 @@ module.exports = ({ entities }) => {
 			}
 		}
 		if (e.__type === `wordpress__wp_contact`) {
+			//let tags = []
 			let hasAreas = e.area && Array.isArray(e.area) && e.area.length
 			let hasActors = e.actor && Array.isArray(e.actor) && e.actor.length
 			let hasMunicipalities =
@@ -56,6 +57,7 @@ module.exports = ({ entities }) => {
 							.name
 				)
 			}
+			e.tags = e.area.concat(e.actor).concat(e.municipality)
 		}
 		return e
 	})
