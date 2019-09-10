@@ -119,7 +119,7 @@ const Contact = ({
 						<span className="block font-bold text-sm sm:text-base text-gray-400 uppercase mb-1">
 							Direktnummer
 						</span>
-						<span className="text-white text-xl xs:text-2xl lg:text-3xl font-bold">
+						<span className="text-white text-xl sm:text-2xl lg:text-3xl font-bold">
 							{phone}
 						</span>
 					</div>
