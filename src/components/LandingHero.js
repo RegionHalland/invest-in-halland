@@ -20,9 +20,28 @@ const Title = ({ style, word }) => (
 	</animated.h1>
 )
 
+const Image = ({ style, image }) => {
+	return (
+		<animated.div
+			style={{ ...style }}
+			className="absolute h-full w-full bottom-0 top-0 z-0"
+		>
+			<Img
+				className="absolute h-full w-full bottom-0 top-0 z-0"
+				objectFit="cover"
+				objectPosition="50% 50%"
+				fluid={image.localFile.childImageSharp.fluid}
+			/>
+		</animated.div>
+	)
+}
+
 export default ({ subTitle, title, image, textAlign, words }) => {
 	const [index, set] = useState(0)
-	const onClick = useCallback(() => set(state => (state + 1) % 3), [])
+	const onClick = useCallback(
+		() => set(state => (state + 1) % words.length),
+		[]
+	)
 
 	const titleTransitions = useTransition(index, p => p, {
 		from: { opacity: 0, transform: 'translate3d(25%, 0, 0)' },
@@ -30,14 +49,31 @@ export default ({ subTitle, title, image, textAlign, words }) => {
 		leave: { opacity: 0, transform: 'translate3d(-25%, 0, 0)' },
 	})
 
+	const imageTransitions = useTransition(index, p => p, {
+		from: { opacity: 0, transform: 'scale3d(1, 1, 1)' },
+		enter: { opacity: 1, transform: 'scale3d(1, 1, 1)' },
+		leave: { opacity: 0, transform: 'scale3d(1.2, 1.2, 1.2)' },
+	})
+
+	useEffect(() => {
+		setInterval(() => {
+			set(state => (state + 1) % words.length)
+		}, 2000)
+	}, [])
+
 	return (
 		<HeroContainer
-			className="relative overflow-hidden flex items-center justify-center text-center"
+			className="relative overflow-hidden bg-black flex items-center justify-center text-center"
 			onClick={onClick}
 		>
-			<h1 className="z-20 w-full font-bold text-center text-white text-3xl md:text-5xl">
+			{imageTransitions.map(({ item, props, key }) => {
+				return (
+					<Image key={key} style={props} image={words[item].image} />
+				)
+			})}
+			<h1 className="z-20 w-full font-bold text-center text-white text-3xl md:text-5xl mb-6">
 				<span className="block mb-1">{title}</span>
-				<span className="block relative">
+				<span className="block relative text-green-500">
 					{titleTransitions.map(({ item, props, key }) => {
 						return (
 							<Title
@@ -55,7 +91,6 @@ export default ({ subTitle, title, image, textAlign, words }) => {
 
 const HeroContainer = styled.div`
 	height: 24rem;
-	background: red;
 
 	@media screen and (min-width: ${screens.md}) {
 		height: 36rem;
@@ -63,5 +98,16 @@ const HeroContainer = styled.div`
 
 	@media screen and (min-width: ${screens.xl}) {
 		height: 46rem;
+	}
+
+	&:after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		display: block;
+		height: 100%;
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+		opacity: 0.65;
+		width: 100%;
 	}
 `

@@ -23,73 +23,77 @@ const IndexPage = ({
 			},
 		},
 	},
-}) => (
-	<Layout>
-		<SEO title="Home" />
-		<LandingHero title={title} words={words} textAlign="center" />
-		<div className="container mx-auto z-10">
-			<div className="py-20 w-full px-3 md:w-3/4 lg:w-1/2 mx-auto text-center md:text-lg">
-				{ReactHtmlParser(introduction_text)}
-			</div>
-			<Masonry
-				className="w-full lg:w-10/12 mx-auto"
-				elementType={'ul'}
-				options={{
-					transitionDuration: 250,
-				}}
-				disableImagesLoaded={false}
-				updateOnEachImageLoad={false}
-			>
-				{featured_articles.map((article, index) => (
-					<React.Fragment key={article.wordpress_id}>
-						{index === 3 && (
+}) => {
+	console.log(words)
+	return (
+		<Layout>
+			<SEO title="Home" />
+			<LandingHero title={title} words={words} textAlign="center" />
+			<div className="container mx-auto z-10">
+				<div className="py-20 w-full px-3 md:w-3/4 lg:w-1/2 mx-auto text-center md:text-lg">
+					{ReactHtmlParser(introduction_text)}
+				</div>
+				<Masonry
+					className="w-full lg:w-10/12 mx-auto"
+					elementType={'ul'}
+					options={{
+						transitionDuration: 250,
+					}}
+					disableImagesLoaded={false}
+					updateOnEachImageLoad={false}
+				>
+					{featured_articles.map((article, index) => (
+						<React.Fragment key={article.wordpress_id}>
+							{index === 3 && (
+								<li className="w-full md:w-6/12 px-3 mb-3 md:mb-6">
+									<MapCard
+										title="Halland, Sverige, världen"
+										category="Kommunikationer"
+										url={
+											'/mojligheter-i-halland/goda-kommunikationer-knyter-ihop-halland-med-resten-av-varlden/'
+										}
+									/>
+								</li>
+							)}
 							<li className="w-full md:w-6/12 px-3 mb-3 md:mb-6">
-								<MapCard
-									title="Halland, Sverige, världen"
-									category="Kommunikationer"
-									url={
-										'/mojligheter-i-halland/goda-kommunikationer-knyter-ihop-halland-med-resten-av-varlden/'
-									}
-								/>
-							</li>
-						)}
-						<li className="w-full md:w-6/12 px-3 mb-3 md:mb-6">
-							{(article.post_type === 'company_story' ||
-								article.post_type === 'opportunity') && (
-								<ArticleCard
-									randomHeight={true}
-									title={article.title}
-									url={article.path}
-									subtitle={
-										article.area && article.area.length
-											? article.area[0].name
-											: null
-									}
-									img={
-										article.featured_media
-											? article.featured_media.localFile
-													.childImageSharp.fluid
-											: ''
-									}
-								/>
-							)}
+								{(article.post_type === 'company_story' ||
+									article.post_type === 'opportunity') && (
+									<ArticleCard
+										randomHeight={true}
+										title={article.title}
+										url={article.path}
+										subtitle={
+											article.area && article.area.length
+												? article.area[0].name
+												: null
+										}
+										img={
+											article.featured_media
+												? article.featured_media
+														.localFile
+														.childImageSharp.fluid
+												: ''
+										}
+									/>
+								)}
 
-							{article.post_type === 'fact' && (
-								<FactCard
-									randomHeight={true}
-									alignment="center"
-									fontSize="large"
-									title={article.title}
-									url={article.path}
-								/>
-							)}
-						</li>
-					</React.Fragment>
-				))}
-			</Masonry>
-		</div>
-	</Layout>
-)
+								{article.post_type === 'fact' && (
+									<FactCard
+										randomHeight={true}
+										alignment="center"
+										fontSize="large"
+										title={article.title}
+										url={article.path}
+									/>
+								)}
+							</li>
+						</React.Fragment>
+					))}
+				</Masonry>
+			</div>
+		</Layout>
+	)
+}
 
 export const query = graphql`
 	query {
