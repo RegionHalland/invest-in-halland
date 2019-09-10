@@ -5,7 +5,7 @@ import Masonry from 'react-masonry-component'
 
 import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
-import HeroWithPost from '../components/HeroWithPost'
+import LandingHero from '../components/LandingHero'
 import ArticleCard from '../components/ArticleCard'
 import FactCard from '../components/FactCard'
 import MapCard from '../components/MapCard'
@@ -26,10 +26,7 @@ const IndexPage = ({
 }) => (
 	<Layout>
 		<SEO title="Home" />
-		<HeroWithPost
-			title={title + '<br />' + words[0].word}
-			textAlign="center"
-		/>
+		<LandingHero title={title} words={words} textAlign="center" />
 		<div className="container mx-auto z-10">
 			<div className="py-20 w-full px-3 md:w-3/4 lg:w-1/2 mx-auto text-center md:text-lg">
 				{ReactHtmlParser(introduction_text)}

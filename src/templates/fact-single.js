@@ -2,6 +2,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { ChevronLeft } from 'react-feather'
+import styled from 'styled-components'
+
+import PrimaryLink from '../components/PrimaryLink'
 
 import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
@@ -39,58 +42,44 @@ export default ({
 
 						<Article blocks={blocks} acf={acf} inverse={true} />
 
-						<div className="inline-flex items-start mt-14 mb-20">
+						<div className="w-full md:flex pt-12">
 							{acf.contact.acf.image.localFile.childImageSharp
 								.fixed && (
-								<Img
+								<Avatar
+									className="block mb-2"
+									objectFit="cover"
+									objectPosition="50% 50%"
 									fixed={
 										acf.contact.acf.image.localFile
 											.childImageSharp.fixed
 									}
-									style={{
-										width: '5rem',
-										height: '5rem',
-									}}
-									className="rounded"
 								/>
 							)}
-							<div className="ml-6">
-								<span className="block leading-none font-semibold text-gray-300 mb-1 text-lg">
+							<div className="">
+								<h4 className="text-white font-semibold text-lg md:text-xl leading-normal">
 									{acf.contact.post_title}
-								</span>
-								<span className="block leading-tight font-medium text-gray-400">
+								</h4>
+								<h5 className="text-gray-400 text-sm md:text-base font-normal leading-normal mb-3">
 									{acf.contact.acf.company}
-								</span>
-
-								<div className="pt-1">
-									<span className="block leading-none text-sm font-medium text-gray-400 pt-3">
-										LinkedIn:&nbsp;
-										<a
-											href={acf.contact.acf.linkedin}
-											className="text-white break-all"
-										>
-											{acf.contact.acf.linkedin}
-										</a>
-									</span>
-									<span className="block leading-none text-sm font-medium text-gray-400 pt-3">
-										Email:&nbsp;
-										<a
+								</h5>
+								<ul className="text-sm md:text-base">
+									<li className="leading-none mb-2">
+										<PrimaryLink
+											className="block text-white leading-normal underline text-base sm:text-lg font-semibold break-all"
 											href={`mailto:${acf.contact.acf.email}`}
-											className="text-white break-all"
 										>
 											{acf.contact.acf.email}
-										</a>
-									</span>
-									<span className="block leading-none text-sm font-medium text-gray-400 pt-3">
-										Telefon:&nbsp;
-										<a
+										</PrimaryLink>
+									</li>
+									<li className="leading-none mb-2">
+										<PrimaryLink
+											className="block text-white leading-normal underline text-base sm:text-lg font-semibold break-all"
 											href={`tel:${acf.contact.acf.phone}`}
-											className="text-white break-all"
 										>
 											{acf.contact.acf.phone}
-										</a>
-									</span>
-								</div>
+										</PrimaryLink>
+									</li>
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -105,6 +94,13 @@ export default ({
 		</Layout>
 	)
 }
+
+const Avatar = styled(Img)`
+	width: 90px;
+	height: 90px;
+	flex: 0 0 90px;
+	margin-right: 1rem;
+`
 
 export const query = graphql`
 	query($slug: String!) {

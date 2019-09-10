@@ -29,7 +29,7 @@ const FactCard = ({ title, label, url, fontSize, alignment, randomHeight }) => {
 					{ReactHtmlParser(title)}
 				</Title>
 				<span className="text-gray-300 underline">
-					{label ? label : 'Se svaret'}
+					{label ? label : 'Läs mer'}
 				</span>
 			</div>
 		</StyledLink>

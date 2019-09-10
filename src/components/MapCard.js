@@ -43,7 +43,7 @@ export default ({ title, category, url }) => (
 			<span className="uppercase text-xs font-sans font-medium text-gray-600 mb-1 md:mb-2 block">
 				{category}
 			</span>
-			<h2 className="text-xl lg:text-3xl font-semibold font-sans text-black leading-tight break-words w-full">
+			<h2 className="text-2xl lg:text-3xl font-bold font-sans text-black leading-tight break-words w-full">
 				{title}
 			</h2>
 		</Inner>
