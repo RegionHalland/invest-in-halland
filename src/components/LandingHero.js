@@ -93,11 +93,11 @@ const HeroContainer = styled.div`
 	height: 24rem;
 
 	@media screen and (min-width: ${screens.md}) {
-		height: 36rem;
+		height: 40rem;
 	}
 
 	@media screen and (min-width: ${screens.xl}) {
-		height: 46rem;
+		height: 56rem;
 	}
 
 	&:after {
