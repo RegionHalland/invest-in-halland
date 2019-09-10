@@ -9,56 +9,43 @@ import { useTransition, animated, config } from 'react-spring'
 // https://tailwindcss.com/docs/configuration#referencing-in-javascript
 const screens = resolveConfig().theme.screens
 
-const images = [
-	({ style }) => (
-		<ImageContainer style={{ ...style, background: 'lightpink' }} />
-	),
-	({ style }) => (
-		<ImageContainer style={{ ...style, background: 'lightblue' }} />
-	),
-	({ style }) => (
-		<ImageContainer style={{ ...style, background: 'lightgreen' }} />
-	),
-]
+const titles = ['horse', 'dog', 'cat']
 
-const titles = [
-	({ style, word }) => <animated.h1 style={{ ...style }}>A</animated.h1>,
-	({ style, word }) => <animated.h1 style={{ ...style }}>B</animated.h1>,
-	({ style, word }) => <animated.h1 style={{ ...style }}>C</animated.h1>,
-]
+const Title = ({ style, word }) => (
+	<animated.h1
+		className="absolute top-0 left-0 right-0 w-full text-center"
+		style={{ ...style }}
+	>
+		{word}
+	</animated.h1>
+)
 
 export default ({ subTitle, title, image, textAlign, words }) => {
 	const [index, set] = useState(0)
 	const onClick = useCallback(() => set(state => (state + 1) % 3), [])
-	const imageTransitions = useTransition(index, p => p, {
-		from: { opacity: 0, transform: 'scale3d(1, 1, 1)' },
-		enter: { opacity: 1, transform: 'scale3d(1, 1, 1)' },
-		leave: { opacity: 0, transform: 'scale3d(1.3, 1.3, 1.3)' },
-	})
-	const titleTransitions = useTransition(index, p => p, {
-		from: { opacity: 0, transform: 'translate3d(100%, 0, 0)' },
-		enter: { opacity: 1, transform: 'translate3d(0%, 0, 0)' },
-		leave: { opacity: 0, transform: 'translate3d(-100%, 0, 0)' },
-	})
 
-	console.log(titleTransitions)
+	const titleTransitions = useTransition(index, p => p, {
+		from: { opacity: 0, transform: 'translate3d(25%, 0, 0)' },
+		enter: { opacity: 1, transform: 'translate3d(0%, 0, 0)' },
+		leave: { opacity: 0, transform: 'translate3d(-25%, 0, 0)' },
+	})
 
 	return (
 		<HeroContainer
 			className="relative overflow-hidden flex items-center justify-center text-center"
 			onClick={onClick}
 		>
-			{imageTransitions.map(({ item, props, key }) => {
-				const Image = images[item]
-				return <Image key={key} style={props} />
-			})}
-
-			<h1 className="z-20 relative">
-				{title}
-				<span>
+			<h1 className="z-20 w-full font-bold text-center text-white text-3xl md:text-5xl">
+				<span className="block mb-1">{title}</span>
+				<span className="block relative">
 					{titleTransitions.map(({ item, props, key }) => {
-						const Title = titles[item]
-						return <Title key={key} style={props} />
+						return (
+							<Title
+								key={key}
+								style={props}
+								word={words[item].word}
+							/>
+						)
 					})}
 				</span>
 			</h1>
@@ -68,6 +55,7 @@ export default ({ subTitle, title, image, textAlign, words }) => {
 
 const HeroContainer = styled.div`
 	height: 24rem;
+	background: red;
 
 	@media screen and (min-width: ${screens.md}) {
 		height: 36rem;
@@ -76,14 +64,4 @@ const HeroContainer = styled.div`
 	@media screen and (min-width: ${screens.xl}) {
 		height: 46rem;
 	}
-`
-
-const ImageContainer = styled(animated.div)`
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
 `
