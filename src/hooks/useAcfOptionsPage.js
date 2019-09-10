@@ -5,6 +5,9 @@ export const useAcfOptionsPage = () => {
 		{
 			wordpressAcfOptions {
 				options {
+					cookie_button_label
+					cookie_content
+					cookie_title
 					startpage {
 						introduction_text
 						title
