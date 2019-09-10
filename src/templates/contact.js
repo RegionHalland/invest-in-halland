@@ -108,16 +108,18 @@ const Contact = ({
 			<div className="bg-black mb-16 py-10">
 				<div className="container mx-auto flex px-3 flex-wrap-reverse">
 					<div className="pr-16">
-						<span className="block text-gray-300">E-post</span>
-						<span className="text-white text-1xl sm:text-2xl font-bold">
+						<span className="block font-bold text-sm sm:text-base text-gray-400 uppercase mb-1">
+							E-post
+						</span>
+						<span className="text-white text-xl sm:text-2xl lg:text-3xl font-bold">
 							{email}
 						</span>
 					</div>
 					<div className="pb-8 md:pb-0">
-						<span className="block text-gray-300">
+						<span className="block font-bold text-sm sm:text-base text-gray-400 uppercase mb-1">
 							Direktnummer
 						</span>
-						<span className="text-white text-1xl sm:text-2xl font-bold">
+						<span className="text-white text-xl xs:text-2xl lg:text-3xl font-bold">
 							{phone}
 						</span>
 					</div>
@@ -359,7 +361,7 @@ const Contact = ({
 														href={
 															contact.acf.linkedin
 														}
-														className="font-semibold text-sm underline text-black"
+														className="font-semibold text-sm break-all underline text-black"
 													>
 														{contact.acf.linkedin}
 													</a>
@@ -371,7 +373,7 @@ const Contact = ({
 												</span>
 												<a
 													href={`mailto:${contact.acf.email}`}
-													className="font-semibold text-sm underline text-black"
+													className="font-semibold text-sm break-all underline text-black"
 												>
 													{contact.acf.email}
 												</a>
@@ -382,7 +384,7 @@ const Contact = ({
 												</span>
 												<a
 													href={`tel:${contact.acf.phone}`}
-													className="font-semibold text-sm underline text-black"
+													className="font-semibold text-sm break-all underline text-black"
 												>
 													{contact.acf.phone}
 												</a>
