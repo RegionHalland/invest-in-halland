@@ -5,7 +5,7 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			sans: [
-				'axiforma',
+				'Axiforma',
 				'-apple-system',
 				'BlinkMacSystemFont',
 				'"Segoe UI"',

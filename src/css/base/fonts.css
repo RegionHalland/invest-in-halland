@@ -1,39 +1,157 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3805885, 2019-09-10T05:18:44-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: Axiforma-Bold by Kastelov
+ * URL: https://www.myfonts.com/fonts/kastelov/axiforma/bold/
+ * 
+ * Webfont: Axiforma-BoldItalic by Kastelov
+ * URL: https://www.myfonts.com/fonts/kastelov/axiforma/bold-italic/
+ * 
+ * Webfont: Axiforma-Italic by Kastelov
+ * URL: https://www.myfonts.com/fonts/kastelov/axiforma/italic/
+ * 
+ * Webfont: Axiforma-Medium by Kastelov
+ * URL: https://www.myfonts.com/fonts/kastelov/axiforma/medium/
+ * 
+ * Webfont: Axiforma-MediumItalic by Kastelov
+ * URL: https://www.myfonts.com/fonts/kastelov/axiforma/medium-italic/
+ * 
+ * Webfont: Axiforma-Regular by Kastelov
+ * URL: https://www.myfonts.com/fonts/kastelov/axiforma/regular/
+ * 
+ * Webfont: Axiforma-SemiBold by Kastelov
+ * URL: https://www.myfonts.com/fonts/kastelov/axiforma/semi-bold/
+ * 
+ * Webfont: Axiforma-SemiBoldItalic by Kastelov
+ * URL: https://www.myfonts.com/fonts/kastelov/axiforma/semi-bold-italic/
+ * 
+ * 
+ * License: https://www.myfonts.com/viewlicense?type=web&buildid=3805885
+ * Licensed pageviews: 10,000
+ * Webfonts copyright: Copyright &#x00A9; 2017 by Kastelov. All rights reserved.
+ * 
+ * © 2019 MyFonts Inc
+*/
+
+/*
+ * Axiforma Regular
+**/
 @font-face {
-	font-family: 'axiforma';
-	src: url('../../../static/fonts/axiforma-Book.otf') format('otf');
+	font-family: 'Axiforma';
+	font-weight: 400;
 	font-display: fallback;
-	font-weight: 100;
-	font-style: normal;
+	src: url('../../fonts/3A12BD_5_0.eot');
+	src: url('../../fonts/3A12BD_5_0.eot?#iefix') format('embedded-opentype'),
+		url('../../fonts/3A12BD_5_0.woff2') format('woff2'),
+		url('../../fonts/3A12BD_5_0.woff') format('woff'),
+		url('../../fonts/3A12BD_5_0.ttf') format('truetype');
 }
 
+/*
+ * Axiforma Italic
+**/
 @font-face {
-	font-family: 'axiforma';
-	src: url('../../../static/fonts/axiforma-Regular.otf') format('otf');
+	font-family: 'Axiforma';
+	font-style: italic;
+	font-weight: 400;
 	font-display: fallback;
-	font-weight: normal;
-	font-style: normal;
+	src: url('../../fonts/3A12BD_2_0.eot');
+	src: url('../../fonts/3A12BD_2_0.eot?#iefix') format('embedded-opentype'),
+		url('../../fonts/3A12BD_2_0.woff2') format('woff2'),
+		url('../../fonts/3A12BD_2_0.woff') format('woff'),
+		url('../../fonts/3A12BD_2_0.ttf') format('truetype');
 }
 
+/*
+ * Axiforma Bold
+**/
 @font-face {
-	font-family: 'axiforma';
-	src: url('../../../static/fonts/axiforma-Medium.otf') format('otf');
-	font-display: fallback;
-	font-weight: 500;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'axiforma';
-	src: url('../../../static/fonts/axiforma-SemiBold.otf') format('otf');
-	font-display: fallback;
-	font-weight: 600;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'axiforma';
-	src: url('../../../static/fonts/axiforma-Bold.otf') format('otf');
-	font-display: fallback;
+	font-family: 'Axiforma';
 	font-weight: 700;
-	font-style: normal;
+	font-display: fallback;
+	src: url('../../fonts/3A12BD_0_0.eot');
+	src: url('../../fonts/3A12BD_0_0.eot?#iefix') format('embedded-opentype'),
+		url('../../fonts/3A12BD_0_0.woff2') format('woff2'),
+		url('../../fonts/3A12BD_0_0.woff') format('woff'),
+		url('../../fonts/3A12BD_0_0.ttf') format('truetype');
+}
+
+/*
+ * Axiforma Bold Italic
+**/
+@font-face {
+	font-family: 'Axiforma';
+	font-style: italic;
+	font-weight: 700;
+	font-display: fallback;
+	src: url('../../fonts/3A12BD_1_0.eot');
+	src: url('../../fonts/3A12BD_1_0.eot?#iefix') format('embedded-opentype'),
+		url('../../fonts/3A12BD_1_0.woff2') format('woff2'),
+		url('../../fonts/3A12BD_1_0.woff') format('woff'),
+		url('../../fonts/3A12BD_1_0.ttf') format('truetype');
+}
+
+/*
+ * Axiforma Medium
+**/
+@font-face {
+	font-family: 'Axiforma';
+	font-weight: 500;
+	font-display: fallback;
+	src: url('../../fonts/3A12BD_3_0.eot');
+	src: url('../../fonts/3A12BD_3_0.eot?#iefix') format('embedded-opentype'),
+		url('../../fonts/3A12BD_3_0.woff2') format('woff2'),
+		url('../../fonts/3A12BD_3_0.woff') format('woff'),
+		url('../../fonts/3A12BD_3_0.ttf') format('truetype');
+}
+
+/*
+ * Axiforma Medium Italic
+**/
+@font-face {
+	font-family: 'Axiforma';
+	font-weight: 500;
+	font-style: italic;
+	font-display: fallback;
+	src: url('../../fonts/3A12BD_4_0.eot');
+	src: url('../../fonts/3A12BD_4_0.eot?#iefix') format('embedded-opentype'),
+		url('../../fonts/3A12BD_4_0.woff2') format('woff2'),
+		url('../../fonts/3A12BD_4_0.woff') format('woff'),
+		url('../../fonts/3A12BD_4_0.ttf') format('truetype');
+}
+
+/*
+ * Axiforma Semibold
+**/
+@font-face {
+	font-family: 'Axiforma';
+	font-weight: 600;
+	font-display: fallback;
+	src: url('../../fonts/3A12BD_6_0.eot');
+	src: url('../../fonts/3A12BD_6_0.eot?#iefix') format('embedded-opentype'),
+		url('../../fonts/3A12BD_6_0.woff2') format('woff2'),
+		url('../../fonts/3A12BD_6_0.woff') format('woff'),
+		url('../../fonts/3A12BD_6_0.ttf') format('truetype');
+}
+
+/*
+ * Axiforma Semibold Italic
+**/
+@font-face {
+	font-family: 'Axiforma';
+	font-style: italic;
+	font-weight: 600;
+	font-display: fallback;
+	src: url('../../fonts/3A12BD_7_0.eot');
+	src: url('../../fonts/3A12BD_7_0.eot?#iefix') format('embedded-opentype'),
+		url('../../fonts/3A12BD_7_0.woff2') format('woff2'),
+		url('../../fonts/3A12BD_7_0.woff') format('woff'),
+		url('../../fonts/3A12BD_7_0.ttf') format('truetype');
 }
