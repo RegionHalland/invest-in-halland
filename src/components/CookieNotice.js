@@ -14,7 +14,6 @@ const CookieNotice = ({ title }) => {
 	const consent = () => {
 		setCookie('cookies_consent', 'accepted', { path: '/' })
 		setShowNotice(false)
-		console.log('va händer')
 	}
 
 	return showNotice ? (
