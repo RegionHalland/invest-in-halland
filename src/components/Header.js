@@ -28,7 +28,7 @@ export default ({ siteTitle }) => {
 	})
 
 	return (
-		<header className="relative z-50">
+		<header className="relative z-50 shadow-lg">
 			<div className="relative z-50 bg-white w-full">
 				<div className="container mx-auto flex flex-wrap justify-between items-center">
 					<div className="px-3">
@@ -99,7 +99,7 @@ const MobileMenu = ({ pages, links }) => {
 					</ul>
 				</div>
 			</div>
-			<div className="py-6 bg-gray-100">
+			<div className="py-6 bg-gray-200">
 				<div className="container mx-auto px-3">
 					<ColHeader>Direktkontakt</ColHeader>
 					<ul>
@@ -155,7 +155,7 @@ const MenuButton = ({ onClick }) => (
 )
 
 const ColHeader = ({ children }) => (
-	<span className="block font-bold text-sm text-gray-700 uppercase mb-3">
+	<span className="block font-semibold text-gray-700 text-xs uppercase mb-3">
 		{children}
 	</span>
 )

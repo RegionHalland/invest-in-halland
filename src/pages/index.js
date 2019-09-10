@@ -31,7 +31,7 @@ const IndexPage = ({
 			textAlign="center"
 		/>
 		<div className="container mx-auto z-10">
-			<div className="py-20 w-full px-3 md:w-3/4 mx-auto text-center md:text-lg">
+			<div className="py-20 w-full px-3 md:w-3/4 lg:w-1/2 mx-auto text-center md:text-lg">
 				{ReactHtmlParser(introduction_text)}
 			</div>
 			<Masonry

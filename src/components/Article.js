@@ -22,11 +22,12 @@ const StyledArticle = styled.article`
 	}
 
 	> p {
-		${tw`text-lg leading-normal mb-3`};
+		${props => (props.inverse ? tw`text-gray-400` : tw`text-gray-700`)}
+		${tw`text-base leading-normal mb-3`};
 	}
 
 	> .introduction {
-		${tw`text-xl`};
+		${tw`text-lg md:text-xl`};
 		${props => (props.inverse ? tw`text-white` : tw`text-black`)}
 	}
 

@@ -18,30 +18,28 @@ export default ({
 		<Layout>
 			<SEO title={title} />
 			<div className="bg-black">
-				<div className="mx-auto container pt-24">
+				<div className="mx-auto container pt-16 lg:pt-24">
 					<div className="px-3 w-full md:w-3/4 lg:w-1/2">
 						<button
-							className="inline-flex items-center text-white cursor-pointer mb-4 block"
+							className="inline-flex items-center text-white cursor-pointer mb-6 block"
 							onClick={e => {
 								e.preventDefault()
 								window.history.back()
 							}}
 						>
-							<span className="bg-green-500 mr-2 px-1 rounded">
-								<ChevronLeft
-									className="text-white stroke-current inline-block"
-									size="18"
-								/>
-							</span>
-							<span className="leading-none">Tillbaka</span>
+							<ChevronLeft
+								className="text-white stroke-current inline-block"
+								size="20"
+							/>
+							<span className="leading-none mt-1">Tillbaka</span>
 						</button>
-						<h1 className="text-white font-bold text-3xl md:text-5xl xl:text-6xl leading-tight mb-10">
+						<h1 className="text-white font-bold text-3xl md:text-5xl xl:text-6xl leading-tight mb-4 lg:mb-8">
 							{title}
 						</h1>
 
 						<Article blocks={blocks} acf={acf} inverse={true} />
 
-						<div className="inline-flex items-start mt-20 mb-24">
+						<div className="inline-flex items-start mt-14 mb-20">
 							{acf.contact.acf.image.localFile.childImageSharp
 								.fixed && (
 								<Img
@@ -98,7 +96,10 @@ export default ({
 					</div>
 				</div>
 				{acf.related_articles && acf.related_articles.length && (
-					<RelatedArticles articles={acf.related_articles} />
+					<RelatedArticles
+						inverse={true}
+						articles={acf.related_articles}
+					/>
 				)}
 			</div>
 		</Layout>

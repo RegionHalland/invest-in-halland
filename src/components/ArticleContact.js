@@ -13,49 +13,49 @@ const ArticleContact = ({
 	contactPhone,
 	contactImage,
 }) => (
-	<div className="py-6 md:py-16 bg-black">
+	<div className="py-16 md:py-20 bg-black">
 		<div className="container mx-auto">
 			<div className="mx-auto w-full md:w-10/12 lg:w-7/12 px-3">
 				<span className="relative z-10 uppercase text-xs font-sans font-medium text-gray-400 mb-1 md:mb-2 block">
 					Ta kontakt
 				</span>
-				<h2 className="text-xl lg:text-3xl font-bold font-sans text-white leading-tight break-words w-full mb-8">
+				<h2 className="text-xl lg:text-3xl font-bold font-sans text-white leading-tight break-words w-full mb-6 md:mb-8">
 					{title}
 				</h2>
-				<div className="w-full flex space-around items-stretch">
+				<div className="w-full md:flex">
 					{contactImage && (
 						<Avatar
-							className="h-full w-full bottom-0 top-0 left-0 z-0"
+							className="block mb-2"
 							objectFit="cover"
 							objectPosition="50% 50%"
 							fixed={contactImage}
 						/>
 					)}
 					<div className="">
-						<h4 className="text-white font-semibold md:text-2xl leading-tight mb-1">
+						<h4 className="text-white font-semibold text-xl md:text-2xl leading-normal">
 							{contactName}
 						</h4>
-						<h5 className="text-gray-400 text-sm md:text-lg font-medium leading-tight">
+						<h5 className="text-gray-400 text-sm md:text-lg font-normal leading-normal mb-6">
 							{contactCompany}
 						</h5>
-						<ul className="mt-4 text-sm md:text-base">
-							<li className="leading-none mb-2">
-								<span className="text-gray-400 font-semibold mr-1">
+						<ul className="text-sm md:text-base">
+							<li className="leading-none mb-5">
+								<span className="text-gray-400 block font-normal mb-1">
 									Email:
 								</span>
 								<PrimaryLink
-									className="block sm:inline-block text-white underline font-semibold break-all"
+									className="block text-white leading-normal underline text-lg font-semibold break-all"
 									href={`mailto:${contactEmail}`}
 								>
 									{contactEmail}
 								</PrimaryLink>
 							</li>
-							<li className="leading-none mb-2">
-								<span className="block sm:inline-block text-gray-400 font-semibold mr-1">
+							<li className="leading-none mb-5">
+								<span className="text-gray-400 block font-normal mb-1">
 									Telefon:
 								</span>
 								<PrimaryLink
-									className="text-white underline font-semibold break-all"
+									className="block text-white leading-normal underline text-lg font-semibold break-all"
 									href={`tel:${contactPhone}`}
 								>
 									{contactPhone}
