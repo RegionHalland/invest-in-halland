@@ -1,10 +1,8 @@
-@tailwind base;
-
-@tailwind components;
-
-@tailwind utilities;
-
 @import 'base/fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
 	-webkit-font-smoothing: antialiased;
