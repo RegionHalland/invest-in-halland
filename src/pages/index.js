@@ -31,7 +31,7 @@ const IndexPage = ({
 			textAlign="center"
 		/>
 		<div className="container mx-auto z-10">
-			<div className="py-20 w-3/4 md:w-2/4 mx-auto text-center md:text-lg">
+			<div className="py-20 w-full px-3 md:w-3/4 mx-auto text-center md:text-lg">
 				{ReactHtmlParser(introduction_text)}
 			</div>
 			<Masonry
@@ -46,7 +46,7 @@ const IndexPage = ({
 				{featured_articles.map((article, index) => (
 					<React.Fragment key={article.wordpress_id}>
 						{index === 3 && (
-							<li className="w-full md:w-6/12 px-3 mb-6">
+							<li className="w-full md:w-6/12 px-3 mb-3 md:mb-6">
 								<MapCard
 									title="Halland, Sverige, världen"
 									category="Kommunikationer"
@@ -56,7 +56,7 @@ const IndexPage = ({
 								/>
 							</li>
 						)}
-						<li className="w-full md:w-6/12 px-3 mb-6">
+						<li className="w-full md:w-6/12 px-3 mb-3 md:mb-6">
 							{(article.post_type === 'company_story' ||
 								article.post_type === 'opportunity') && (
 								<ArticleCard
@@ -84,28 +84,6 @@ const IndexPage = ({
 									fontSize="large"
 									title={article.title}
 									url={article.path}
-									contactName={
-										article.contact
-											? article.contact.post_title
-											: ''
-									}
-									contactCompany={
-										article.contact
-											? article.contact.acf.company
-											: ''
-									}
-									contactImg={
-										article.contact.acf.image
-											? article.contact.acf.image
-													.localFile.childImageSharp
-													.fixed
-											: null
-									}
-									contactImgAlt={
-										article.contact.acf.image
-											? article.contact.acf.image.alt_text
-											: ''
-									}
 								/>
 							)}
 						</li>

@@ -6,9 +6,9 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
 const paddings = [
-	'pt-16 md:pt-32 lg:pt-48',
-	'pt-20 md:pt-40 lg:pt-56',
-	'pt-24 md:pt-48 lg:pt-64',
+	'pt-40 md:pt-40 lg:pt-48',
+	'pt-48 md:pt-48 lg:pt-56',
+	'pt-56 amd:pt-56 lg:pt-64',
 ]
 
 const ArticleCard = ({ title, subtitle, img, url, randomHeight }) => {
@@ -21,7 +21,7 @@ const ArticleCard = ({ title, subtitle, img, url, randomHeight }) => {
 	return (
 		<StyledLink
 			to={url}
-			className={`block relative p-3 rounded overflow-hidden w-full outline-none bg-black ${padding}`}
+			className={`block relative p-3 overflow-hidden w-full outline-none bg-black ${padding}`}
 		>
 			<div className="relative z-10 articleCard--inner">
 				<span className="uppercase text-xs font-sans font-medium text-gray-300 mb-1 md:mb-2 block">

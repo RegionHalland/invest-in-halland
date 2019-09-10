@@ -17,7 +17,7 @@ export default () => {
 	} = useAcfOptionsPage()
 
 	return (
-		<footer className="py-8">
+		<footer className="py-8 md:py-16 lg:pt-20 lg:pb-32 border-b-8 border-green-500">
 			<div className="container mx-auto flex flex-wrap">
 				<div className="w-full lg:w-6/12 px-3 mb-8">
 					<div className="w-48 mb-6">

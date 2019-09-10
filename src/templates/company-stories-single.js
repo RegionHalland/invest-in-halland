@@ -28,11 +28,9 @@ export default ({
 					<Article blocks={blocks} acf={acf} />
 				</div>
 			</div>
-			<div className="mx-auto container pb-16">
-				{acf.related_articles && acf.related_articles.length && (
-					<RelatedArticles articles={acf.related_articles} />
-				)}
-			</div>
+			{acf.related_articles && acf.related_articles.length && (
+				<RelatedArticles articles={acf.related_articles} />
+			)}
 			{acf.contact && (
 				<ArticleContact
 					title={acf.title}

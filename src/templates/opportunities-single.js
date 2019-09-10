@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../layouts/Default'
 import Article from '../components/Article'
 import ArticleContact from '../components/ArticleContact'
+import RelatedArticles from '../components/RelatedArticles'
 import HeroWithPost from '../components/HeroWithPost'
 import SEO from '../components/Seo'
 
@@ -27,6 +28,9 @@ export default ({
 					<Article blocks={blocks} acf={acf} />
 				</div>
 			</div>
+			{acf.related_articles && acf.related_articles.length && (
+				<RelatedArticles articles={acf.related_articles} />
+			)}
 			{acf.contact && (
 				<ArticleContact
 					title={acf.title}
@@ -90,6 +94,41 @@ export const query = graphql`
 					}
 				}
 				title
+				related_articles {
+					related_article {
+						post_title
+						post_type
+						wordpress_id
+						url
+						area_name
+						contact {
+							post_title
+							acf {
+								company
+								featured_media {
+									alt_text
+									localFile {
+										childImageSharp {
+											fixed(width: 90, height: 90) {
+												...GatsbyImageSharpFixed_withWebp
+											}
+										}
+									}
+								}
+							}
+						}
+						featured_media {
+							alt_text
+							localFile {
+								childImageSharp {
+									fluid(maxWidth: 1920) {
+										...GatsbyImageSharpFluid_withWebp
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}

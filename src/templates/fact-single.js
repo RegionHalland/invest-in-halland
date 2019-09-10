@@ -19,7 +19,7 @@ export default ({
 			<SEO title={title} />
 			<div className="bg-black">
 				<div className="mx-auto container pt-24">
-					<div className="w-1/2">
+					<div className="px-3 w-full md:w-3/4 lg:w-1/2">
 						<button
 							className="inline-flex items-center text-white cursor-pointer mb-4 block"
 							onClick={e => {
@@ -69,7 +69,7 @@ export default ({
 										LinkedIn:&nbsp;
 										<a
 											href={acf.contact.acf.linkedin}
-											className="text-white"
+											className="text-white break-all"
 										>
 											{acf.contact.acf.linkedin}
 										</a>
@@ -78,7 +78,7 @@ export default ({
 										Email:&nbsp;
 										<a
 											href={`mailto:${acf.contact.acf.email}`}
-											className="text-white"
+											className="text-white break-all"
 										>
 											{acf.contact.acf.email}
 										</a>
@@ -87,7 +87,7 @@ export default ({
 										Telefon:&nbsp;
 										<a
 											href={`tel:${acf.contact.acf.phone}`}
-											className="text-white"
+											className="text-white break-all"
 										>
 											{acf.contact.acf.phone}
 										</a>
@@ -97,16 +97,8 @@ export default ({
 						</div>
 					</div>
 				</div>
-				{acf.related_articles && (
-					<div className="py-16 bg-gray-700">
-						<div className="mx-auto container text-white">
-							{acf.related_articles.length && (
-								<RelatedArticles
-									articles={acf.related_articles}
-								/>
-							)}
-						</div>
-					</div>
+				{acf.related_articles && acf.related_articles.length && (
+					<RelatedArticles articles={acf.related_articles} />
 				)}
 			</div>
 		</Layout>

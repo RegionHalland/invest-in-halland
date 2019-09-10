@@ -94,7 +94,7 @@ export default ({ articles }) => {
 			>
 				{filteredArticles.map(article => (
 					<li
-						className="w-full md:w-6/12 xl:w-4/12 px-3 mb-6"
+						className="w-full md:w-6/12 xl:w-4/12 px-3 mb-3 md:mb-6"
 						key={article.id}
 					>
 						<ArticleCard

@@ -34,7 +34,7 @@ const StyledArticle = styled.article`
 		${tw`my-12 text-center max-w-xl mx-auto`}
 
 		p {
-			${tw`font-semibold text-2xl my-6`}
+			${tw`font-semibold text-xl md:text-2xl my-6`}
 		}
 
 		cite {

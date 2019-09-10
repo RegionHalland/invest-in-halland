@@ -28,7 +28,7 @@ export default ({ siteTitle }) => {
 	})
 
 	return (
-		<header className="relative z-50 shadow">
+		<header className="relative z-50">
 			<div className="relative z-50 bg-white w-full">
 				<div className="container mx-auto flex flex-wrap justify-between items-center">
 					<div className="px-3">
