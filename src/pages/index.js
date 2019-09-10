@@ -100,6 +100,16 @@ export const query = graphql`
 					title
 					words {
 						word
+						image {
+							alt_text
+							localFile {
+								childImageSharp {
+									fluid {
+										...GatsbyImageSharpFluid_withWebp
+									}
+								}
+							}
+						}
 					}
 					featured_articles {
 						title

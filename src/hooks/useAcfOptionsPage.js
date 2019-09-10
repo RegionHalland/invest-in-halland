@@ -13,6 +13,16 @@ export const useAcfOptionsPage = () => {
 						title
 						words {
 							word
+							image {
+								alt_text
+								localFile {
+									childImageSharp {
+										fluid {
+											...GatsbyImageSharpFluid_withWebp
+										}
+									}
+								}
+							}
 						}
 						featured_articles {
 							post_title
