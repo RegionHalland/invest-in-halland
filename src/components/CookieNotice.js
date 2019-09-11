@@ -8,11 +8,11 @@ const CookieNotice = ({ onAccept }) => {
 	} = useAcfOptionsPage()
 
 	return (
-		<div className="bg-black">
+		<div className="bg-black z-50 relative">
 			<div className="container mx-auto py-3 md:py-6">
 				<div className="w-full flex flex-wrap items-center justify-between px-3">
 					<div className="w-full sm:w-auto">
-						<span className="block text-white leading-tight text-xs md:text-sm font-semibold mb-1">
+						<span className="block text-white leading-tight text-sm md:text-sm font-semibold mb-1">
 							{cookie_title}
 						</span>
 						<span className="block text-gray-400 leading-tight text-xs md:text-sm mb-2 sm:mb-0">
