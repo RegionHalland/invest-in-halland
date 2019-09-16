@@ -59,6 +59,7 @@ export const query = graphql`
 				attrs {
 					data {
 						fact
+						introduction
 					}
 				}
 			}

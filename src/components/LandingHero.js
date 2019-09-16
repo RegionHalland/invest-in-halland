@@ -39,27 +39,21 @@ const Image = ({ style, image }) => {
 export default ({ subTitle, title, image, textAlign, words }) => {
 	const [index, set] = useState(0)
 
-	const titleTransitions = useTransition(index, p => p, {
-		from: { opacity: 0, transform: 'translate3d(0, 25%, 0)' },
-		enter: { opacity: 1, transform: 'translate3d(0, 0%, 0)' },
-		leave: { opacity: 0, transform: 'translate3d(0, -25%, 0)' },
-	})
-
-	const imageTransitions = useTransition(index, p => p, {
-		from: { opacity: 0, transform: 'scale3d(1, 1, 1)' },
-		enter: { opacity: 1, transform: 'scale3d(1, 1, 1)' },
-		leave: { opacity: 0, transform: 'scale3d(1.2, 1.2, 1.2)' },
+	const carouselTransitions = useTransition(index, p => p, {
+		from: { opacity: 0 },
+		enter: { opacity: 1 },
+		leave: { opacity: 0 },
 	})
 
 	useEffect(() => {
 		setInterval(() => {
 			set(state => (state + 1) % words.length)
-		}, 2000)
+		}, 3500)
 	}, [])
 
 	return (
 		<HeroContainer className="relative overflow-hidden bg-black flex items-center justify-center text-center">
-			{imageTransitions.map(({ item, props, key }) => {
+			{carouselTransitions.map(({ item, props, key }) => {
 				return (
 					<Image key={key} style={props} image={words[item].image} />
 				)
@@ -67,7 +61,7 @@ export default ({ subTitle, title, image, textAlign, words }) => {
 			<h1 className="z-20 w-full font-bold text-center text-white leading-tight text-4xl md:text-6xl mb-6">
 				<span className="block">{title}</span>
 				<span className="block relative text-green-500">
-					{titleTransitions.map(({ item, props, key }) => {
+					{carouselTransitions.map(({ item, props, key }) => {
 						return (
 							<Title
 								key={key}
