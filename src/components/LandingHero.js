@@ -57,8 +57,8 @@ export default ({ subTitle, title, image, textAlign, words }) => {
 				)
 			})}
 			<h1 className="z-20 w-full font-bold text-center text-white leading-tight text-4xl md:text-6xl mb-6">
-				<span className="block">{title}</span>
-				<span className="block relative text-green-500">
+				{/*<span className="block">{title}</span>*/}
+				<span className="block relative text-white -mt-4">
 					{carouselTransitions.map(({ item, props, key }) => {
 						return (
 							<Title
