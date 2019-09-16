@@ -9,8 +9,6 @@ import { useTransition, animated, config } from 'react-spring'
 // https://tailwindcss.com/docs/configuration#referencing-in-javascript
 const screens = resolveConfig().theme.screens
 
-const titles = ['horse', 'dog', 'cat']
-
 const Title = ({ style, word }) => (
 	<animated.h1
 		className="absolute top-0 left-0 right-0 w-full text-center"
