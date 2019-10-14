@@ -16,7 +16,7 @@ export default ({
 }) => {
 	return (
 		<Layout>
-			<SEO title="opportunities" />
+			<SEO title="Möjligheter i Halland" />
 			<HeroWithPost
 				image={opportunities_hero_content.featured_image}
 				subTitle={opportunities_hero_content.sub_title}

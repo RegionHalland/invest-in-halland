@@ -24,7 +24,7 @@ const Contact = ({
 }) => {
 	return (
 		<Layout>
-			<SEO title="Home" />
+			<SEO title="Kontakta oss" />
 			<HeroWithPost
 				subTitle={sub_title}
 				title={title}
