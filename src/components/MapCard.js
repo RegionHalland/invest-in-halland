@@ -39,7 +39,7 @@ export default ({ title, category, url }) => (
 			></circle>
 			<circle cx="145" cy="275" r="6px" fill="#10744f" />
 		</StyledSvg>
-		<Inner className="absolute flex flex-col z-20 left-0 top-0 h-full w-full p-4 justify-start">
+		<Inner className="absolute flex flex-col z-20 left-0 top-0 h-full w-full p-4 sm:p-6 justify-start">
 			<span className="uppercase text-xs font-sans font-medium text-gray-600 mb-1 md:mb-2 block">
 				{category}
 			</span>
@@ -54,12 +54,7 @@ const StyledLink = styled(Link)`
 	min-height: 16rem;
 `
 
-const Inner = styled.div`
-	transition: transform 0.25s;
-	&:hover {
-		transform: translateY(-0.5rem);
-	}
-`
+const Inner = styled.div``
 
 const StyledSvg = styled.svg`
 	& .pulse {

@@ -8,7 +8,7 @@ import tw from 'tailwind.macro'
 const RelatedArticles = ({ articles, inverse }) => (
 	<div className="pt-16 w-full relative">
 		<div className="mx-auto container">
-			<div className="w-full lg:w-3/4  px-3 mx-auto">
+			<div className="w-full px-3 mx-auto">
 				<StyledTitle
 					className="font-semibold text-xl lg:text-2xl text-black mb-3"
 					inverse={inverse}
@@ -16,7 +16,7 @@ const RelatedArticles = ({ articles, inverse }) => (
 					Relaterat innehåll
 				</StyledTitle>
 			</div>
-			<div className="flex flex-wrap w-full lg:w-3/4 relative mx-auto z-20 pb-6">
+			<div className="flex flex-wrap w-full relative mx-auto z-20 pb-6">
 				{articles.map((related_article, key) => {
 					let article = related_article.related_article
 					let post_type = article.post_type

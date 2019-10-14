@@ -8,7 +8,7 @@ import Img from 'gatsby-image'
 const paddings = [
 	'pt-40 md:pt-40 lg:pt-48',
 	'pt-48 md:pt-48 lg:pt-56',
-	'pt-56 amd:pt-56 lg:pt-64',
+	'pt-56 md:pt-56 lg:pt-64',
 ]
 
 const ArticleCard = ({ title, subtitle, img, url, randomHeight }) => {
@@ -21,20 +21,20 @@ const ArticleCard = ({ title, subtitle, img, url, randomHeight }) => {
 	return (
 		<StyledLink
 			to={url}
-			className={`block relative p-3 overflow-hidden w-full outline-none bg-black ${padding}`}
+			className={`block relative px-4 pb-4 sm:px-6 sm:pb-6 overflow-hidden w-full outline-none bg-black ${padding}`}
 		>
-			<div className="relative z-10 articleCard--inner">
+			<div className="relative z-10">
 				<span className="uppercase text-xs font-sans font-medium text-gray-300 mb-1 md:mb-2 block">
 					{ReactHtmlParser(subtitle)}
 				</span>
-				<h2 className="text-xl lg:text-3xl font-semibold font-sans text-white leading-tight break-words w-full">
+				<h2 className="text-2xl lg:text-3xl font-semibold font-sans text-white leading-tight break-words w-full">
 					{ReactHtmlParser(title)}
 				</h2>
 			</div>
 			{img && (
 				<StyledImg
 					style={{ position: 'absolute' }}
-					className="h-full w-full bottom-0 top-0 left-0 z-0"
+					className="h-full w-full bottom-0 top-0 left-0 z-0 articleCard--inner"
 					objectFit="cover"
 					objectPosition="50% 50%"
 					fluid={img}
@@ -62,11 +62,11 @@ const StyledImg = styled(Img)`
 
 const StyledLink = styled(Link)`
 	.articleCard--inner {
-		transition: transform 0.25s;
+		transition: transform 0.45s;
 	}
 
 	&:hover .articleCard--inner {
-		transform: translateY(-0.5rem);
+		transform: scale(1.1);
 	}
 `
 

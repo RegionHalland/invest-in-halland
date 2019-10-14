@@ -15,7 +15,7 @@ export default ({ subTitle, title, image, textAlign }) => {
 			<div className="container mx-auto z-10">
 				<div className="w-full px-3">
 					{subTitle && (
-						<span className="block text-white font-bold text-sm md:text-base lg:text-lg mb-3 leading-none">
+						<span className="block text-white font-semibold uppercase text-xs md:text-sm lg:text-sm mb-3 leading-none">
 							{subTitle}
 						</span>
 					)}

@@ -24,7 +24,6 @@ const IndexPage = ({
 		},
 	},
 }) => {
-	console.log(words)
 	return (
 		<Layout>
 			<SEO title="Home" />
@@ -34,7 +33,7 @@ const IndexPage = ({
 					{ReactHtmlParser(introduction_text)}
 				</div>
 				<Masonry
-					className="w-full lg:w-10/12 mx-auto"
+					className="w-full mx-auto pb-12"
 					elementType={'ul'}
 					options={{
 						transitionDuration: 250,

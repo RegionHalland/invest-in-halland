@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
 			<div className="font-sans">
 				{showNotice && <CookieNotice onAccept={handleShowNotice} />}
 				<Header />
-				<main className="mb-12">{children}</main>
+				<main>{children}</main>
 				<Footer />
 			</div>
 		</CookiesProvider>

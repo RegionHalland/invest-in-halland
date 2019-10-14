@@ -5,9 +5,9 @@ import ReactHtmlParser from 'react-html-parser'
 import propTypes from 'prop-types'
 
 const paddings = [
-	'pb-20 md:pb-20 lg:pb-32',
-	'pb-24 md:pb-24 lg:pb-40',
-	'pb-32 md:pb-32 lg:pb-48',
+	'pb-40 md:pb-40 lg:pb-48',
+	'pb-48 md:pb-48 lg:pb-56',
+	'pb-56 md:pb-56 lg:pb-64',
 ]
 
 const FactCard = ({ title, label, url, fontSize, alignment, randomHeight }) => {
@@ -18,12 +18,12 @@ const FactCard = ({ title, label, url, fontSize, alignment, randomHeight }) => {
 		: paddings[paddings.length - 1]
 
 	return (
-		<StyledLink
+		<Link
 			to={url}
-			className="flex overflow-hidden flex-col justify-between h-full outline-none p-3 sm:p-4 md:p-4 bg-black w-full"
+			className="flex overflow-hidden flex-col justify-between h-full outline-none p-4 sm:p-6 bg-black w-full"
 		>
 			<div
-				className={`factCard--inner flex flex-col h-full w-full justify-${alignment} ${padding}`}
+				className={`hover:opacity-25 flex flex-col h-full w-full justify-${alignment} ${padding}`}
 			>
 				<Title className="text-2xl lg:text-3xl font-semibold font-sans mb-2 text-white leading-tight break-words w-full">
 					{ReactHtmlParser(title)}
@@ -32,23 +32,13 @@ const FactCard = ({ title, label, url, fontSize, alignment, randomHeight }) => {
 					{label ? label : 'Läs mer'}
 				</span>
 			</div>
-		</StyledLink>
+		</Link>
 	)
 }
 
 const Title = styled.h2`
 	& > span {
 		color: #5cb78a;
-	}
-`
-
-const StyledLink = styled(Link)`
-	.factCard--inner {
-		transition: transform 0.25s;
-	}
-
-	&:hover .factCard--inner {
-		transform: translateY(-0.5rem);
 	}
 `
 

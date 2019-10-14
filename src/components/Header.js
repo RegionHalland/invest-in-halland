@@ -36,7 +36,7 @@ export default ({ siteTitle }) => {
 							{breakpoint === 'md' ? (
 								<LogoSymbol style={{ width: '32px' }} />
 							) : (
-								<Logo style={{ width: '192px' }} />
+								<Logo style={{ width: '210px' }} />
 							)}
 						</Link>
 					</div>
@@ -133,7 +133,7 @@ const DesktopMenu = ({ pages }) => (
 				key={item.wordpress_id}
 			>
 				<MenuLink
-					className="block font-bold py-6 leading-none hover:text-green-500"
+					className="block font-semibold py-8 leading-none hover:text-green-500"
 					activeClassName="active"
 					to={`/${item.url
 						.split('/')

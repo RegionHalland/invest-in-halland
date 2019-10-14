@@ -17,13 +17,13 @@ export default () => {
 	} = useAcfOptionsPage()
 
 	return (
-		<footer className="py-8 md:py-16 lg:pt-20 lg:pb-32 border-b-8 border-green-500">
+		<footer className="py-8 md:py-16 lg:pt-20 lg:pb-32 border-b-8 bg-black border-green-500">
 			<div className="container mx-auto flex flex-wrap">
 				<div className="w-full lg:w-6/12 px-3 mb-8">
 					<div className="w-48 mb-6">
-						<Logo />
+						<Logo light />
 					</div>
-					<div className="max-w-xl pr-6">
+					<div className="max-w-xl pr-6 text-white">
 						{ReactHtmlParser(description)}
 					</div>
 				</div>
@@ -34,7 +34,7 @@ export default () => {
 						{pages.map(item => (
 							<li className="mb-3" key={item.wordpress_id}>
 								<PrimaryLink
-									className="font-bold text-lg"
+									className="font-semibold text-base text-white"
 									to={`/${item.url
 										.split('/')
 										.filter(Boolean)
@@ -53,7 +53,7 @@ export default () => {
 						{links.map((item, index) => (
 							<li className="mb-3" key={index}>
 								<PrimaryLink
-									className="font-bold text-lg"
+									className="font-semibold text-base text-white"
 									href={item.url}
 								>
 									{item.label}
@@ -68,7 +68,7 @@ export default () => {
 }
 
 const ColHeader = ({ children }) => (
-	<span className="block font-bold text-sm text-gray-700 uppercase mb-3">
+	<span className="block font-bold text-xs sm:text-sm text-green-500 uppercase mb-3">
 		{children}
 	</span>
 )

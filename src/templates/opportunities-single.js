@@ -86,7 +86,7 @@ export const query = graphql`
 						image {
 							localFile {
 								childImageSharp {
-									fixed(width: 90, height: 90) {
+									fixed(width: 90, height: 90, quality: 100) {
 										...GatsbyImageSharpFixed_withWebp
 									}
 								}
@@ -110,7 +110,11 @@ export const query = graphql`
 									alt_text
 									localFile {
 										childImageSharp {
-											fixed(width: 90, height: 90) {
+											fixed(
+												width: 90
+												height: 90
+												quality: 100
+											) {
 												...GatsbyImageSharpFixed_withWebp
 											}
 										}
