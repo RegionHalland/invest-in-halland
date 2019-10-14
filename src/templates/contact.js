@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
-import { Search } from 'react-feather'
-import Fuse from 'fuse.js'
 
 import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
 import HeroWithPost from '../components/HeroWithPost'
-
-let filteredResult = new Set()
 
 const Contact = ({
 	data: {
@@ -22,6 +18,7 @@ const Contact = ({
 		allWordpressWpContact: { nodes: contacts },
 	},
 }) => {
+	console.log(contacts)
 	return (
 		<Layout>
 			<SEO title="Kontakta oss" />
@@ -60,47 +57,57 @@ const Contact = ({
 				<div className="w-full mx-auto lg:w-10/12">
 					<div className="flex-wrap flex -mx-3">
 						{contacts.map((contact, index) => (
-							<div className="px-3 w-full sm:w-1/2" key={index}>
-								<div className="block mb-6 relative p-4 p-6 pt-64 overflow-hidden w-full outline-none bg-black">
-									<div className="relative z-10">
-										<h2 className="text-xl lg:text-3xl font-semibold font-sans text-white leading-tight break-words w-full mb-1">
-											{contact.title}
-										</h2>
-										{contact.actor.map((area, index) => (
-											<span
-												key={index}
-												className="block font-semibold text-sm md:text-base text-gray-400 mb-3"
-											>
-												{area}
-											</span>
-										))}
-										<a
-											className="text-white block underline lowercase break-words font-semibold text-base md:text-lg"
-											href={`tel:${contact.acf.phone}`}
-										>
-											{contact.acf.phone}
-										</a>
-										<a
-											className="text-white block underline lowercase break-words font-semibold text-base md:text-lg"
-											href={`mailto:${contact.acf.email}`}
-										>
-											{contact.acf.email}
-										</a>
+							<React.Fragment key={index}>
+								{contact.acf.show_on_contact_page && (
+									<div className="px-3 w-full sm:w-1/2">
+										<div className="block mb-6 relative p-4 p-6 pt-64 overflow-hidden w-full outline-none bg-black">
+											<div className="relative z-10">
+												<h2 className="text-xl lg:text-3xl font-semibold font-sans text-white leading-tight break-words w-full mb-1">
+													{contact.title}
+												</h2>
+												{contact.actor.map(
+													(area, index) => (
+														<span
+															key={index}
+															className="block font-semibold text-sm md:text-base text-gray-400 mb-3"
+														>
+															{area}
+														</span>
+													)
+												)}
+												<a
+													className="text-white block underline lowercase break-words font-semibold text-base md:text-lg"
+													href={`tel:${contact.acf.phone}`}
+												>
+													{contact.acf.phone}
+												</a>
+												<a
+													className="text-white block underline lowercase break-words font-semibold text-base md:text-lg"
+													href={`mailto:${contact.acf.email}`}
+												>
+													{contact.acf.email}
+												</a>
+											</div>
+											{contact.acf.image && (
+												<StyledImg
+													style={{
+														position: 'absolute',
+													}}
+													className="h-full w-full bottom-0 top-0 left-0 z-0 articleCard--inner"
+													objectFit="cover"
+													objectPosition="50% 50%"
+													fluid={
+														contact.acf.image
+															.localFile
+															.childImageSharp
+															.fluid
+													}
+												/>
+											)}
+										</div>
 									</div>
-									{contact.acf.image && (
-										<StyledImg
-											style={{ position: 'absolute' }}
-											className="h-full w-full bottom-0 top-0 left-0 z-0 articleCard--inner"
-											objectFit="cover"
-											objectPosition="50% 50%"
-											fluid={
-												contact.acf.image.localFile
-													.childImageSharp.fluid
-											}
-										/>
-									)}
-								</div>
-							</div>
+								)}
+							</React.Fragment>
 						))}
 					</div>
 				</div>
@@ -158,11 +165,11 @@ export const query = graphql`
 				municipality
 				actor
 				acf {
-					about
 					company
 					email
 					linkedin
 					phone
+					show_on_contact_page
 					image {
 						localFile {
 							childImageSharp {

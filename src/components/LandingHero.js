@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 import resolveConfig from 'tailwindcss/resolveConfig'
-import { useTransition, animated, config } from 'react-spring'
+import { useTransition, animated } from 'react-spring'
 
 // The values returned here are based on the default config
 // You need to pass the config as an option, but we can't since the config is outside of the project scope
