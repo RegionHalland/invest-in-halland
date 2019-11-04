@@ -5,16 +5,13 @@ import { withKnobs, object } from '@storybook/addon-knobs/react'
 
 import Button from './Button'
 
-export const actions = {
-	onClick: action('onClick'),
-}
-
 export const props = {
-	title: 'hehe',
+	title: 'Gå till sida',
+	to: '/pant',
 }
 
 storiesOf('Button', module)
 	.addDecorator(withKnobs)
 	.add('default', () => {
-		return <Button {...object('props', { ...props })} {...actions} />
+		return <Button {...object('props', { ...props })} />
 	})
