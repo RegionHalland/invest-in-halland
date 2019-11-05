@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Img from 'gatsby-image'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import { useTransition, animated } from 'react-spring'
+import tw from 'tailwind.macro'
 
 // The values returned here are based on the default config
 // You need to pass the config as an option, but we can't since the config is outside of the project scope
@@ -34,7 +35,7 @@ const Image = ({ style, image }) => {
 	)
 }
 
-export default ({ subTitle, title, image, textAlign, words }) => {
+export default ({ titleTop, titleBottom, images }) => {
 	const [index, set] = useState(0)
 
 	const carouselTransitions = useTransition(index, p => p, {
@@ -45,31 +46,21 @@ export default ({ subTitle, title, image, textAlign, words }) => {
 
 	useEffect(() => {
 		setInterval(() => {
-			set(state => (state + 1) % words.length)
+			set(state => (state + 1) % images.length)
 		}, 3500)
 	}, [])
 
 	return (
-		<HeroContainer className="relative overflow-hidden bg-black flex items-center justify-center text-center">
+		<HeroContainer className="relative overflow-hidden bg-black flex flex-col items-center justify-center text-center">
+			<h1 className="relative z-20 font-bold text-center text-white leading-tight text-4xl md:text-6xl p-3">
+				{titleTop}
+			</h1>
+			<KnockoutText>{titleBottom}</KnockoutText>
 			{carouselTransitions.map(({ item, props, key }) => {
 				return (
-					<Image key={key} style={props} image={words[item].image} />
+					<Image key={key} style={props} image={images[item].image} />
 				)
 			})}
-			<h1 className="z-20 w-full font-bold text-center text-white leading-tight text-4xl md:text-6xl mb-6">
-				{/*<span className="block">{title}</span>*/}
-				<span className="block relative text-white -mt-4">
-					{carouselTransitions.map(({ item, props, key }) => {
-						return (
-							<Title
-								key={key}
-								style={props}
-								word={words[item].word}
-							/>
-						)
-					})}
-				</span>
-			</h1>
 		</HeroContainer>
 	)
 }
@@ -95,4 +86,9 @@ const HeroContainer = styled.div`
 		opacity: 0.65;
 		width: 100%;
 	}
+`
+
+const KnockoutText = styled.span`
+	${tw`font-bold relative z-10 text-black leading-tight text-4xl md:text-6xl bg-white p-3`};
+	mix-blend-mode: screen;
 `

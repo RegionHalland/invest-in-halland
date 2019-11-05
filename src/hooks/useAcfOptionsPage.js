@@ -9,9 +9,9 @@ export const useAcfOptionsPage = () => {
 					cookie_content
 					cookie_title
 					startpage {
-						title
-						words {
-							word
+						header_title_top
+						header_title_bottom
+						header_images {
 							image {
 								alt_text
 								localFile {
