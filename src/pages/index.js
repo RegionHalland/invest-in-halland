@@ -10,6 +10,7 @@ import LandingHero from '../components/LandingHero'
 import ArticleCard from '../components/ArticleCard'
 import FactCard from '../components/FactCard'
 import MapCard from '../components/MapCard'
+import Button from '../components/Button'
 
 const IndexPage = () => {
 	const {
@@ -39,8 +40,8 @@ const IndexPage = () => {
 			/>
 
 			{/* <--	Featured Articles --> */}
-			<div className="container mx-auto z-10">
-				<div className="py-20 w-full px-3 md:w-3/4 mx-auto text-center md:text-lg">
+			<div className="container mx-auto z-10 py-12 md:py-20">
+				<div className="w-full px-3 mb-12 md:w-3/4 mx-auto text-center md:text-lg">
 					<h2 className="text-2xl md:text-4xl font-bold mb-3">
 						{featured_articles_title}
 					</h2>
@@ -105,12 +106,18 @@ const IndexPage = () => {
 						</React.Fragment>
 					))}
 				</Masonry>
+				<div className="px-3 flex justify-end">
+					<Button
+						title="Utforska fler möjligheter i Halland"
+						to="/mojligheter-i-halland"
+					/>
+				</div>
 			</div>
 
 			{/* <--	Featured Companies --> */}
-			<div className="bg-gray-200 py-16">
-				<div className="container mx-auto z-10">
-					<div className="py-20 w-full px-3 md:w-3/4 mx-auto text-center md:text-lg">
+			<div className="bg-gray-200">
+				<div className="container mx-auto z-10 py-12 md:py-20">
+					<div className="w-full mb-12 px-3 md:w-3/4 mx-auto text-center md:text-lg">
 						<h2 className="text-2xl md:text-4xl font-bold mb-3">
 							{featured_companies_title}
 						</h2>
@@ -169,6 +176,12 @@ const IndexPage = () => {
 							</React.Fragment>
 						))}
 					</Masonry>
+					<div className="px-3 flex justify-end">
+						<Button
+							title="Läs om fler företagare i Halland"
+							to="/foretagare-berattar"
+						/>
+					</div>
 				</div>
 			</div>
 		</Layout>
