@@ -15,8 +15,9 @@ const IndexPage = () => {
 	const {
 		options: {
 			startpage: {
-				title,
-				words,
+				header_title_top,
+				header_title_bottom,
+				header_images,
 				featured_articles_title,
 				featured_articles_introduction_text,
 				featured_articles,
@@ -30,7 +31,12 @@ const IndexPage = () => {
 	return (
 		<Layout>
 			<SEO title="Home" />
-			<LandingHero title={title} words={words} textAlign="center" />
+			<LandingHero
+				titleTop={header_title_top}
+				titleBottom={header_title_bottom}
+				images={header_images}
+				textAlign="center"
+			/>
 
 			{/* <--	Featured Articles --> */}
 			<div className="container mx-auto z-10">
