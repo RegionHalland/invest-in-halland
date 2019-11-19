@@ -21,7 +21,7 @@ export default ({
 			<SEO title={title} />
 			<div className="bg-black">
 				<div className="mx-auto container pt-16 lg:pt-24">
-					<div className="px-3 w-full md:w-3/4 lg:w-1/2">
+					<div className="px-3 w-full md:w-3/4 lg:w-3/4">
 						<button
 							className="inline-flex items-center text-white cursor-pointer mb-6 block"
 							onClick={e => {
@@ -35,7 +35,7 @@ export default ({
 							/>
 							<span className="leading-none mt-1">Tillbaka</span>
 						</button>
-						<h1 className="text-white font-bold text-3xl md:text-5xl xl:text-6xl leading-tight mb-4 lg:mb-8">
+						<h1 className="text-white font-bold text-3xl md:text-5xl xl:text-6xl leading-tight mb-6 lg:mb-8">
 							{title}
 						</h1>
 
