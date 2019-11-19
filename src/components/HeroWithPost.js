@@ -29,7 +29,7 @@ export default ({ subTitle, title, image, textAlign }) => {
 				</div>
 				{image && (
 					<div className="absolute bottom-0 px-3 py-6">
-						<span className="block text-sm xl:text-base text-white font-bold">
+						<span className="block text-xs xl:text-sm text-gray-400">
 							{image.title}
 						</span>
 						<span className="block text-white text-xs xl:text-sm font-medium opacity-75">

@@ -52,7 +52,7 @@ const Fomo = ({ hideFomo }) => {
 	useEffect(() => {
 		const interval = setInterval(() => {
 			setIndex(state => (state + 1) % fomo.length)
-		}, 7000)
+		}, 8000)
 
 		return () => clearInterval(interval)
 	}, [])
