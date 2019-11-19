@@ -1,22 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useTransition, animated } from 'react-spring'
 
-const itemsFromApi = [
-	{
-		title: 'Hey',
-		id: 0,
-	},
-	{
-		title: 'Hey again',
-		id: 1,
-	},
-	{
-		title: 'Hey again again',
-		id: 2,
-	},
-]
+import { useAcfOptionsPage } from '../hooks/useAcfOptionsPage'
 
-const Card = ({ title, deleteItems, hideFomo, style }) => {
+const Card = ({ title, url, deleteItems, hideFomo, style }) => {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			deleteItems()
@@ -38,13 +25,17 @@ const Card = ({ title, deleteItems, hideFomo, style }) => {
 const AnimatedCard = animated(Card)
 
 const Fomo = ({ hideFomo }) => {
+	const {
+		options: { fomo },
+	} = useAcfOptionsPage()
+
 	const [index, setIndex] = useState(0)
 	const [items, setItems] = useState([])
 
 	// Update the index
 	useEffect(() => {
 		const interval = setInterval(() => {
-			setIndex(state => (state + 1) % itemsFromApi.length)
+			setIndex(state => (state + 1) % fomo.length)
 		}, 2000)
 
 		return () => clearInterval(interval)
@@ -52,7 +43,7 @@ const Fomo = ({ hideFomo }) => {
 
 	// Update array of items
 	useEffect(() => {
-		setItems([itemsFromApi[index]])
+		setItems([fomo[index]])
 	}, [index])
 
 	const deleteItems = () => {
@@ -74,8 +65,8 @@ const Fomo = ({ hideFomo }) => {
 						...props,
 					}}
 					key={key}
-					id={item.id}
-					title={item.title}
+					title={item.fomo_message}
+					url={item.fomo_url}
 					hideFomo={hideFomo}
 					deleteItems={deleteItems}
 				/>
