@@ -3,10 +3,10 @@ import YouTube from 'react-youtube'
 import getUrls from 'get-urls'
 
 const getYoutubeId = url => {
-	const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/
+	const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#]*).*/
 	const match = url.match(regExp)
 
-	return match && match[7].length == 11 ? match[7] : false
+	return match && match[7].length === 11 ? match[7] : false
 }
 
 const YoutubeEmbed = ({ block: { innerHTML } }) => {

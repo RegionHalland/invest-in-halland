@@ -10,15 +10,6 @@ import tw from 'tailwind.macro'
 // https://tailwindcss.com/docs/configuration#referencing-in-javascript
 const screens = resolveConfig().theme.screens
 
-const Title = ({ style, word }) => (
-	<animated.h1
-		className="absolute top-0 left-0 right-0 w-full text-center"
-		style={{ ...style }}
-	>
-		{word}
-	</animated.h1>
-)
-
 const Image = ({ style, image }) => {
 	return (
 		<animated.div
@@ -45,9 +36,11 @@ export default ({ titleTop, titleBottom, images }) => {
 	})
 
 	useEffect(() => {
-		setInterval(() => {
+		const interval = setInterval(() => {
 			set(state => (state + 1) % images.length)
 		}, 3500)
+
+		return () => clearInterval(interval)
 	}, [])
 
 	return (
