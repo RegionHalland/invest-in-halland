@@ -5,6 +5,10 @@ export const useAcfOptionsPage = () => {
 		{
 			wordpressAcfOptions {
 				options {
+					fomo {
+						fomo_message
+						fomo_url
+					}
 					cookie_button_label
 					cookie_content
 					cookie_title

@@ -1,22 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useTransition, animated } from 'react-spring'
+import ReactHtmlParser from 'react-html-parser'
+import styled from 'styled-components'
+import tw from 'tailwind.macro'
+import { useAcfOptionsPage } from '../hooks/useAcfOptionsPage'
 
-const itemsFromApi = [
-	{
-		title: 'Falkenberg öppnar ny techhub för digitala entreprenörer',
-		id: 0,
-	},
-	{
-		title: 'Varberg expanderar med 400 nya kustnära bostäder',
-		id: 1,
-	},
-	{
-		title: 'HMS söker just nu över 20 mjukvaruutvecklare',
-		id: 2,
-	},
-]
-
-const Card = ({ title, deleteItems, hideFomo, style }) => {
+const Card = ({ title, url, deleteItems, hideFomo, style }) => {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			deleteItems()
@@ -30,9 +19,7 @@ const Card = ({ title, deleteItems, hideFomo, style }) => {
 			style={style}
 			className="bg-black border-l-4 border-green-500 shadow-lg p-4 md:p-5 max-w-full md:max-w-sm"
 		>
-			<span className="block mb-2 text-white text-base break-words">
-				{title}
-			</span>
+			<StyledTitle>{ReactHtmlParser(title)}</StyledTitle>
 			<div className="flex">
 				<button
 					className="mr-3 text-gray-400 text-sm"
@@ -41,7 +28,7 @@ const Card = ({ title, deleteItems, hideFomo, style }) => {
 					Stäng
 				</button>
 				<a
-					href="#"
+					href={url}
 					className="text-white text-sm underline font-semibold"
 				>
 					Läs mer
@@ -54,13 +41,17 @@ const Card = ({ title, deleteItems, hideFomo, style }) => {
 const AnimatedCard = animated(Card)
 
 const Fomo = ({ hideFomo }) => {
+	const {
+		options: { fomo },
+	} = useAcfOptionsPage()
+
 	const [index, setIndex] = useState(0)
 	const [items, setItems] = useState([])
 
 	// Update the index
 	useEffect(() => {
 		const interval = setInterval(() => {
-			setIndex(state => (state + 1) % itemsFromApi.length)
+			setIndex(state => (state + 1) % fomo.length)
 		}, 7000)
 
 		return () => clearInterval(interval)
@@ -68,7 +59,7 @@ const Fomo = ({ hideFomo }) => {
 
 	// Update array of items
 	useEffect(() => {
-		setItems([itemsFromApi[index]])
+		setItems([fomo[index]])
 	}, [index])
 
 	const deleteItems = () => {
@@ -99,8 +90,8 @@ const Fomo = ({ hideFomo }) => {
 						...props,
 					}}
 					key={key}
-					id={item.id}
-					title={item.title}
+					title={item.fomo_message}
+					url={item.fomo_url}
 					hideFomo={hideFomo}
 					deleteItems={deleteItems}
 				/>
@@ -108,5 +99,15 @@ const Fomo = ({ hideFomo }) => {
 		</div>
 	)
 }
+
+const StyledTitle = styled.span`
+	${tw`block mb-2 text-white text-base break-words`};
+	p {
+		${tw`font-normal`};
+	}
+	strong {
+		${tw`font-semibold`};
+	}
+`
 
 export default Fomo
