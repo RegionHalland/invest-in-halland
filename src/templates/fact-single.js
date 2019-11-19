@@ -6,7 +6,6 @@ import styled from 'styled-components'
 
 import PrimaryLink from '../components/PrimaryLink'
 
-import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
 
 import Article from '../components/Article'
@@ -18,7 +17,7 @@ export default ({
 	},
 }) => {
 	return (
-		<Layout>
+		<main>
 			<SEO title={title} />
 			<div className="bg-black">
 				<div className="mx-auto container pt-16 lg:pt-24">
@@ -91,7 +90,7 @@ export default ({
 					/>
 				)}
 			</div>
-		</Layout>
+		</main>
 	)
 }
 

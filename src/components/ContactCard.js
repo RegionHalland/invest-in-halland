@@ -2,7 +2,6 @@ import React from 'react'
 import Img from 'gatsby-image'
 
 export default ({ name, email, phone, img, company }) => {
-	console.log(img)
 	return (
 		<div>
 			<Img className="mb-3" fluid={img} />

@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
 import HeroWithPost from '../components/HeroWithPost'
 import ArticleGrid from '../components/ArticleGrid'
@@ -15,7 +14,7 @@ export default ({
 	},
 }) => {
 	return (
-		<Layout>
+		<main>
 			<SEO title="Möjligheter i Halland" />
 			<HeroWithPost
 				image={opportunities_hero_content.featured_image}
@@ -23,7 +22,7 @@ export default ({
 				title={opportunities_hero_content.title}
 			/>
 			<ArticleGrid articles={opportunities} />
-		</Layout>
+		</main>
 	)
 }
 

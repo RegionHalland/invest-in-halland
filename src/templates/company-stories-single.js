@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
 
 import HeroWithPost from '../components/HeroWithPost'
@@ -16,7 +15,7 @@ export default ({
 	const subtitle = area && area.length ? area[0].name : null
 
 	return (
-		<Layout>
+		<main>
 			<SEO title={title} />
 			<HeroWithPost
 				title={title}
@@ -43,7 +42,7 @@ export default ({
 					}
 				/>
 			)}
-		</Layout>
+		</main>
 	)
 }
 

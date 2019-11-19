@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
 import HeroWithPost from '../components/HeroWithPost'
 import ContactCard from '../components/ContactCard'
@@ -18,7 +17,7 @@ const Contact = ({
 	},
 }) => {
 	return (
-		<Layout>
+		<main>
 			<SEO title="Kontakta oss" />
 			<HeroWithPost
 				subTitle={sub_title}
@@ -50,7 +49,7 @@ const Contact = ({
 					))}
 				</div>
 			</div>
-		</Layout>
+		</main>
 	)
 }
 

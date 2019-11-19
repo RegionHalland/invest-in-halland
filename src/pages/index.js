@@ -4,7 +4,6 @@ import Masonry from 'react-masonry-component'
 
 import { useAcfOptionsPage } from '../hooks/useAcfOptionsPage'
 
-import Layout from '../layouts/Default'
 import SEO from '../components/Seo'
 import LandingHero from '../components/LandingHero'
 import ArticleCard from '../components/ArticleCard'
@@ -30,7 +29,7 @@ const IndexPage = () => {
 	} = useAcfOptionsPage()
 
 	return (
-		<Layout>
+		<main>
 			<SEO title="Home" />
 			<LandingHero
 				titleTop={header_title_top}
@@ -184,7 +183,7 @@ const IndexPage = () => {
 					</div>
 				</div>
 			</div>
-		</Layout>
+		</main>
 	)
 }
 
