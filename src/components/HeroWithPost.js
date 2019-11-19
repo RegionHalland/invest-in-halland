@@ -28,11 +28,11 @@ export default ({ subTitle, title, image, textAlign }) => {
 					</h1>
 				</div>
 				{image && (
-					<div className="absolute bottom-0 px-3 py-6">
-						<span className="block text-sm xl:text-base text-white font-bold">
+					<div className="absolute bottom-0 right-0 px-3 py-6">
+						<span className="block text-xs xl:text-sm text-white text-right">
 							{image.title}
 						</span>
-						<span className="block text-white text-xs xl:text-sm font-medium opacity-75">
+						<span className="block text-white text-xs xl:text-sm font-medium opacity-75 text-right">
 							{ReactHtmlParser(image.caption)}
 						</span>
 					</div>

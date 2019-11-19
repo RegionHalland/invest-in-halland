@@ -1,23 +1,39 @@
 import React, { useState, useEffect } from 'react'
 import { useTransition, animated } from 'react-spring'
-
+import ReactHtmlParser from 'react-html-parser'
+import styled from 'styled-components'
+import tw from 'tailwind.macro'
 import { useAcfOptionsPage } from '../hooks/useAcfOptionsPage'
 
 const Card = ({ title, url, deleteItems, hideFomo, style }) => {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			deleteItems()
-		}, 1000)
+		}, 4000)
 
 		return () => clearTimeout(timer)
 	}, [])
 
 	return (
-		<div style={style} className="bg-gray-300 rounded p-3">
-			<span className="block mb-1">{title}</span>
-			<button className="block " onClick={hideFomo}>
-				Stäng
-			</button>
+		<div
+			style={style}
+			className="bg-black border-l-4 border-green-500 shadow-lg p-4 md:p-5 max-w-full md:max-w-sm"
+		>
+			<StyledTitle>{ReactHtmlParser(title)}</StyledTitle>
+			<div className="flex">
+				<button
+					className="mr-3 text-gray-400 text-sm"
+					onClick={hideFomo}
+				>
+					Stäng
+				</button>
+				<a
+					href={url}
+					className="text-white text-sm underline font-semibold"
+				>
+					Läs mer
+				</a>
+			</div>
 		</div>
 	)
 }
@@ -36,7 +52,7 @@ const Fomo = ({ hideFomo }) => {
 	useEffect(() => {
 		const interval = setInterval(() => {
 			setIndex(state => (state + 1) % fomo.length)
-		}, 2000)
+		}, 8000)
 
 		return () => clearInterval(interval)
 	}, [])
@@ -51,13 +67,22 @@ const Fomo = ({ hideFomo }) => {
 	}
 
 	const transitions = useTransition(items, item => item.id, {
-		from: { opacity: 0, transform: 'translate3d(0,40px,0)' },
-		enter: { opacity: 1, transform: 'translate3d(0,0,0)' },
-		leave: { opacity: 0, transform: 'translate3d(0,40px,0)' },
+		from: {
+			opacity: 0,
+			transform: 'translate3d(0,40px,0) rotateX(-20deg)',
+		},
+		enter: { opacity: 1, transform: 'translate3d(0,0,0) rotateX(0deg)' },
+		leave: {
+			opacity: 0,
+			transform: 'translate3d(0,40px,0) rotateX(-20deg)',
+		},
 	})
 
 	return (
-		<div className="fixed bottom-0 left-0 mb-3 ml-3 z-50">
+		<div
+			style={{ perspective: '999px' }}
+			className="fixed bottom-0 left-0 mb-3 ml-3 mr-3 z-50"
+		>
 			{transitions.map(({ item, props, key }) => (
 				<AnimatedCard
 					style={{
@@ -74,5 +99,15 @@ const Fomo = ({ hideFomo }) => {
 		</div>
 	)
 }
+
+const StyledTitle = styled.span`
+	${tw`block mb-2 text-white text-base break-words`};
+	p {
+		${tw`font-normal`};
+	}
+	strong {
+		${tw`font-semibold`};
+	}
+`
 
 export default Fomo

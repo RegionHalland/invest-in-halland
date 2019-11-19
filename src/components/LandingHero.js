@@ -38,7 +38,7 @@ export default ({ titleTop, titleBottom, images }) => {
 	useEffect(() => {
 		const interval = setInterval(() => {
 			set(state => (state + 1) % images.length)
-		}, 3500)
+		}, 2000)
 
 		return () => clearInterval(interval)
 	}, [])
