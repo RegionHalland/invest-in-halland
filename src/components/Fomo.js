@@ -3,15 +3,15 @@ import { useTransition, animated } from 'react-spring'
 
 const itemsFromApi = [
 	{
-		title: 'Hey',
+		title: 'Falkenberg öppnar ny techhub för digitala entreprenörer',
 		id: 0,
 	},
 	{
-		title: 'Hey again',
+		title: 'Varberg expanderar med 400 nya kustnära bostäder',
 		id: 1,
 	},
 	{
-		title: 'Hey again again',
+		title: 'HMS söker just nu över 20 mjukvaruutvecklare',
 		id: 2,
 	},
 ]
@@ -20,17 +20,33 @@ const Card = ({ title, deleteItems, hideFomo, style }) => {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			deleteItems()
-		}, 1000)
+		}, 4000)
 
 		return () => clearTimeout(timer)
 	}, [])
 
 	return (
-		<div style={style} className="bg-gray-300 rounded p-3">
-			<span className="block mb-1">{title}</span>
-			<button className="block " onClick={hideFomo}>
-				Stäng
-			</button>
+		<div
+			style={style}
+			className="bg-black border-l-4 border-green-500 shadow-lg p-4 md:p-5 max-w-full md:max-w-sm"
+		>
+			<span className="block mb-2 text-white text-base break-words">
+				{title}
+			</span>
+			<div className="flex">
+				<button
+					className="mr-3 text-gray-400 text-sm"
+					onClick={hideFomo}
+				>
+					Stäng
+				</button>
+				<a
+					href="#"
+					className="text-white text-sm underline font-semibold"
+				>
+					Läs mer
+				</a>
+			</div>
 		</div>
 	)
 }
@@ -45,7 +61,7 @@ const Fomo = ({ hideFomo }) => {
 	useEffect(() => {
 		const interval = setInterval(() => {
 			setIndex(state => (state + 1) % itemsFromApi.length)
-		}, 2000)
+		}, 7000)
 
 		return () => clearInterval(interval)
 	}, [])
@@ -60,13 +76,22 @@ const Fomo = ({ hideFomo }) => {
 	}
 
 	const transitions = useTransition(items, item => item.id, {
-		from: { opacity: 0, transform: 'translate3d(0,40px,0)' },
-		enter: { opacity: 1, transform: 'translate3d(0,0,0)' },
-		leave: { opacity: 0, transform: 'translate3d(0,40px,0)' },
+		from: {
+			opacity: 0,
+			transform: 'translate3d(0,40px,0) rotateX(-20deg)',
+		},
+		enter: { opacity: 1, transform: 'translate3d(0,0,0) rotateX(0deg)' },
+		leave: {
+			opacity: 0,
+			transform: 'translate3d(0,40px,0) rotateX(-20deg)',
+		},
 	})
 
 	return (
-		<div className="fixed bottom-0 left-0 mb-3 ml-3 z-50">
+		<div
+			style={{ perspective: '999px' }}
+			className="fixed bottom-0 left-0 mb-3 ml-3 mr-3 z-50"
+		>
 			{transitions.map(({ item, props, key }) => (
 				<AnimatedCard
 					style={{
