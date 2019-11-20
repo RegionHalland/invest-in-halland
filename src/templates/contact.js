@@ -27,7 +27,7 @@ const Contact = ({
 			<div className="container px-3 mx-auto flex -mt-12 z-20 relative pb-16">
 				<div className="flex-wrap w-full flex md:-mx-3">
 					{contacts.map((contact, index) => (
-						<React.Fragment>
+						<React.Fragment key={index}>
 							{contact.acf.show_on_contact_page && (
 								<div
 									className="w-full md:w-6/12 lg:w-4/12 md:px-3 mb-8"

@@ -54,6 +54,13 @@ module.exports = {
 				},
 			},
 		},
+		{
+			resolve: 'gatsby-plugin-hotjar',
+			options: {
+				id: '1580001',
+				sv: '6',
+			},
+		},
 		'gatsby-plugin-sharp',
 		'gatsby-transformer-sharp',
 		{
