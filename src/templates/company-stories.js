@@ -38,6 +38,9 @@ export const query = graphql`
 					name
 					id
 				}
+				acf {
+					highlight
+				}
 				featured_media {
 					title
 					caption

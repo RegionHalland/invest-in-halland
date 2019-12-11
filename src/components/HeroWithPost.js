@@ -4,12 +4,14 @@ import styled from 'styled-components'
 import Img from 'gatsby-image'
 import resolveConfig from 'tailwindcss/resolveConfig'
 
+import ColorText from './ColorText'
+
 // The values returned here are based on the default config
 // You need to pass the config as an option, but we can't since the config is outside of the project scope
 // https://tailwindcss.com/docs/configuration#referencing-in-javascript
 const screens = resolveConfig().theme.screens
 
-export default ({ subTitle, title, image, textAlign }) => {
+export default ({ subTitle, title, image, textAlign, highlights }) => {
 	return (
 		<HeroContainer className="relative flex flex-wrap items-center py-8 bg-black">
 			<div className="container mx-auto z-10">
@@ -19,13 +21,13 @@ export default ({ subTitle, title, image, textAlign }) => {
 							{subTitle}
 						</span>
 					)}
-					<h1
+					<ColorText
+						title={title}
+						highlights={highlights}
 						className={`${
 							textAlign ? `text-${textAlign} ` : ''
 						}block text-white font-bold text-3xl md:text-5xl xl:text-6xl leading-tight`}
-					>
-						{ReactHtmlParser(title)}
-					</h1>
+					/>
 				</div>
 				{image && (
 					<div className="absolute bottom-0 right-0 px-3 py-6">

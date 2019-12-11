@@ -4,6 +4,7 @@ import Img from 'gatsby-image'
 import { ChevronLeft } from 'react-feather'
 import styled from 'styled-components'
 
+import ColorText from '../components/ColorText'
 import PrimaryLink from '../components/PrimaryLink'
 
 import SEO from '../components/Seo'
@@ -35,9 +36,11 @@ export default ({
 							/>
 							<span className="leading-none mt-1">Tillbaka</span>
 						</button>
-						<h1 className="text-white font-bold text-3xl md:text-5xl xl:text-6xl leading-tight mb-6 lg:mb-8">
-							{title}
-						</h1>
+						<ColorText
+							className="text-white font-bold text-3xl md:text-5xl xl:text-6xl leading-tight mb-6 lg:mb-8"
+							highlights={acf.highlight}
+							title={title}
+						/>
 
 						<Article blocks={blocks} acf={acf} inverse={true} />
 
@@ -110,6 +113,7 @@ export const query = graphql`
 				innerHTML
 			}
 			acf {
+				highlight
 				contact {
 					post_title
 					acf {

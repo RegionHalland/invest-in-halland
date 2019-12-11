@@ -99,6 +99,7 @@ export default ({ articles }) => {
 					>
 						<ArticleCard
 							title={article.title}
+							highlights={article.acf.highlight}
 							key={article.id}
 							url={article.path}
 							randomHeight={true}

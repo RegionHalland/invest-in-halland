@@ -19,6 +19,7 @@ export default ({
 			<SEO title={title} />
 			<HeroWithPost
 				title={title}
+				highlights={acf.highlight}
 				subtitle={subtitle}
 				image={featured_media ? featured_media : null}
 			/>
@@ -86,6 +87,7 @@ export const query = graphql`
 				}
 			}
 			acf {
+				highlight
 				contact {
 					post_title
 					acf {

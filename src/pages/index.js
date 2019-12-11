@@ -76,6 +76,7 @@ const IndexPage = () => {
 									<ArticleCard
 										randomHeight={true}
 										title={article.title}
+										highlights={article.highlight}
 										url={article.path}
 										subtitle={
 											article.area && article.area.length
@@ -98,6 +99,7 @@ const IndexPage = () => {
 										alignment="center"
 										fontSize="large"
 										title={article.title}
+										highlights={article.highlight}
 										url={article.path}
 									/>
 								)}
@@ -144,6 +146,7 @@ const IndexPage = () => {
 										<ArticleCard
 											randomHeight={true}
 											title={article.title}
+											highlights={article.highlight}
 											url={article.path}
 											subtitle={
 												article.area &&
@@ -168,6 +171,7 @@ const IndexPage = () => {
 											alignment="center"
 											fontSize="large"
 											title={article.title}
+											highlights={article.highlight}
 											url={article.path}
 										/>
 									)}

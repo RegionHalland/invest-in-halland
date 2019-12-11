@@ -37,6 +37,7 @@ export const useAcfOptionsPage = () => {
 							area {
 								name
 							}
+							highlight
 							contact {
 								post_title
 								acf {
@@ -76,6 +77,7 @@ export const useAcfOptionsPage = () => {
 							wordpress_id
 							post_type
 							path
+							highlight
 							area {
 								name
 							}

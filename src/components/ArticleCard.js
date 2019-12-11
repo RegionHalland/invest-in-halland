@@ -5,13 +5,22 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
+import ColorText from './ColorText'
+
 const paddings = [
 	'pt-40 md:pt-40 lg:pt-48',
 	'pt-48 md:pt-48 lg:pt-56',
 	'pt-56 md:pt-56 lg:pt-64',
 ]
 
-const ArticleCard = ({ title, subtitle, img, url, randomHeight }) => {
+const ArticleCard = ({
+	title,
+	subtitle,
+	img,
+	url,
+	randomHeight,
+	highlights,
+}) => {
 	// If the randomHeight prop is passed, give each card
 	// a random padding for more variation when they are stacked in a grid.
 	const padding = randomHeight
@@ -27,9 +36,11 @@ const ArticleCard = ({ title, subtitle, img, url, randomHeight }) => {
 				<span className="uppercase text-xs font-sans font-medium text-gray-300 mb-1 md:mb-2 block">
 					{ReactHtmlParser(subtitle)}
 				</span>
-				<h2 className="text-2xl lg:text-3xl font-semibold font-sans text-white leading-tight break-words w-full">
-					{ReactHtmlParser(title)}
-				</h2>
+				<ColorText
+					className="text-2xl lg:text-3xl font-semibold font-sans text-white leading-tight break-words w-full"
+					highlights={highlights}
+					title={title}
+				/>
 			</div>
 			{img && (
 				<StyledImg
