@@ -34,7 +34,6 @@ const FactCard = ({
 		? paddings[Math.floor(Math.random() * paddings.length)]
 		: paddings[paddings.length - 1]
 
-	console.log(chart)
 	const ChartComponent = chart ? charts[chart] : null
 
 	return (
@@ -46,7 +45,7 @@ const FactCard = ({
 				className={`hover:opacity-25 flex flex-col h-full w-full relative z-10 justify-${alignment} ${padding}`}
 			>
 				<ColorText
-					className="text-2xl lg:text-3xl font-semibold font-sans mb-2 text-white leading-tight break-words w-full"
+					className="text-3xl lg:text-4xl font-semibold font-sans mb-2 text-white leading-tight break-words w-full"
 					highlights={highlights}
 					title={title}
 				/>
