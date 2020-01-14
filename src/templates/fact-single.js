@@ -111,6 +111,20 @@ export const query = graphql`
 			blocks {
 				blockName
 				innerHTML
+				attrs {
+					data {
+						introduction
+						summary_answer_2
+						summary_answer_1
+						summary_answer_3
+						summary_answer_4
+						summary_question_1
+						summary_question_3
+						summary_question_2
+						summary_question_4
+						summary_title
+					}
+				}
 			}
 			acf {
 				highlight
