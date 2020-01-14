@@ -38,6 +38,7 @@ export default ({
 				url={fact.gatsby_url}
 				contactName={fact.acf.contact.post_title}
 				contactCompany={fact.acf.contact.acf.company}
+				chart={fact.acf.fact_chart}
 				contactImg={
 					fact.acf.contact.acf.image
 						? fact.acf.contact.acf.image.sizes.thumbnail

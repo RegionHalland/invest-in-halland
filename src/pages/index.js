@@ -101,6 +101,7 @@ const IndexPage = () => {
 										title={article.title}
 										highlights={article.highlight}
 										url={article.path}
+										chart={article.fact_chart}
 									/>
 								)}
 							</li>
@@ -173,6 +174,7 @@ const IndexPage = () => {
 											title={article.title}
 											highlights={article.highlight}
 											url={article.path}
+											chart={article.fact_chart}
 										/>
 									)}
 								</li>
