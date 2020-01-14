@@ -8,7 +8,7 @@ const PieChart = () => (
 		fill="none"
 		viewBox="0 0 300 300"
 	>
-		<g fill="#fff" clip-path="url(#clip0)">
+		<g fill="#fff" clipPath="url(#clip0)">
 			<path
 				d="M86.62 347.38a166.004 166.004 0 01-35.984-180.905A166.01 166.01 0 0186.62 112.62l46.952 46.952A99.593 99.593 0 00104.4 230a99.593 99.593 0 0029.172 70.428L86.62 347.38z"
 				opacity="0.1"
