@@ -46,6 +46,7 @@ export const useAcfOptionsPage = () => {
 								name
 							}
 							highlight
+							fact_chart
 							contact {
 								post_title
 								acf {
