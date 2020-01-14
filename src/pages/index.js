@@ -17,7 +17,8 @@ const IndexPage = () => {
 			startpage: {
 				header_title_top,
 				header_title_bottom,
-				header_images,
+				image_1,
+				image_2,
 				featured_articles_title,
 				featured_articles_introduction_text,
 				featured_articles,
@@ -34,7 +35,8 @@ const IndexPage = () => {
 			<LandingHero
 				titleTop={header_title_top}
 				titleBottom={header_title_bottom}
-				images={header_images}
+				image_1={image_1}
+				image_2={image_2}
 				textAlign="center"
 			/>
 

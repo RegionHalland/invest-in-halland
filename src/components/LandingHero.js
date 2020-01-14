@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 import resolveConfig from 'tailwindcss/resolveConfig'
-import { useTransition, animated } from 'react-spring'
 import tw from 'tailwind.macro'
 
 // The values returned here are based on the default config
@@ -10,63 +9,47 @@ import tw from 'tailwind.macro'
 // https://tailwindcss.com/docs/configuration#referencing-in-javascript
 const screens = resolveConfig().theme.screens
 
-const Image = ({ style, image }) => {
+export default ({ titleTop, titleBottom, image_1, image_2 }) => {
 	return (
-		<animated.div
-			style={{ ...style }}
-			className="absolute h-full w-full bottom-0 top-0 z-0"
-		>
-			<Img
-				className="absolute h-full w-full bottom-0 top-0 z-0"
-				objectFit="cover"
-				objectPosition="50% 50%"
-				fluid={image.localFile.childImageSharp.fluid}
-			/>
-		</animated.div>
-	)
-}
+		<HeroContainer className="relative overflow-hidden bg-black flex flex-col sm:flex-row">
+			<div className="bg-gray-700 flex items-center justify-center flex-1 w-full sm:w-6/12 relative">
+				<h1 className="relative z-20 font-bold text-center text-white leading-tight text-3xl md:text-4xl lg:text-6xl p-3">
+					{titleTop}
+				</h1>
+				<div className="absolute h-full w-full left-0 top-0">
+					<Img
+						className="h-full w-full z-0"
+						objectFit="cover"
+						objectPosition="50% 50%"
+						fluid={image_1.localFile.childImageSharp.fluid}
+					/>
+				</div>
+			</div>
 
-export default ({ titleTop, titleBottom, images }) => {
-	const [index, set] = useState(0)
-
-	const carouselTransitions = useTransition(index, p => p, {
-		from: { opacity: 0 },
-		enter: { opacity: 1 },
-		leave: { opacity: 0 },
-	})
-
-	useEffect(() => {
-		const interval = setInterval(() => {
-			set(state => (state + 1) % images.length)
-		}, 2000)
-
-		return () => clearInterval(interval)
-	}, [])
-
-	return (
-		<HeroContainer className="relative overflow-hidden bg-black flex flex-col items-center justify-center text-center">
-			<h1 className="relative z-20 font-bold text-center text-white leading-tight text-4xl md:text-6xl p-3">
-				{titleTop}
-			</h1>
-			<KnockoutText>{titleBottom}</KnockoutText>
-			{carouselTransitions.map(({ item, props, key }) => {
-				return (
-					<Image key={key} style={props} image={images[item].image} />
-				)
-			})}
+			<div className="flex items-center justify-center flex-1 w-full sm:w-6/12 relative">
+				<KnockoutText>{titleBottom}</KnockoutText>
+				<div className="absolute h-full w-full left-0 top-0">
+					<Img
+						className="h-full w-full z-0"
+						objectFit="cover"
+						objectPosition="50% 50%"
+						fluid={image_2.localFile.childImageSharp.fluid}
+					/>
+				</div>
+			</div>
 		</HeroContainer>
 	)
 }
 
 const HeroContainer = styled.div`
-	height: 24rem;
+	height: 28rem;
 
 	@media screen and (min-width: ${screens.md}) {
 		height: 40rem;
 	}
 
 	@media screen and (min-width: ${screens.xl}) {
-		height: 56rem;
+		height: 42rem;
 	}
 
 	&:after {
@@ -82,6 +65,6 @@ const HeroContainer = styled.div`
 `
 
 const KnockoutText = styled.span`
-	${tw`font-bold relative z-10 text-black leading-tight text-4xl md:text-6xl bg-white p-3`};
+	${tw`font-bold relative z-10 text-black leading-tight text-3xl md:text-4xl lg:text-6xl bg-white p-3`};
 	mix-blend-mode: screen;
 `

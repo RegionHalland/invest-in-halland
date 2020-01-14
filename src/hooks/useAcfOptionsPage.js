@@ -15,14 +15,22 @@ export const useAcfOptionsPage = () => {
 					startpage {
 						header_title_top
 						header_title_bottom
-						header_images {
-							image {
-								alt_text
-								localFile {
-									childImageSharp {
-										fluid(maxWidth: 1920, quality: 100) {
-											...GatsbyImageSharpFluid_withWebp_noBase64
-										}
+						image_1 {
+							alt_text
+							localFile {
+								childImageSharp {
+									fluid(maxWidth: 1920, quality: 100) {
+										...GatsbyImageSharpFluid_withWebp_noBase64
+									}
+								}
+							}
+						}
+						image_2 {
+							alt_text
+							localFile {
+								childImageSharp {
+									fluid(maxWidth: 1920, quality: 100) {
+										...GatsbyImageSharpFluid_withWebp_noBase64
 									}
 								}
 							}
