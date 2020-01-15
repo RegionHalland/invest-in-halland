@@ -9,7 +9,7 @@ import Fomo from '../components/Fomo'
 const Layout = ({ children }) => {
 	const [cookies, setCookie] = useCookies()
 	const [showNotice, setShowNotice] = useState(false)
-	const [showFomo, setShowFomo] = useState(true)
+	const [showFomo, setShowFomo] = useState(false)
 
 	const handleShowNotice = val => {
 		setShowNotice(val)
@@ -23,8 +23,18 @@ const Layout = ({ children }) => {
 
 	useEffect(() => {
 		setShowNotice(cookies.cookies_consent !== 'accepted')
-		setShowFomo(cookies.show_fomo !== 'false')
+		setShowFomo(
+			cookies.cookies_consent === 'accepted' &&
+				cookies.show_fomo !== 'false'
+		)
 	}, [])
+
+	useEffect(() => {
+		setShowFomo(
+			cookies.cookies_consent === 'accepted' &&
+				cookies.show_fomo !== 'false'
+		)
+	}, [cookies])
 
 	return (
 		<CookiesProvider>
