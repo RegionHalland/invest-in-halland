@@ -17,7 +17,7 @@ const Card = ({ title, url, deleteItems, hideFomo, style }) => {
 	return (
 		<div
 			style={style}
-			className="bg-black border-l-4 border-green-500 shadow-lg p-4 md:p-5 max-w-full md:max-w-sm"
+			className="bg-black border-l-4 border-green-500 shadow-lg p-4 md:p-5 w-10/12 md:max-w-sm"
 		>
 			<StyledTitle>{ReactHtmlParser(title)}</StyledTitle>
 			<div className="flex">
