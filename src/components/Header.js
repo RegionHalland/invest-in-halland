@@ -62,7 +62,11 @@ export default ({ siteTitle }) => {
 								style={props}
 								className="absolute z-40 md:hidden bg-white w-full border-b-4 border-green-500"
 							>
-								<MobileMenu pages={pages} links={links} />
+								<MobileMenu
+									pages={pages}
+									links={links}
+									setMenuOpen={setMenuOpen}
+								/>
 							</animated.div>
 						)
 				)}
@@ -71,7 +75,11 @@ export default ({ siteTitle }) => {
 	)
 }
 
-const MobileMenu = ({ pages, links }) => {
+const MobileMenu = ({ pages, links, setMenuOpen }) => {
+	const closeMenu = () => {
+		setMenuOpen(false)
+	}
+
 	return (
 		<React.Fragment>
 			<div className="py-6">
@@ -86,6 +94,7 @@ const MobileMenu = ({ pages, links }) => {
 								key={item.wordpress_id}
 							>
 								<PrimaryLink
+									onClick={closeMenu}
 									className="font-bold text-xl"
 									to={`/${item.url
 										.split('/')
