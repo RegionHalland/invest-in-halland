@@ -17,7 +17,7 @@ export default ({ title, category, url }) => (
 			xmlns="http://www.w3.org/2000/svg"
 			className="absolute h-full relative w-full"
 		>
-			<g clipPath="url(#clip0)">
+			<g>
 				<path
 					fillRule="evenodd"
 					clipRule="evenodd"
