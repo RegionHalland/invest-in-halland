@@ -32,7 +32,11 @@ export default ({ siteTitle }) => {
 			<div className="relative z-50 bg-white w-full">
 				<div className="container mx-auto flex flex-wrap justify-between items-center">
 					<div className="px-3">
-						<Link className="block" to="/">
+						<Link
+							className="block"
+							to="/"
+							onClick={() => setMenuOpen(false)}
+						>
 							{breakpoint === 'md' ? (
 								<LogoSymbol style={{ width: '32px' }} />
 							) : (
