@@ -10,7 +10,6 @@ import ArticleCard from '../components/ArticleCard'
 import FactCard from '../components/FactCard'
 import MapCard from '../components/MapCard'
 import Button from '../components/Button'
-import Video from '../components/Video'
 
 const IndexPage = () => {
 	const {
@@ -47,10 +46,6 @@ const IndexPage = () => {
 					<h2 className="text-2xl md:text-4xl font-bold mb-3">
 						{featured_articles_title}
 					</h2>
-					<Video
-						videoSrcURL="https://www.youtube.com/embed/2sSGlE1jIAA"
-						title="Nothing but opportunities - video"
-					/>
 					<div>
 						{ReactHtmlParser(featured_articles_introduction_text)}
 					</div>
