@@ -46,6 +46,10 @@ module.exports = {
 					200: '#D1E4EF',
 				},
 			},
+			height: {
+				96: '24rem',
+				128: '32rem',
+			},
 		},
 	},
 	plugins: [require('@digitaliseringsbyran/tailwindcss-screens-in-dom')()],
