@@ -16,3 +16,9 @@ const EmbeddedVideo = ({ videoSrcURL, videoTitle, ...props }) => (
 		/>
 	</div>
 )
+
+const StyledIframe = styled.iframe`
+	${tw`w-full h-48 md:h-64 lg:h-96`};
+`
+
+export default EmbeddedVideo
