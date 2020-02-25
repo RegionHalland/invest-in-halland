@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { CookiesProvider, useCookies } from 'react-cookie'
+import useTailwindBreakpoint from '../hooks/useTailwindBreakpoint'
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -20,6 +21,8 @@ const Layout = ({ children }) => {
 		setShowFomo(false)
 		setCookie('show_fomo', 'false', { path: '/' })
 	}
+
+	const breakpoint = useTailwindBreakpoint()
 
 	useEffect(() => {
 		setShowNotice(cookies.cookies_consent !== 'accepted')
@@ -43,7 +46,9 @@ const Layout = ({ children }) => {
 				<Header />
 				<main>{children}</main>
 				<Footer />
-				{showFomo && <Fomo hideFomo={hideFomo} />}
+				{showFomo && breakpoint !== 'xs' && breakpoint !== 'sm' && (
+					<Fomo hideFomo={hideFomo} />
+				)}
 			</div>
 		</CookiesProvider>
 	)
