@@ -10,6 +10,7 @@ import ArticleCard from '../components/ArticleCard'
 import FactCard from '../components/FactCard'
 import MapCard from '../components/MapCard'
 import Button from '../components/Button'
+import Video from '../components/Video'
 
 const IndexPage = () => {
 	const {
@@ -116,6 +117,17 @@ const IndexPage = () => {
 						to="/mojligheter-i-halland"
 					/>
 				</div>
+			</div>
+
+			<div className="relative pb-12 px-3">
+				<div className="container mx-auto flex items-end relative z-40">
+					<Video
+						className="w-full h-30vh md:h-40vh lg:h-40vh xl:h-60vh relative z-20"
+						videoSrcURL="https://player.vimeo.com/video/391449909"
+						title="Nothing but opportunities - video"
+					/>
+				</div>
+				<div className="absolute w-full h-64 bg-black bottom-0 left-0 right-0"></div>
 			</div>
 
 			{/* <--	Featured Companies --> */}

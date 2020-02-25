@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import tw from 'tailwind.macro'
 
 const Video = ({ videoSrcURL, videoTitle, ...props }) => (
-	<div className="w-full lg:w-10/12 mx-auto mb-5">
+	<div {...props}>
 		<StyledIframe
 			src={videoSrcURL}
 			title={videoTitle}
@@ -18,7 +18,7 @@ const Video = ({ videoSrcURL, videoTitle, ...props }) => (
 )
 
 const StyledIframe = styled.iframe`
-	${tw`w-full h-48 md:h-64 lg:h-96`};
+	${tw`w-full h-full`};
 `
 
 export default Video
