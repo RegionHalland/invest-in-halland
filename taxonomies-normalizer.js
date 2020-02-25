@@ -4,9 +4,22 @@ module.exports = ({ entities }) => {
 	const municipalities = entities.filter(
 		e => e.__type === `wordpress__wp_municipality`
 	)
+	const contacts = entities.filter(e => e.__type === `wordpress__wp_contact`)
 
 	return entities.map(e => {
 		if (e.__type === `wordpress__wp_company_story`) {
+			e.blocks.forEach(item => {
+				if (item.attrs.name !== 'acf/contact') {
+					return
+				}
+
+				const contactId = item.attrs.data.contact_relationship
+
+				item.attrs.data.contact_relationship = contacts.find(
+					x => x.wordpress_id === contactId
+				)
+			})
+
 			let hasAreas = e.area && Array.isArray(e.area) && e.area.length
 			// Replace areas with links to their nodes.
 			if (hasAreas) {
