@@ -5,12 +5,14 @@ import Fact from './blocks/Fact'
 import Introduction from './blocks/Introduction'
 import Summary from './blocks/Summary'
 import YoutubeEmbed from './blocks/YoutubeEmbed'
+import Contact from './blocks/Contact'
 
 const Components = {
 	'acf/fact': Fact,
 	'acf/introduction': Introduction,
 	'acf/summary': Summary,
 	'core-embed/youtube': YoutubeEmbed,
+	'acf/contact': Contact,
 }
 
 const BlocksParser = ({ blocks }) => {
