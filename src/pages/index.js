@@ -127,7 +127,7 @@ const IndexPage = () => {
 						title="Nothing but opportunities - video"
 					/>
 				</div>
-				<div className="absolute w-full h-64 bg-black bottom-0 left-0 right-0"></div>
+				<div className="absolute border-t-8 border-green-500 w-full h-64 bg-black bottom-0 left-0 right-0"></div>
 			</div>
 
 			{/* <--	Featured Companies --> */}
