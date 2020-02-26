@@ -6,6 +6,8 @@ module.exports = ({ entities }) => {
 	)
 	const contacts = entities.filter(e => e.__type === `wordpress__wp_contact`)
 
+	console.log(contacts[0].wordpress_id, typeof contacts[0].wordpress_id)
+
 	return entities.map(e => {
 		if (e.__type === `wordpress__wp_company_story`) {
 			e.blocks.forEach(item => {
@@ -13,10 +15,14 @@ module.exports = ({ entities }) => {
 					return
 				}
 
-				const contactId = item.attrs.data.contact_relationship
+				const contactId = item.attrs.data.contact_relationship[0]
+
+				if (!contactId) {
+					return
+				}
 
 				item.attrs.data.contact_relationship = contacts.find(
-					x => x.wordpress_id === contactId
+					x => x.wordpress_id === parseInt(contactId)
 				)
 			})
 
