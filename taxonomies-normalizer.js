@@ -6,20 +6,13 @@ module.exports = ({ entities }) => {
 	)
 	const contacts = entities.filter(e => e.__type === `wordpress__wp_contact`)
 
-	console.log(contacts[0].wordpress_id, typeof contacts[0].wordpress_id)
-
 	return entities.map(e => {
 		if (e.__type === `wordpress__wp_company_story`) {
+			// Add acf/contact data to item.attrs.data.contact_relationship field
 			e.blocks.forEach(item => {
-				if (item.attrs.name !== 'acf/contact') {
-					return
-				}
-
+				if (item.attrs.name !== 'acf/contact') return
 				const contactId = item.attrs.data.contact_relationship[0]
-
-				if (!contactId) {
-					return
-				}
+				if (!contactId) return
 
 				item.attrs.data.contact_relationship = contacts.find(
 					x => x.wordpress_id === parseInt(contactId)
@@ -36,6 +29,17 @@ module.exports = ({ entities }) => {
 			}
 		}
 		if (e.__type === `wordpress__wp_opportunity`) {
+			// Add acf/contact data to item.attrs.data.contact_relationship field
+			e.blocks.forEach(item => {
+				if (item.attrs.name !== 'acf/contact') return
+				const contactId = item.attrs.data.contact_relationship[0]
+				if (!contactId) return
+
+				item.attrs.data.contact_relationship = contacts.find(
+					x => x.wordpress_id === parseInt(contactId)
+				)
+			})
+
 			let hasAreas = e.area && Array.isArray(e.area) && e.area.length
 			// Replace areas with links to their nodes.
 			if (hasAreas) {

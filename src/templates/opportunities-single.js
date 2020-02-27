@@ -60,6 +60,32 @@ export const query = graphql`
 					data {
 						fact
 						introduction
+						contact_title
+						contact_link_1_contact_link_1_label
+						contact_link_1_contact_link_1_url
+						contact_link_2_contact_link_2_label
+						contact_link_2_contact_link_2_url
+						contact_relationship {
+							title
+							acf {
+								company
+								email
+								phone
+								image {
+									localFile {
+										childImageSharp {
+											fixed(
+												width: 90
+												height: 90
+												quality: 100
+											) {
+												...GatsbyImageSharpFixed_withWebp
+											}
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			}
