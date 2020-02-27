@@ -44,7 +44,7 @@ const Contact = ({
 						</div>
 					</div>
 					<div className="flex flex-col mb-6">
-						<span className="text-xl text-white font-semibold block mb-3">
+						<span className="text-lg text-white font-semibold block mb-3">
 							Kontakt
 						</span>
 						<a
@@ -63,9 +63,11 @@ const Contact = ({
 				</div>
 			)}
 
-			<span className="text-xl text-white font-semibold block mb-3">
-				Länkar
-			</span>
+			{link_1_url && link_2_url && (
+				<span className="text-lg text-white font-semibold block mb-3">
+					Länkar
+				</span>
+			)}
 			{link_1_url && (
 				<a
 					className="text-white underline block mb-1"
